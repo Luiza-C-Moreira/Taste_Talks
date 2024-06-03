@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/2.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taste Talks | Forum</title>
+
+    <script src="../js/sessao.js"></script>
+    <script src="./../js/alerta.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat|Cardo' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <style>
+        /* Estilos */
+        body {
+      color: #8f8f8f;
+      font-family: "Cardo", serif;
+      font-weight: 300;
+      background-color: white;
+      -webkit-font-smoothing: antialiased;
+      margin: 0;
+    }
+  
+    a {
+      text-decoration: none;
+    }
+  
+    h1 {
+      font-size: 30px;
+      line-height: 1.8;
+      color: #EE9B00;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-family: "Montserrat", sans-serif;
+    }
+  
+    p {
+      margin-bottom: 20px;
+      font-size: 17px;
+      line-height: 2;
+      text-align: justify;
+      margin-right: 3%;
+    }
+  
+    h3 {
+      font-family: sans-serif;
+      font-weight: bold;
+      color: #EE9B00;
+      margin-top: -5px;
+    }
+  
+    /* ------ HEADER ----- */
+    .home_header {
+      position: fixed;
+      z-index: 999;
+      width: 100%;
+      padding-top: 2%;
+      transition: all 0.3s;
+      top: 0px;
+      padding-bottom: 6px;
+      background-color: rgba(255, 255, 255, 0.93);
+      border-bottom: 1px solid gainsboro;
+      opacity: 1;
+      top: 0px;
+    }
+  
+    .home_header a {
+      text-decoration: none;
+      text-align: right;
+      
+    }
+  
+    .home_header a:hover {
+      font-weight: bold;
+      font-size: 12px;
+      color: #BB3E03;
+    }
+  
+    .logo {
+      width: 300px;
+      font-size: 40px;
+      font-weight: bolder;
+      color: #CA6702;
+      text-transform: uppercase;
+      float: left;
+      display: block;
+      margin-top: -2%;
+      margin-bottom: 2px;
+      text-decoration: none;
+    }
+  
+    .now{
+      font-weight: bold;
+      color: #ffe3d3;
+      background-color: #EE9B00;
+      padding: 8px;
+      border-radius: 10px;
+    }
+
+    .exit{
+      font-weight: bold;
+      color: #ca6602b8;
+      background-color: #ee9b004f;
+      padding: 8px;
+      border-radius: 10px;
+    }
+
+    .exit:hover{
+      font-weight: bold;
+      color: #ca6602;
+      background-color: #ee9b00bc;
+      padding: 8px;
+      border-radius: 10px;
+    }
+  
+    nav {
+      float: right;
+      width: 71%;
+    }
+  
+    nav ul {
+    text-align: right;
+    float: right;
+  }
+
+    nav ul li {
+      display: inline-block;
+      margin-left: 35px;
+    }
+  
+    nav ul a {
+      color: #888888;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+  
+    .head {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  
+  
+    .content {
+      margin-top: 0;
+      padding: 8%;
+    }
+
+
+        .post {
+            border: 1px solid #ddd;
+            padding: 20px;
+            color: #001219;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #ca660219;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .profile img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .username {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .restaurant-name {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .rating {
+            font-size: 1.4em;
+            color: #BB3E03;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        .post-content img {
+            max-width: 50%;
+            height: auto;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .buttons button {
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .buttons .like {
+            background-color: #9B2226;
+            color: white;
+        }
+
+        .buttons .dislike {
+            background-color: #BB3E03;
+            color: white;
+        }
+
+        .buttons .comment {
+            background-color: #CA6702;
+            color: white;
+        }
+
+        .like-count,
+        .dislike-count,
+        .comment-count {
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        .delete-button {
+            background-color: #f0ad4e;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .delete-button {
+            background-color: #EE9B00;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        form input,
+        form textarea {
+            width: 98%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #CA6702;
+            background-color: #ee9b004b;
+            border-radius: 4px;
+        }
+
+        form button {
+            padding: 10px 15px;
+            margin-left: 40%;
+            width: 250px;
+            background-color: #CA6702;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #EE9B00;
+            transition: 0.5s;
+        }
+
+/*FOOTER*/
+.site-footer {
+    background-color: #26272b;
+    padding: 40px 30px 20px;
+    font-size: 15px;
+    line-height: 24px;
+    color: #E9D8A6;
+}
+
+.site-footer hr {
+    border-top-color: #E9D8A6;
+    opacity: 0.5;
+}
+
+.site-footer h6 {
+    color: #EE9B00;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-top: 5px;
+    letter-spacing: 2px;
+}
+
+.site-footer a {
+    color: #E9D8A6;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    color: #CA6702;
+}
+
+.footer-links {
+    padding-left: 0;
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #ee9b00be;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #CA6702;/
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-col {
+    width: 60%;
+    margin-bottom: 20px;
+}
+
+.footer-col2 {
+    width: 30%;
+    margin-bottom: 20px;
+}
+
+.footer-col3 {
+    flex: 1;
+    width: 60%;
+    margin-bottom: 20px;
+}
+
+.footer-col a{
+ color: #94D2BD;
+}
+
+.footer-col a:hover{
+ color: #509e85;
+}
+
+.copyright-text {
+    color: #94D2BD;
+}
+
+.social-icons {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.social-icons li {
+    margin-left: 10px;
+}
+
+.social-icons a {
+    background-color: #eceeef;
+    color: #818a91;
+    font-size: 16px;
+    display: inline-block;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 10px;
+    transition: all 0.2s linear;
+}
+
+.social-icons a:hover {
+    color: #fff;
+    background-color: #9db0bd;
+}
+
+.social-icons a.github:hover {
+    background-color: #6003ad;
+}
+
+.social-icons a.linkedin:hover {
+    background-color: #0b85be;
+}
+
+        .edit-form {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="home_header">
+
+        <div class="head">
+          <h1 class="logo" href="#">Taste Talks</h1>
+    
+          <nav>
+            <ul>
+              <li><a href="mural.html" class="now">Fórum</a></li>
+              <li>|</li>
+              <li><a href="dashboard.html">Métricas</a></li>
+              <li><a href="Game_Home.html">Games</a></li>
+              <li><a onclick="limparSessao()" class="exit">Sair</a></li>
+            </ul>
+          </nav>
+    
+        </div> <!-- / head -->
+    
+      </header>
+
+    <div class="content">
+        <h1>Compartilhe com o Fórum</h1>
+        <form id="postForm">
+            <label for="username">Nome ou ID de identificação do Usuário: (Obrigatório)</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="restaurantName">Nome do Restaurante: (Obrigatório)</label>
+            <input type="text" id="restaurantName" name="restaurantName" required>
+
+            <label for="rating">Avaliação (1-5 estrelas): (Obrigatório)</label>
+            <input type="number" id="rating" name="rating" min="1" max="5" required>
+
+            <label for="description">Descrição: (Obrigatório)</label>
+            <textarea id="description" name="description" required></textarea>
+
+            <label for="image">Imagem: (Opcional)</label>
+            <input type="text" id="image" name="image">
+
+            <button type="submit">Postar</button>
+        </form> <br>
+        <div id="postContainer"></div>
+    </div>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-row">
+                <div class="footer-col">
+                    <p class="copyright-text">Copyright &copy; 2024 Todos os direitos reservados
+                        <a href="#">Luiza C. Moreira</a> SPTECH.
+                    </p>
+                </div>
+    
+                <div class="footer-col3">
+                    <ul class="social-icons">
+                        <li><a class="github" href="#"><i class="fa fa-github"></i></a></li>
+                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer> 
+    
+</body>
+
+</html>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const postForm = document.getElementById("postForm");
+            const postContainer = document.getElementById("postContainer");
+
+            // Verifique se há dados armazenados localmente ao carregar a página
+            const storedPosts = localStorage.getItem("posts");
+            if (storedPosts) {
+                postContainer.innerHTML = storedPosts;
+            }
+
+            postForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const username = document.getElementById("username").value;
+                const restaurantName = document.getElementById("restaurantName").value;
+                const rating = document.getElementById("rating").value;
+                const description = document.getElementById("description").value;
+                const image = document.getElementById("image").value;
+
+                const postId = new Date().getTime(); // Unique ID for the post
+
+                const postHTML = `
+                <div class="post" id="post-${postId}">
+                    <div class="profile">
+                        <img src="https://www.rsefundingawards.org.uk/wp-content/themes/rse/img/profile-placeholder.png" alt="Profile Picture">
+                        <span class="username">${username}</span>
+                    </div>
+                    <div class="post-content">
+                        <div class="restaurant-name">${restaurantName}</div>
+                        <div class="rating">${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}</div>
+                        <div class="description">${description}</div>
+                        <img src="${image}" alt="${restaurantName}">
+                    </div>
+                    <div class="buttons">
+                        <button class="like" onclick="handleLike(this)">Concordo</button>
+                        <span class="like-count">0</span>
+                        <button class="dislike" onclick="handleDislike(this)">Discordo</button>
+                        <span class="dislike-count">0</span>
+                        <button class="comment" onclick="handleComment(this)">Comentários</button>
+                        <span class="comment-count">0</span>
+                        <button class="delete-button" onclick="deletePost(${postId})">Deletar Post</button>
+                    </div>
+                </div>`;
+
+                postContainer.innerHTML = postHTML + postContainer.innerHTML;
+
+                // Armazenar os posts no localStorage
+                localStorage.setItem("posts", postContainer.innerHTML);
+
+                postForm.reset();
+            });
+        });
+
+        function handleLike(button) {
+            const likeCount = button.nextElementSibling;
+            let count = parseInt(likeCount.innerText);
+            count++;
+            likeCount.innerText = count;
+
+            // Armazenar os posts no localStorage
+            const postContainer = document.getElementById("postContainer");
+            localStorage.setItem("posts", postContainer.innerHTML);
+        }
+
+        function handleDislike(button) {
+            const dislikeCount = button.nextElementSibling;
+            let count = parseInt(dislikeCount.innerText);
+            count++;
+            dislikeCount.innerText = count;
+
+            // Armazenar os posts no localStorage
+            const postContainer = document.getElementById("postContainer");
+            localStorage.setItem("posts", postContainer.innerHTML);
+        }
+
+        function handleComment(button) {
+            const commentCount = button.nextElementSibling;
+            let count = parseInt(commentCount.innerText);
+            count++;
+            commentCount.innerText = count;
+
+            // Armazenar os posts no localStorage
+            const postContainer = document.getElementById("postContainer");
+            localStorage.setItem("posts", postContainer.innerHTML);
+        }
+
+        function editPost(postId) {
+            const postElement = document.getElementById(`post-${postId}`);
+            const username = postElement.querySelector('.username').innerText;
+            const restaurantName = postElement.querySelector('.restaurant-name').innerText;
+            const rating = postElement.querySelector('.rating').innerText.length / 2;
+            const description = postElement.querySelector('.description').innerText;
+            const image = postElement.querySelector('.post-content img').src;
+
+            postElement.innerHTML = `
+                <div class="edit-form">
+                    <label for="edit-username-${postId}">Username:</label>
+                    <input type="text" id="edit-username-${postId}" value="${username}">
+                    <label for="edit-restaurantName-${postId}">Restaurant Name:</label>
+                    <input type="text" id="edit-restaurantName-${postId}" value="${restaurantName}">
+                    <label for="edit-rating-${postId}">Rating (1-5):</label>
+                    <input type="number" id="edit-rating-${postId}" value="${rating}" min="1" max="5">
+                    <label for="edit-description-${postId}">Description:</label>
+                    <textarea id="edit-description-${postId}">${description}</textarea>
+                    <label for="edit-image-${postId}">Image URL:</label>
+                    <input type="text" id="edit-image-${postId}" value="${image}">
+                    <button onclick="saveEdit(${postId})">Save</button>
+                    <button onclick="cancelEdit(${postId})">Cancel</button>
+                </div>`;
+        }
+
+        function saveEdit(postId) {
+            const postElement = document.getElementById(`post-${postId}`);
+            const username = document.getElementById(`edit-username-${postId}`).value;
+            const restaurantName = document.getElementById(`edit-restaurantName-${postId}`).value;
+            const rating = document.getElementById(`edit-rating-${postId}`).value;
+            const description = document.getElementById(`edit-description-${postId}`).value;
+            const image = document.getElementById(`edit-image-${postId}`).value;
+
+            postElement.innerHTML = `
+                <div class="profile">
+                    <img src="https://via.placeholder.com/50" alt="Profile Picture">
+                    <span class="username">${username}</span>
+                </div>
+                <div class="post-content">
+                    <div class="restaurant-name">${restaurantName}</div>
+                    <div class="rating">${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}</div>
+                    <div class="description">${description}</div>
+                    <img src="${image}" alt="${restaurantName}">
+                </div>
+                <div class="buttons">
+                    <button class="like" onclick="handleLike(this)">Concordo</button>
+                    <span class="like-count">0</span>
+                    <button class="dislike" onclick="handleDislike(this)">Discordo</button>
+                    <span class="dislike-count">0</span>
+                    <button class="comment" onclick="handleComment(this)">Comentário</button>
+                    <span class="comment-count">0</span>
+                    <button class="delete-button" onclick="deletePost(${postId})">Deletar Post</button>
+                </div>`;
+
+            // Armazenar os posts no localStorage
+            const postContainer = document.getElementById("postContainer");
+            localStorage.setItem("posts", postContainer.innerHTML);
+        }
+
+        function cancelEdit(postId) {
+            const postElement = document.getElementById(`post-${postId}`);
+            const storedPosts = localStorage.getItem("posts");
+            if (storedPosts) {
+                postElement.outerHTML = new DOMParser().parseFromString(storedPosts, 'text/html').getElementById(`post-${postId}`).outerHTML;
+            }
+        }
+
+        function deletePost(postId) {
+            const postElement = document.getElementById(`post-${postId}`);
+            postElement.remove();
+
+            // Armazenar os posts no localStorage
+            const postContainer = document.getElementById("postContainer");
+            localStorage.setItem("posts", postContainer.innerHTML);
+        }
+
+        function sair() {
+            // Função de logout
+        }
+    </script>

@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/2.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taste Talks | Métricas </title>
+
+    <!--<link rel="stylesheet" href="./../css/dashboards.css">
+    <link rel="stylesheet" href="./../css/estilo.css" />-->
+    <link rel="icon" href="./assets/icon/2.png">
+    <script src="../js/sessao.js"></script>
+    <script src="./../js/alerta.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- scripts do Chart.js - 2022-1 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!--FONT AWESOME-->
+    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
+</head>
+
+<style>
+    body {
+        color: #8f8f8f;
+        font-family: "Cardo", serif;
+        font-weight: 300;
+        background-color: white;
+        -webkit-font-smoothing: antialiased;
+        margin: 0;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    h1 {
+        font-size: 30px;
+        line-height: 1.8;
+        text-transform: uppercase;
+        font-family: "Montserrat", sans-serif;
+    }
+
+    p {
+        margin-bottom: 20px;
+        font-size: 17px;
+        line-height: 2;
+        text-align: justify;
+        margin-right: 3%;
+    }
+
+    h3 {
+        font-family: sans-serif;
+        font-weight: bold;
+        color: #EE9B00;
+        margin-top: -5px;
+    }
+
+    /* ------ HEADER ----- */
+    .home_header {
+        position: fixed;
+        z-index: 999;
+        width: 100%;
+        padding-top: 2%;
+        transition: all 0.3s;
+        top: 0px;
+        padding-bottom: 6px;
+        background-color: rgba(255, 255, 255, 0.93);
+        border-bottom: 1px solid gainsboro;
+        opacity: 1;
+        top: 0px;
+    }
+
+    .home_header a {
+        text-decoration: none;
+        text-align: right;
+
+    }
+
+    .home_header a:hover {
+        font-weight: bold;
+        font-size: 12px;
+        color: #BB3E03;
+    }
+
+    .logo {
+        width: 300px;
+        font-size: 40px;
+        font-weight: bolder;
+        color: #CA6702;
+        text-transform: uppercase;
+        float: left;
+        display: block;
+        margin-top: -2%;
+        margin-bottom: 2px;
+        text-decoration: none;
+    }
+
+    .now {
+        font-weight: bold;
+        color: #ffe3d3;
+        background-color: #EE9B00;
+        padding: 8px;
+        border-radius: 10px;
+    }
+
+    .exit {
+        font-weight: bold;
+        color: #ca6602b8;
+        background-color: #ee9b004f;
+        padding: 8px;
+        border-radius: 10px;
+    }
+
+    .exit:hover {
+        font-weight: bold;
+        color: #ca6602;
+        background-color: #ee9b00bc;
+        padding: 8px;
+        border-radius: 10px;
+    }
+
+    nav {
+        float: right;
+        width: 71%;
+    }
+
+    nav ul {
+        text-align: right;
+        float: right;
+    }
+
+    nav ul li {
+        display: inline-block;
+        margin-left: 35px;
+    }
+
+    nav ul a {
+        color: #888888;
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+
+    .head {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+
+    .content {
+        margin-top: 0;
+        padding: 8% 2%;
+    }
+
+
+
+    /*FOOTER*/
+    .site-footer {
+        background-color: #26272b;
+        padding: 40px 30px 20px;
+        font-size: 15px;
+        line-height: 24px;
+        color: #E9D8A6;
+    }
+
+    .site-footer hr {
+        border-top-color: #E9D8A6;
+        opacity: 0.5;
+    }
+
+    .site-footer h6 {
+        color: #EE9B00;
+        font-size: 16px;
+        text-transform: uppercase;
+        margin-top: 5px;
+        letter-spacing: 2px;
+    }
+
+    .site-footer a {
+        color: #E9D8A6;
+        text-decoration: none;
+    }
+
+    .site-footer a:hover {
+        color: #CA6702;
+    }
+
+    .footer-links {
+        padding-left: 0;
+        list-style: none;
+    }
+
+    .footer-links li {
+        margin-bottom: 10px;
+    }
+
+    .footer-links a {
+        color: #ee9b00be;
+        text-decoration: none;
+    }
+
+    .footer-links a:hover {
+        color: #CA6702;
+    }
+
+    .text-justify {
+        text-align: justify;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    .footer-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .footer-col {
+        width: 60%;
+        margin-bottom: 20px;
+    }
+
+    .footer-col2 {
+        width: 30%;
+        margin-bottom: 20px;
+    }
+
+    .footer-col3 {
+        flex: 1;
+        width: 60%;
+        margin-bottom: 20px;
+    }
+
+    .footer-col a {
+        color: #94D2BD;
+    }
+
+    .footer-col a:hover {
+        color: #509e85;
+    }
+
+    .copyright-text {
+        color: #94D2BD;
+    }
+
+    .social-icons {
+        list-style: none;
+        padding-left: 0;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .social-icons li {
+        margin-left: 10px;
+    }
+
+    .social-icons a {
+        background-color: #eceeef;
+        color: #818a91;
+        font-size: 16px;
+        display: inline-block;
+        text-align: center;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 10px;
+        transition: all 0.2s linear;
+    }
+
+    .social-icons a:hover {
+        color: #fff;
+        background-color: #9db0bd;
+    }
+
+    .social-icons a.github:hover {
+        background-color: #6003ad;
+    }
+
+    .social-icons a.linkedin:hover {
+        background-color: #0b85be;
+    }
+</style>
+
+
+<body>
+    <div class="janela">
+        <!--<div class="header-left">
+            <h1>Taste Talks</h1>
+
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>! <br> CPF <span id="c_cpf"> </span>!</h3>
+            </div>
+
+            <div class="btn-nav">
+                <h3>Métricas</h3>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./mural.html">
+                    <h3>Mural de Avaliações</h3>
+                </a>
+            </div>
+
+            <div class="btn-logout" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div>
+        </div>
+
+        <div class="dash">
+            <div id="alerta">
+            </div> -->
+
+        <header class="home_header">
+
+            <div class="head">
+                <h1 class="logo" href="#">Taste Talks</h1>
+
+                <nav>
+                    <ul>
+                        <li><a href="dashboard.html" class="now">Métricas</a></li>
+                        <li>|</li>
+                        <li><a href="mural.html">Fórum</a></li>
+                        <li><a href="Game_Home.html">Games</a></li>
+                        <li><a onclick="limparSessao()" class="exit">Sair</a></li>
+                    </ul>
+                </nav>
+
+            </div> <!-- / head -->
+
+        </header>
+
+        <div class="btns-dash" id="btnMetricas">
+            <!-- Os restaurantes são carregados aqui -->
+        </div>
+        <div id="graficos">
+            <!-- Os gráficos são exibidos aqui -->
+        </div>
+    </div>
+    </div>
+
+    <div class="content">
+        <center>
+            <div>
+                <div style=" width: 70%;">
+                    <h2> Restaurantes comentados ao longo da semana </h2>
+                    <canvas id="myChart" style="position: relative; height: 40vh; width: 40vw;"></canvas>
+                </div>
+            </div>
+        </center>
+
+    </div>
+
+
+
+    <!-- Site footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-row">
+                <div class="footer-col">
+                    <p class="copyright-text">Copyright &copy; 2024 Todos os direitos reservados
+                        <a href="#">Luiza C. Moreira</a> SPTECH.
+                    </p>
+                </div>
+
+                <div class="footer-col3">
+                    <ul class="social-icons">
+                        <li><a class="github" href="#"><i class="fa fa-github"></i></a></li>
+                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <style>
+        body {
+            color: #8f8f8f;
+            font-family: "Cardo", serif;
+            font-weight: 300;
+            background-color: white;
+            -webkit-font-smoothing: antialiased;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        h1 {
+            font-size: 30px;
+            line-height: 1.8;
+            text-transform: uppercase;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 17px;
+            line-height: 2;
+            text-align: justify;
+            margin-right: 3%;
+        }
+
+        h3 {
+            font-family: sans-serif;
+            font-weight: bold;
+            color: #EE9B00;
+            margin-top: -5px;
+        }
+
+        /* ------ HEADER ----- */
+        .home_header {
+            position: fixed;
+            z-index: 999;
+            width: 100%;
+            padding-top: 2%;
+            transition: all 0.3s;
+            top: 0px;
+            padding-bottom: 6px;
+            background-color: rgba(255, 255, 255, 0.93);
+            border-bottom: 1px solid gainsboro;
+            opacity: 1;
+            top: 0px;
+        }
+
+        .home_header a {
+            text-decoration: none;
+            text-align: right;
+
+        }
+
+        .home_header a:hover {
+            font-weight: bold;
+            font-size: 12px;
+            color: #BB3E03;
+        }
+
+        .logo {
+            width: 300px;
+            font-size: 40px;
+            font-weight: bolder;
+            color: #CA6702;
+            text-transform: uppercase;
+            float: left;
+            display: block;
+            margin-top: -2%;
+            margin-bottom: 2px;
+            text-decoration: none;
+        }
+
+        .now {
+            font-weight: bold;
+            color: #ffe3d3;
+            background-color: #EE9B00;
+            padding: 8px;
+            border-radius: 10px;
+        }
+
+        .exit {
+            font-weight: bold;
+            color: #ca6602b8;
+            background-color: #ee9b004f;
+            padding: 8px;
+            border-radius: 10px;
+        }
+
+        .exit:hover {
+            font-weight: bold;
+            color: #ca6602;
+            background-color: #ee9b00bc;
+            padding: 8px;
+            border-radius: 10px;
+        }
+
+        nav {
+            float: right;
+            width: 71%;
+        }
+
+        nav ul {
+            text-align: right;
+            float: right;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-left: 35px;
+        }
+
+        nav ul a {
+            color: #888888;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        .head {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content {
+            padding-top: 2%;
+            margin: 4%;
+            margin-bottom: -5%;
+            width: 90%;
+        }
+
+
+
+        /*FOOTER*/
+        .site-footer {
+            background-color: #26272b;
+            padding: 40px 30px 20px;
+            font-size: 15px;
+            line-height: 24px;
+            color: #E9D8A6;
+        }
+
+        .site-footer hr {
+            border-top-color: #E9D8A6;
+            opacity: 0.5;
+        }
+
+        .site-footer h6 {
+            color: #EE9B00;
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-top: 5px;
+            letter-spacing: 2px;
+        }
+
+        .site-footer a {
+            color: #E9D8A6;
+            text-decoration: none;
+        }
+
+        .site-footer a:hover {
+            color: #CA6702;
+        }
+
+        .footer-links {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ee9b00be;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #CA6702;
+        }
+
+        .text-justify {
+            text-align: justify;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .footer-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-col {
+            width: 60%;
+            margin-bottom: 20px;
+        }
+
+        .footer-col2 {
+            width: 30%;
+            margin-bottom: 20px;
+        }
+
+        .footer-col3 {
+            flex: 1;
+            width: 60%;
+            margin-bottom: 20px;
+        }
+
+        .footer-col a {
+            color: #94D2BD;
+        }
+
+        .footer-col a:hover {
+            color: #509e85;
+        }
+
+        .copyright-text {
+            color: #94D2BD;
+        }
+
+        .social-icons {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .social-icons li {
+            margin-left: 10px;
+        }
+
+        .social-icons a {
+            background-color: #eceeef;
+            color: #818a91;
+            font-size: 16px;
+            display: inline-block;
+            text-align: center;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 10px;
+            transition: all 0.2s linear;
+        }
+
+        .social-icons a:hover {
+            color: #fff;
+            background-color: #9db0bd;
+        }
+
+        .social-icons a.github:hover {
+            background-color: #6003ad;
+        }
+
+        .social-icons a.linkedin:hover {
+            background-color: #0b85be;
+        }
+    </style>
+
+    <script>
+        // b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+        // c_cpf.innerHTML = sessionStorage.cpf;
+
+        // window.onload = exibirMetricasRestaurantes();
+
+        // function exibirMetricasRestaurantes() {
+        //     const restaurantes = [
+        //         { nome: 'Restaurante A', id: 1, avaliacoes: [4, 5, 3, 4, 5] },
+        //         { nome: 'Restaurante B', id: 2, avaliacoes: [3, 4, 5, 4, 3] },
+        //         { nome: 'Restaurante C', id: 3, avaliacoes: [5, 4, 5, 5, 4] },
+        //     ];
+
+        //     let mediaTotal = 0;
+        //     restaurantes.forEach(restaurante => {
+        //         document.getElementById("btnMetricas").innerHTML += `
+        //         <button class="btn-chart" onclick="exibirMetrica(${restaurante.id})" id="btnMetrica${restaurante.id}">${restaurante.nome}</button>
+        //     `;
+
+        //         document.getElementById("graficos").innerHTML += `
+        //         <div id="grafico${restaurante.id}" class="display-none">
+        //             <h3 class="tituloGraficos">
+        //                 <span id="tituloRestaurante${restaurante.id}">${restaurante.nome}</span>
+        //             </h3>
+        //             <div class="graph">
+        //                 <canvas id="myChartCanvas${restaurante.id}"></canvas>
+        //             </div>
+        //         </div>
+        //     `;
+
+        //         obterDadosMetricas(restaurante.id);
+
+        //         // Calculando a média das avaliações do restaurante
+        //         const mediaRestaurante = restaurante.avaliacoes.reduce((acc, val) => acc + val, 0) / restaurante.avaliacoes.length;
+        //         mediaTotal += mediaRestaurante;
+        //     });
+
+        //     const mediaGeral = mediaTotal / restaurantes.length;
+        //     console.log("Média Geral das Avaliações: ", mediaGeral.toFixed(2));
+        // }
+
+        // function obterDadosMetricas(idRestaurante) {
+        //     // Aqui você pode obter os dados do restaurante com o ID fornecido e plotar os gráficos, se necessário
+        //     console.log("Dados do restaurante com ID " + idRestaurante);
+        // }
+
+        // function exibirMetrica(idRestaurante) {
+        //     const todosOsGraficos = document.querySelectorAll('.grafico');
+        //     todosOsGraficos.forEach(grafico => grafico.classList.add('display-none'));
+
+        //     const todosOsBotoes = document.querySelectorAll('.btn-chart');
+        //     todosOsBotoes.forEach(botao => botao.classList.remove('btn-pink'));
+
+        //     const graficoExibir = document.getElementById(`grafico${idRestaurante}`);
+        //     graficoExibir.classList.remove('display-none');
+
+        //     const botaoExibir = document.getElementById(`btnMetrica${idRestaurante}`);
+        //     botaoExibir.classList.add('btn-pink');
+        // }
+        
+
+        const labels = [
+            'Fasano',
+            'Mocoto',
+            'Mamute Restaurante'
+        ];
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Bom Lugar',
+                backgroundColor: '#005F73',
+                borderColor: '#860000',
+                data: [315, 240, 101],
+            }, {
+                label: 'Não voltaria',
+                backgroundColor: '#94D2BD',
+                borderColor: '#F2C197',
+                data: [100, 62, 162],
+            }]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {}
+        };
+
+
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+
+
+    </script>
+</body>
+
+</html>

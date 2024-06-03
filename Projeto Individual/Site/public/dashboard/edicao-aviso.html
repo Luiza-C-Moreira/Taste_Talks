@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/2.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taste Talks | Editar Post</title>
+
+   <!-- <link rel="stylesheet" href="./../css/dashboards.css">
+    <link rel="stylesheet" href="./../css/estilo.css" />
+    <link rel="icon" href="./assets/icon/2.png"> -->
+    <script src="../js/sessao.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat|Cardo' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <style>
+               
+    body {
+      color: #8f8f8f;
+      font-family: "Cardo", serif;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      margin: 0;
+    }
+  
+    a {
+      text-decoration: none;
+    }
+  
+    h1 {
+      font-size: 30px;
+      line-height: 1.8;
+      text-transform: uppercase;
+      font-family: "Montserrat", sans-serif;
+    }
+  
+    p {
+      margin-bottom: 20px;
+      font-size: 17px;
+      line-height: 2;
+      text-align: justify;
+      margin-right: 3%;
+    }
+  
+    h3 {
+      font-family: sans-serif;
+      font-weight: bold;
+      color: #EE9B00;
+      margin-top: -5px;
+    }
+  
+    /* ------ HEADER ----- */
+    .home_header {
+      position: fixed;
+      z-index: 999;
+      width: 100%;
+      padding-top: 2%;
+      transition: all 0.3s;
+      top: 0px;
+      padding-bottom: 6px;
+      background-color: rgba(255, 255, 255, 0.93);
+      border-bottom: 1px solid gainsboro;
+      opacity: 1;
+      top: 0px;
+    }
+  
+    .home_header a {
+      text-decoration: none;
+      text-align: right;
+      
+    }
+  
+    .home_header a:hover {
+      font-weight: bold;
+      font-size: 12px;
+      color: #BB3E03;
+    }
+  
+    .logo {
+      width: 300px;
+      font-size: 40px;
+      font-weight: bolder;
+      color: #CA6702;
+      text-transform: uppercase;
+      float: left;
+      display: block;
+      margin-top: -2%;
+      margin-bottom: 2px;
+      text-decoration: none;
+    }
+  
+    .now{
+      font-weight: bold;
+      color: #ffe3d3;
+      background-color: #EE9B00;
+      padding: 8px;
+      border-radius: 10px;
+    }
+  
+    nav {
+      float: right;
+      width: 71%;
+    }
+  
+    nav ul {
+    text-align: right;
+    float: right;
+  }
+
+    nav ul li {
+      display: inline-block;
+      margin-left: 35px;
+    }
+  
+    nav ul a {
+      color: #888888;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+  
+    .head {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  
+  
+    .content {
+      margin-top: 0;
+      padding: 8% 2%;
+    }
+
+        .post {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #f4f4f4;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .profile img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .username {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .restaurant-name {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .rating {
+            font-size: 1.2em;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            margin-bottom: 10px;
+        }
+
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .buttons button {
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .buttons .like {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .buttons .dislike {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .buttons .comment {
+            background-color: #008CBA;
+            color: white;
+        }
+
+        .like-count, .dislike-count, .comment-count {
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        form button {
+            padding: 10px 15px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #555;
+        }
+/*FOOTER*/
+.site-footer {
+    background-color: #26272b;
+    padding: 40px 30px 20px;
+    font-size: 15px;
+    line-height: 24px;
+    color: #E9D8A6;
+}
+
+.site-footer hr {
+    border-top-color: #E9D8A6;
+    opacity: 0.5;
+}
+
+.site-footer h6 {
+    color: #EE9B00;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-top: 5px;
+    letter-spacing: 2px;
+}
+
+.site-footer a {
+    color: #E9D8A6;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    color: #CA6702;
+}
+
+.footer-links {
+    padding-left: 0;
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #ee9b00be;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #CA6702;/
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-col {
+    width: 60%;
+    margin-bottom: 20px;
+}
+
+.footer-col2 {
+    width: 30%;
+    margin-bottom: 20px;
+}
+
+.footer-col3 {
+    flex: 1;
+    width: 60%;
+    margin-bottom: 20px;
+}
+
+.footer-col a{
+ color: #94D2BD;
+}
+
+.footer-col a:hover{
+ color: #509e85;
+}
+
+.copyright-text {
+    color: #94D2BD;
+}
+
+.social-icons {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.social-icons li {
+    margin-left: 10px;
+}
+
+.social-icons a {
+    background-color: #eceeef;
+    color: #818a91;
+    font-size: 16px;
+    display: inline-block;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 10px;
+    transition: all 0.2s linear;
+}
+
+.social-icons a:hover {
+    color: #fff;
+    background-color: #9db0bd;
+}
+
+.social-icons a.github:hover {
+    background-color: #6003ad;
+}
+
+.social-icons a.linkedin:hover {
+    background-color: #0b85be;
+}
+
+    </style>
+</head>
+
+<body onload="validarSessao(), listarInfosDeUm()" style="background-color: #161618;">
+    <div class="janela">
+
+        <header class="home_header">
+
+            <div class="head">
+              <h1 class="logo" href="#">Taste Talks</h1>
+        
+              <nav>
+                <ul>
+                  <li><a href="mural.html" class="now">Fórum</a></li>
+                  <li>|</li>
+                  <li><a href="dashboard.html">Métricas</a></li>
+                  <li><a href="Game_Home.html">Games</a></li>
+                  <li><a onclick="limparSessao()" class="exit">Sair</a></li>
+                </ul>
+              </nav>
+        
+            </div> <!-- / head -->
+        
+          </header>
+
+
+        <div class="dash-right">
+
+            <div class="avisos">
+                <div class="container">
+                    <h1>Editar um aviso</h1>
+                    <div class="div-form">
+                        <label>
+                            ID:
+                            <br>
+                            <input id="input_id" maxlength="100" type="text" style="color: rgb(196, 196, 196)" disabled>
+                        </label>
+                        <label>
+                            Autor:
+                            <br>
+                            <input id="input_nome" maxlength="100" type="text" style="color: rgb(196, 196, 196)" disabled>
+                        </label>
+                        <label>
+                            Título:
+                            <br>
+                            <input id="input_titulo" maxlength="100" type="text" style="color: rgb(196, 196, 196)" disabled>
+                        </label>
+                        <br>
+                        <label>
+                            Descrição (máximo de 250 caracteres):
+                            <br>
+                            <textarea id="textarea_descricao" maxlength="250" rows="5"></textarea>
+                        </label>
+                        <br>
+                        <button onclick="editar()">Editar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Forum de Avaliações de Restaurantes -->
+            <div class="forum">
+                <div class="container">
+                    <h1>Criar Nova Avaliação</h1>
+                    <form id="post-form">
+                        <label for="restaurant-name">Nome do restaurante:</label>
+                        <input type="text" id="restaurant-name" name="restaurant-name" required>
+
+                        <label for="profile-picture">Imagem de Perfil:</label>
+                        <input type="file" id="profile-picture" name="profile-picture" accept="image/*">
+
+                        <label for="title">Título:</label>
+                        <input type="text" id="title" name="title" required>
+
+                        <label for="content">Conteúdo:</label>
+                        <textarea id="content" name="content" required></textarea>
+
+                        <label for="post-image">Imagem da Postagem:</label>
+                        <input type="file" id="post-image" name="post-image" accept="image/*">
+
+                        <button type="submit">Postar</button>
+                    </form>
+
+                    <h1>Mural de Avaliações</h1>
+                    <div id="posts" class="div-results">
+                        <!-- Exemplo de postagem -->
+                        <div class="post">
+                            <div class="profile">
+                                <img src="data:image/jpeg;base64,..." alt="Imagem de Perfil">
+                                <div class="username">@Juninhk</div> <p>_ 1 hora atrás</p>
+                            </div>
+                            <div class="restaurant-name">Fasano</div>
+                            <div class="rating">★★★★☆</div>
+                            <div class="description">
+                                Este é um ótimo restaurante com comida deliciosa e um ambiente acolhedor. Recomendo a todos que visitarem.
+                            </div>
+                            <div class="post-content">
+                                <img src="data:image/jpeg;base64,..." alt="Imagem da Postagem">
+                            </div>
+                            <div class="buttons">
+                                <button class="like">Curtir</button>
+                                <span class="like-count">0</span>
+                                <button class="dislike">Descurtir</button>
+                                <span class="dislike-count">0</span>
+                                <button class="comment">Comentar</button>
+                                <span class="comment-count">0</span>
+                                <button class="edit-btn">Editar</button>
+                                <button class="delete-btn">Excluir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Fim do Forum de Avaliações de Restaurantes -->
+
+
+              <!-- Site footer -->
+              <footer class="site-footer">
+                <div class="container">
+                    <div class="footer-row">
+                        <div class="footer-col">
+                            <p class="copyright-text">Copyright &copy; 2024 Todos os direitos reservados
+                                <a href="#">Luiza C. Moreira</a> SPTECH.
+                            </p>
+                        </div>
+            
+                        <div class="footer-col3">
+                            <ul class="social-icons">
+                                <li><a class="github" href="#"><i class="fa fa-github"></i></a></li>
+                                <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer> 
+
+
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    c_cpf.innerHTML = sessionStorage.cpf;
+
+    function listarInfosDeUm() {
+        console.log("Criar função de trazer informações de post escolhido");
+    }
+
+    function editar() {
+        fetch(`/avisos/editar/${sessionStorage.getItem("ID_POSTAGEM_EDITANDO")}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                descricao: textarea_descricao.value
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.location = "/dashboard/mural.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    // Nova função para gerenciar a criação de postagens de avaliações
+    document.getElementById('post-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+
+        const profilePic = formData.get('profile-picture');
+        const postImage = formData.get('post-image');
+        const readerProfilePic = new FileReader();
+        const readerPostImage = new FileReader();
+
+        readerProfilePic.onload = function() {
+            const profilePicBase64 = readerProfilePic.result;
+            readerPostImage.onload = function() {
+                const postImageBase64 = readerPostImage.result;
+                createPost(profilePicBase64, postImageBase64);
+            }
+            readerPostImage.readAsDataURL(postImage);
+        }
+        readerProfilePic.readAsDataURL(profilePic);
+    });
+
+    function createPost(profilePic, postImage) {
+        const restaurantName = document.getElementById('restaurant-name').value;
+        const title = document.getElementById('title').value;
+        const content = document.getElementById('content').value;
+
+        const postHTML = `
+            <div class="post">
+                <div class="profile">
+                    <img src="${profilePic}" alt="Imagem de Perfil">
+                    <div class="username">@${sessionStorage.NOME_USUARIO}</div> <p>_ agora mesmo</p>
+                </div>
+                <div class="restaurant-name">${restaurantName}</div>
+                <div class="rating">★★★★☆</div>
+                <div class="description">${content}</div>
+                <div class="post-content">
+                    <img src="${postImage}" alt="Imagem da Postagem">
+                </div>
+                <div class="buttons">
+                    <button class="like">Curtir</button>
+                    <span class="like-count">0</span>
+                    <button class="dislike">Descurtir</button>
+                    <span class="dislike-count">0</span>
+                    <button class="comment">Comentar</button>
+                    <span class="comment-count">0</span>
+                    <button class="edit-btn">Editar</button>
+                    <button class="delete-btn">Excluir</button>
+                </div>
+            </div>
+        `;
+
+        document.getElementById('posts').insertAdjacentHTML('afterbegin', postHTML);
+        document.getElementById('post-form').reset();
+    }
+</script>
