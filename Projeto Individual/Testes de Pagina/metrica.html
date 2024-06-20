@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/2.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taste Talks | Métricas </title>
+
+    <!--<link rel="stylesheet" href="./../css/dashboards.css">
+    <link rel="stylesheet" href="./../css/estilo.css" />-->
+    <link rel="icon" href="./assets/icon/2.png">
+    <script src="../js/sessao.js"></script>
+    <script src="./../js/alerta.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat|Cardo' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!-- scripts do Chart.js - 2022-1 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!--FONT AWESOME-->
+    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <header class="home_header">
+
+        <div class="head">
+            <h1 class="logo" href="#">Taste Talks</h1>
+
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html" class="now" >Métricas</a></li>
+                    <li>|</li>                    
+                    <li><a href="mural.html">Fórum</a></li>
+                    <li><a href="Game_Home.html">Games</a></li>
+                    <li><a onclick="limparSessao()" class="exit">Sair</a></li>
+                </ul>
+            </nav>
+
+        </div> <!-- / head -->
+
+    </header>
+
+    <div class="content">
+        <center>
+            <div>
+                <div style=" width: 70%;">
+                    <h2> Restaurantes comentados ao longo da semana </h2>
+                    <canvas id="myChart" style="position: relative; height: 40vh; width: 40vw;"></canvas>
+                </div>
+            </div>
+        </center>
+
+    </div>
+
+
+
+    <!-- Site footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-row">
+                <div class="footer-col">
+                    <p class="copyright-text">Copyright &copy; 2024 Todos os direitos reservados
+                        <a href="#">Luiza C. Moreira</a> SPTECH.
+                    </p>
+                </div>
+
+                <div class="footer-col3">
+                    <ul class="social-icons">
+                        <li><a class="github" href="#"><i class="fa fa-github"></i></a></li>
+                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        body {
+            color: #8f8f8f;
+            font-family: "Cardo", serif;
+            font-weight: 300;
+            background-color: white;
+            -webkit-font-smoothing: antialiased;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        h1 {
+            font-size: 30px;
+            line-height: 1.8;
+            text-transform: uppercase;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 17px;
+            line-height: 2;
+            text-align: justify;
+            margin-right: 3%;
+        }
+
+        h3 {
+            font-family: sans-serif;
+            font-weight: bold;
+            color: #EE9B00;
+            margin-top: -5px;
+        }
+
+        /* ------ HEADER ----- */
+        .home_header {
+            position: fixed;
+            z-index: 999;
+            width: 100%;
+            padding-top: 2%;
+            transition: all 0.3s;
+            top: 0px;
+            padding-bottom: 6px;
+            background-color: rgba(255, 255, 255, 0.93);
+            border-bottom: 1px solid gainsboro;
+            opacity: 1;
+            top: 0px;
+        }
+
+        .home_header a {
+            text-decoration: none;
+            text-align: right;
+
+        }
+
+        .home_header a:hover {
+            font-weight: bold;
+            font-size: 12px;
+            color: #BB3E03;
+        }
+
+        .logo {
+            width: 300px;
+            font-size: 40px;
+            font-weight: bolder;
+            color: #CA6702;
+            text-transform: uppercase;
+            float: left;
+            display: block;
+            margin-top: -2%;
+            margin-bottom: 2px;
+            text-decoration: none;
+        }
+
+        .now {
+            font-weight: bold;
+            color: #ffe3d3;
+            background-color: #EE9B00;
+            padding: 8px;
+            border-radius: 10px;
+        }
+
+        .exit {
+            font-weight: bold;
+            color: #ca6602b8;
+            background-color: #ee9b004f;
+            padding: 8px;
+            border-radius: 10px;
+        }
+
+        .exit:hover {
+            font-weight: bold;
+            color: #ca6602;
+            background-color: #ee9b00bc;
+            padding: 8px;
+            border-radius: 10px;
+        }
+
+        nav {
+            float: right;
+            width: 71%;
+        }
+
+        nav ul {
+            text-align: right;
+            float: right;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-left: 35px;
+        }
+
+        nav ul a {
+            color: #888888;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        .head {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+
+        .content {
+            padding-top: 5%;
+            margin: 4%;
+            width: 90%;
+        }
+
+
+
+        /*FOOTER*/
+        .site-footer {
+            background-color: #26272b;
+            padding: 40px 30px 20px;
+            font-size: 15px;
+            line-height: 24px;
+            color: #E9D8A6;
+        }
+
+        .site-footer hr {
+            border-top-color: #E9D8A6;
+            opacity: 0.5;
+        }
+
+        .site-footer h6 {
+            color: #EE9B00;
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-top: 5px;
+            letter-spacing: 2px;
+        }
+
+        .site-footer a {
+            color: #E9D8A6;
+            text-decoration: none;
+        }
+
+        .site-footer a:hover {
+            color: #CA6702;
+        }
+
+        .footer-links {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ee9b00be;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #CA6702;
+        }
+
+        .text-justify {
+            text-align: justify;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .footer-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-col {
+            width: 60%;
+            margin-bottom: 20px;
+        }
+
+        .footer-col2 {
+            width: 30%;
+            margin-bottom: 20px;
+        }
+
+        .footer-col3 {
+            flex: 1;
+            width: 60%;
+            margin-bottom: 20px;
+        }
+
+        .footer-col a {
+            color: #94D2BD;
+        }
+
+        .footer-col a:hover {
+            color: #509e85;
+        }
+
+        .copyright-text {
+            color: #94D2BD;
+        }
+
+        .social-icons {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .social-icons li {
+            margin-left: 10px;
+        }
+
+        .social-icons a {
+            background-color: #eceeef;
+            color: #818a91;
+            font-size: 16px;
+            display: inline-block;
+            text-align: center;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 10px;
+            transition: all 0.2s linear;
+        }
+
+        .social-icons a:hover {
+            color: #fff;
+            background-color: #9db0bd;
+        }
+
+        .social-icons a.github:hover {
+            background-color: #6003ad;
+        }
+
+        .social-icons a.linkedin:hover {
+            background-color: #0b85be;
+        }
+    </style>
+
+    <script>
+        const labels = [
+    'Fasano', 
+    'Mocoto', 
+    'Mamute Restaurante'
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+        label: 'Bom Lugar',
+        backgroundColor: '#005F73',
+        borderColor: '#860000',
+        data: [315, 240, 101],
+    },{
+        label: 'Não voltaria',
+        backgroundColor: '#94D2BD',
+        borderColor: '#F2C197',
+        data: [100, 62, 162],
+    }]
+  };
+
+  const config = {
+    type: 'bar',
+    data: data,
+    options: {}
+  };
+
+
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+
+    </script>
+
+</body>
+</html>

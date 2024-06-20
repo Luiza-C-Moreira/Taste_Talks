@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Individual</title>
+</head>
+
+<body>
+
+  <link href='https://fonts.googleapis.com/css?family=Montserrat|Cardo' rel='stylesheet' type='text/css'>
+  <link href='style.css' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+
+  <header class="home_header">
+
+    <div class="head">
+      <h1 class="logo" href="#">Taste Talks</h1>
+
+      <nav>
+        <ul>
+          <li><a href="Home.html">Início</a></li>
+          <li>|</li>
+          <li><a href="Cadastro.html">Cadastro</a></li>
+          <li><a href="Login.html"class="now">Login</a></li>
+        </ul>
+      </nav>
+
+    </div> <!-- / head -->
+
+  </header>
+
+  <div class="login">
+    <div class="content">
+    <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card card-login">
+            <h3>Olá de volta!</h3>
+            <div class="formulario">
+                <div class="campo">
+                    <span>E-mail:</span>
+                    <input id="email_input" type="text" placeholder="Login">
+                </div>
+                <div class="campo">
+                    <span>Senha:</span>
+                    <input id="senha_input" type="password" placeholder="******">
+                </div>
+                <button class="botao" onclick="entrar()">Entrar</button>
+            </div>
+
+            <div id="div_aguardar" class="loading-div">
+                <img src="./assets/circle-loading.gif" id="loading-gif">
+            </div>
+
+            <div id="div_erros_login"></div>
+        </div>
+    </div>
+</div>
+</div>
+
+    <!-- Site footer -->
+    <footer class="site-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-10 col-md-10">
+              <h6>Sobre o Taste Talks</h6>
+              <p class="text-justify">O intuito do blog é incentivar o conhecimento sobre outras culinárias típicas pelo
+                mundo que vale a pena conhecer, separamos restaurantes classificados os melhores de cada país e expomos
+                nossa opinião e experiencias em cada um dos lugares, selecionados e támbem temos a liberdade de indicar
+                novos lugares e garantir ótimas experiencias para outras pessoas.</p>
+            </div>
+    
+            <div class="col-xs-6 col-md-2">
+              <h6>Links Rápidos</h6>
+              <ul class="footer-links">
+                <li><a href="http://scanfcode.com/about/">About Us</a></li>
+                <li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
+                <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
+                <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
+                <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
+              </ul>
+            </div>
+          </div>
+          <hr>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-sm-6 col-xs-12">
+              <p class="copyright-text">Copyright &copy; 2024 Todos os direitos reservados
+                <a href="#">Luiza C. Moreira </a> SPTECH.
+              </p>
+            </div>
+    
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <ul class="social-icons">
+                <li><a class="github" href="#"><i class="fa fa-github"></i></a></li>
+                <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+
+  <style>
+  
+    body {
+      color: #8f8f8f;
+      background: #26272b;
+      font-family: "Cardo", serif;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+  
+    a {
+      text-decoration: none;
+    }
+  
+    h1 {
+      font-size: 30px;
+      line-height: 1.8;
+      text-transform: uppercase;
+      font-family: "Montserrat", sans-serif;
+    }
+  
+    p {
+      margin-bottom: 20px;
+      font-size: 17px;
+      line-height: 2;
+      text-align: justify;
+      margin-right: 3%;
+    }
+  
+    h3 {
+      font-family: sans-serif;
+      font-weight: bold;
+      color: #EE9B00;
+    }
+  
+    /* ------ HEADER ----- */
+    .home_header {
+      position: fixed;
+      z-index: 999;
+      width: 100%;
+      padding-top: 2%;
+      transition: all 0.3s;
+      top: 0px;
+      padding-bottom: 6px;
+      background-color: rgba(255, 255, 255, 0.93);
+      border-bottom: 1px solid gainsboro;
+      opacity: 1;
+      top: 0px;
+    }
+  
+    .home_header a {
+      text-decoration: none;
+      text-align: right;
+      
+    }
+  
+    .home_header a:hover {
+      font-weight: bold;
+      font-size: 12px;
+      color: #BB3E03;
+    }
+  
+    .logo {
+      width: 300px;
+      font-size: 40px;
+      font-weight: bolder;
+      color: #CA6702;
+      text-transform: uppercase;
+      float: left;
+      display: block;
+      margin-top: -2%;
+      margin-bottom: 2px;
+      text-decoration: none;
+    }
+  
+    .now{
+      font-weight: bold;
+      color: #ffe3d3;
+      background-color: #EE9B00;
+      padding: 8px;
+      border-radius: 10px;
+    }
+  
+    nav {
+      float: right;
+      width: 71%;
+    }
+  
+    nav ul {
+    text-align: right;
+    float: right;
+  }
+
+    nav ul li {
+      display: inline-block;
+      margin-left: 35px;
+    }
+  
+    nav ul a {
+      color: #888888;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+  
+    .head {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  
+  
+    .content {
+      margin-top: 0;
+      padding: 5px 2%;
+    }
+
+    /* LOGIN */
+
+.login {
+  height: var(--tamanho-login);
+  background-image: url('https://foodbizbrasil.com/wp-content/uploads/2023/02/Culinaria-natural-revolucao-com-Chef-Dani-Bandeira.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  margin-top: -10%;
+  max-height: 700px;
+}
+
+.login .content .container {
+  justify-content: center;
+  align-items: center;
+  padding: 25%;
+}
+
+.card {
+  width: 100%;
+  background-color: #001219e5;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #EE9B00;
+  flex-direction: column;
+  height: fit-content;
+  padding: 20px 0;
+}
+
+.formulario {
+  display: flex;
+  height: 90%;
+  width: 80%;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.formulario span {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.formulario input {
+  border: 2px solid #BB3E03;
+  background-color: #bb3d03a4;
+  color: #E9D8A6;
+  font-size: larger;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+}
+
+input::placeholder {
+    color: #E9D8A6;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 5px 0;
+}
+
+.botao {
+  cursor: pointer;
+  border: 0;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #cdf0e4;
+  background-color: #005F73;
+  width: 120px;
+  height: 30px;
+  align-self: center;
+  margin-top: 20px;
+}
+
+.loading-div {
+  width: 50px;
+  display: none;
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
+}
+
+#div_erros_login {
+  display: none
+}
+
+
+    
+  /*FOOTER*/
+  .site-footer {
+    background-color: #26272b;
+    padding: 45px 30px 20px;
+    font-size: 15px;
+    line-height: 24px;
+    color: #E9D8A6;
+  }
+
+  .site-footer hr {
+    border-top-color: #E9D8A6;
+    opacity: 0.5
+  }
+
+  .site-footer hr.small {
+    margin: 20px 0
+  }
+
+  .site-footer h6 {
+    color: #EE9B00;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-top: 5px;
+    letter-spacing: 2px
+  }
+
+  .site-footer a {
+    color: #E9D8A6;
+  }
+
+  .site-footer a:hover {
+    color: #CA6702;
+    text-decoration: none;
+  }
+
+  .footer-links {
+    padding-left: 0;
+    list-style: none
+  }
+
+  .footer-links a {
+    color: #ee9b00be
+  }
+
+  .copyright-text {
+    color: #94D2BD;
+  }
+
+  .copyright-text a{
+    color: #94D2BD;
+  }
+
+  .copyright-text a:hover{
+    color: #0A9396;
+  }
+
+  .footer-links a:active,
+  .footer-links a:focus,
+  .footer-links a:hover {
+    color: #CA6702;
+    text-decoration: none;
+  }
+
+  .site-footer .social-icons {
+    text-align: right;
+    
+  }
+
+  .site-footer .social-icons a {
+    width: 40px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 10%;
+    background-color: #33353d
+  }
+
+  .social-icons li {
+    display: inline-block;
+    margin-bottom: 4px
+  }
+
+  .social-icons a {
+    background-color: #eceeef;
+    color: #818a91;
+    font-size: 16px;
+    display: inline-block;
+    text-align: center;
+    transition: all .2s linear;
+  }
+
+  .social-icons a:active,
+  .social-icons a:focus,
+  .social-icons a:hover {
+    color: #fff;
+    background-color: #9db0bd
+  }
+
+  .social-icons a.github:hover {
+    background-color: #6003ad
+  }
+
+  .social-icons a.linkedin:hover {
+    background-color: #0b85be
+  }
+
+</style>
+
+<script>
+    function entrar() {
+        aguardar();
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.cpf = json.cpf;
+                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+                    setTimeout(function () {
+                        window.location = "./dashboard/cards.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+</script>
