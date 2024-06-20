@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fórum de Avaliações de Restaurantes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        .topic {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .profile img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .profile span {
+            font-weight: bold;
+        }
+
+        .post-content {
+            margin-left: 60px;
+        }
+
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .delete-btn, .edit-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background-color: #ff4d4d;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .edit-btn {
+            right: 80px;
+            background-color: #4CAF50;
+        }
+
+        .delete-btn:hover {
+            background-color: #ff1a1a;
+        }
+
+        .edit-btn:hover {
+            background-color: #45a049;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form label {
+            margin-bottom: 5px;
+        }
+
+        form input, form textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        form button {
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #555;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .post {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .profile .username {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .restaurant-name {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            margin-bottom: 10px;
+        }
+
+        .images img {
+            width: 100%;
+            max-width: 300px;
+            margin-right: 10px;
+        }
+
+        .rating {
+            font-size: 1.2em;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .buttons button {
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .buttons .like {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .buttons .dislike {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .buttons .comment {
+            background-color: #008CBA;
+            color: white;
+        }
+
+        .like-count, .dislike-count, .comment-count {
+            margin-left: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <section id="new-post">
+            <h2>Criar Nova Avaliação</h2>
+            <form id="post-form">
+                <label for="restaurant-name">Nome do restaurante:</label>
+                <input type="text" id="restaurant-name" name="restaurant-name" required>
+
+                <label for="title">Título:</label>
+                <input type="text" id="title" name="title" required>
+
+                <label for="content">Conteúdo:</label>
+                <textarea id="content" name="content" required></textarea>
+
+                <label for="post-image">Imagem da Postagem:</label>
+                <input type="file" id="post-image" name="post-image" accept="image/*">
+
+                <button type="submit">Postar</button>
+            </form>
+        </section>
+
+        <section id="posts">
+            <h2>Veja outros assuntos em alta</h2>
+            <div class="post">
+                <div class="profile">
+                    <img src="data:image/jpeg;base64,..." alt="Imagem de Perfil">
+                    <div class="username">@Juninhk</div> <p>_ 1 hora atrás</p>
+                </div>
+                <div class="restaurant-name">Fasano</div>
+                <div class="rating">★★★★☆</div>
+                <div class="description">
+                    Este é um ótimo restaurante com comida deliciosa e um ambiente acolhedor. Recomendo a todos que visitarem.
+                </div>
+                <div class="post-content">
+                    <img src="data:image/jpeg;base64,..." alt="Imagem da Postagem">
+                </div>
+                <button class="edit-btn">Editar</button>
+                <button class="delete-btn">Excluir</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('post-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const restaurantName = document.getElementById('restaurant-name').value;
+            const title = document.getElementById('title').value;
+            const content = document.getElementById('content').value;
+
+            const post = document.createElement('div');
+            post.className = 'post';
+            post.innerHTML = `
+                <div class="profile">
+                    <img src="data:image/jpeg;base64,..." alt="Imagem de Perfil">
+                    <div class="username">@NovoUsuario</div> <p>_ agora</p>
+                </div>
+                <div class="restaurant-name">${restaurantName}</div>
+                <div class="rating">★★★★☆</div>
+                <div class="description">${content}</div>
+                <div class="post-content">
+                    <img src="data:image/jpeg;base64,..." alt="Imagem da Postagem">
+                </div>
+                <button class="edit-btn">Editar</button>
+                <button class="delete-btn">Excluir</button>
+            `;
+
+            document.getElementById('posts').appendChild(post);
+
+            // Limpar o formulário após submissão
+            document.getElementById('post-form').reset();
+        });
+
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('delete-btn')) {
+                event.target.parentElement.remove();
+            }
+
+            if (event.target.classList.contains('edit-btn')) {
+                const post = event.target.parentElement;
+                const restaurantName = post.querySelector('.restaurant-name').textContent;
+                const content = post.querySelector('.description').textContent;
+                
+                document.getElementById('restaurant-name').value = restaurantName;
+                document.getElementById('content').value = content;
+                
+                post.remove();
+            }
+        });
+    </script>
+</body>
+</html>

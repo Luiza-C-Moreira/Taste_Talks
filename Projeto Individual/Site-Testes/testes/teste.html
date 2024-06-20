@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards com Imagem e Texto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <img src="https://img.freepik.com/fotos-premium/um-esquilo-sentado-no-ramo-de-uma-arvore_1048944-30371835.jpg?t=st=1717073033~exp=1717073633~hmac=d08c719ebbb85b40d6844b5c8b3301b3d7c62a1c011ae236c3f9c90c50e261ab" alt="Imagem 1" class="card-image">
+            <div class="card-text">
+              <h3>Chef de Cozinha</h3>
+                <p>Responsável por supervisionar a cozinha e garantir a qualidade dos pratos.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://img.freepik.com/fotos-premium/um-esquilo-sentado-no-ramo-de-uma-arvore_1048944-30371835.jpg?t=st=1717073033~exp=1717073633~hmac=d08c719ebbb85b40d6844b5c8b3301b3d7c62a1c011ae236c3f9c90c50e261ab" alt="Imagem 2" class="card-image">
+           
+            <div class="card-text">
+              <h3>Barman</h3>
+                <p>Responsável por preparar e servir bebidas alcoólicas e não alcoólicas.
+
+                </p>
+            </div>
+        </div>
+        <!-- Adicione mais cards conforme necessário -->
+
+        <div class="card">
+          <img src="https://img.freepik.com/fotos-premium/um-esquilo-sentado-no-ramo-de-uma-arvore_1048944-30371835.jpg?t=st=1717073033~exp=1717073633~hmac=d08c719ebbb85b40d6844b5c8b3301b3d7c62a1c011ae236c3f9c90c50e261ab" alt="Imagem 1" class="card-image">
+          
+          <div class="card-text">
+            <h3>Gerente de Restaurante</h3>
+              <p>Responsável pela operação geral do restaurante, incluindo gestão de pessoas e satisfação dos clientes.</p>
+          </div>
+      </div>
+      <div class="card">
+          <img src="https://img.freepik.com/fotos-premium/um-esquilo-sentado-no-ramo-de-uma-arvore_1048944-30371835.jpg?t=st=1717073033~exp=1717073633~hmac=d08c719ebbb85b40d6844b5c8b3301b3d7c62a1c011ae236c3f9c90c50e261ab" alt="Imagem 2" class="card-image">
+          
+          <div class="card-text">
+            <h3>Sommelier</h3>
+              <p>Especialista em vinhos, responsável por selecionar, servir e recomendar vinhos aos clientes.</p>
+          </div>
+      </div>
+
+    </div>
+
+</body>
+</html>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    max-width: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+    width: 100px;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.card-text {
+    flex: 1;
+}
+
+h3 {
+    margin: 0;
+}
+
+p {
+    margin: 5px 0 0;
+}
+
+</style>

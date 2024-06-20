@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Forum</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Forum Name</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#topics">Topics</a></li>
+                <li><a href="#new-post">New Post</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="home">
+            <h2>Welcome to the Forum</h2>
+            <p>Discuss topics, share ideas, and connect with others.</p>
+        </section>
+
+        <section id="topics">
+            <h2>Topics</h2>
+            <div class="topic">
+                <div class="profile">
+                    <img src="data:image/jpeg;base64,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" alt="Profile Picture">
+                    <span>@Pedrito</span> 
+                    
+                </div>
+                <div class="post-content">
+                    <h2>Restaurante: Fasano</h2>
+                    <p>Levei minha namorada em um jantar especial de comemoração para realizar o pedido de casamento, o lugar é legal, mas admito que não acho que ele compense tanto pelo preço, a comid é boa mas não vale tanto, o lugar é bem aconchegante, e as pessoas são muito receptivas, so acei que a comida deixou a desejar, mas mesmo assim recomendo acho que foi uma experiência única e muito especial para ela. <br> Segue uma imagem do lugar!</p>
+                    <img src="https://fasano.com.br/wp-content/uploads/2023/06/Fasano-Restaurant-Hotel-Fasano-Sa%CC%83o-Paulo-1.jpg" alt="Post Image">
+                </div>
+                
+            </div>
+            <div class="topic">
+                <div class="profile">
+                    <img src="profile2.jpg" alt="Profile Picture">
+                    <span>User Name 2</span>
+                </div>
+                <div class="post-content">
+                    <p>Topic content goes here...</p>
+                    <img src="" alt="Post Image">
+                </div>
+                
+            </div>
+        </section>
+
+        <section id="new-post">
+            <h2>Create a New Post</h2>
+            <form id="post-form">
+                <label for="user-name">Nome do restaurante:</label>
+                <input type="text" id="user-name" name="user-name" required>
+
+                <label for="profile-picture">Profile Picture:</label>
+                <input type="file" id="profile-picture" name="profile-picture" accept="image/*">
+
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+
+                <label for="content">Content:</label>
+                <textarea id="content" name="content" required></textarea>
+
+                <label for="post-image">Post Image:</label>
+                <input type="file" id="post-image" name="post-image" accept="image/*">
+
+                <button type="submit">Post</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+.topic {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.profile img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.profile span {
+    font-weight: bold;
+}
+
+.post-content {
+    margin-left: 60px;
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 10px;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #ff1a1a;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-bottom: 5px;
+}
+
+form input, form textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #555;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+</style>
+
+<script>
+    document.getElementById('post-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const userName = document.getElementById('user-name').value;
+    const profilePictureInput = document.getElementById('profile-picture');
+    const profilePictureFile = profilePictureInput.files[0];
+
+    const title = document.getElementById('title').value;
+    const content = document.getElementById('content').value;
+    const postImageInput = document.getElementById('post-image');
+    const postImageFile = postImageInput.files[0];
+
+    const newTopic = document.createElement('div');
+    newTopic.classList.add('topic');
+
+    const profileDiv = document.createElement('div');
+    profileDiv.classList.add('profile');
+
+    const profileImg = document.createElement('img');
+    const profileName = document.createElement('span');
+    profileName.textContent = userName;
+
+    if (profilePictureFile) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            profileImg.src = e.target.result;
+        };
+        reader.readAsDataURL(profilePictureFile);
+    }
+
+    profileDiv.appendChild(profileImg);
+    profileDiv.appendChild(profileName);
+
+    const postContentDiv = document.createElement('div');
+    postContentDiv.classList.add('post-content');
+
+    const newContent = document.createElement('p');
+    newContent.textContent = content;
+
+    if (postImageFile) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const newImage = document.createElement('img');
+            newImage.src = e.target.result;
+            postContentDiv.appendChild(newImage);
+        };
+        reader.readAsDataURL(postImageFile);
+    }
+
+    postContentDiv.appendChild(newContent);
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.classList.add('delete-btn');
+    deleteBtn.addEventListener('click', function() {
+        newTopic.remove();
+    });
+
+    newTopic.appendChild(profileDiv);
+    newTopic.appendChild(postContentDiv);
+    newTopic.appendChild(deleteBtn);
+
+    document.getElementById('topics').appendChild(newTopic);
+
+    // Clear the form
+    document.getElementById('user-name').value = '';
+    document.getElementById('profile-picture').value = '';
+    document.getElementById('title').value = '';
+    document.getElementById('content').value = '';
+    document.getElementById('post-image').value = '';
+});
+
+</script>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Mim - Linha do Tempo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .timeline {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #f1c40f;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #f1c40f;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #f1c40f;
+        }
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #f1c40f;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #f1c40f transparent transparent;
+        }
+        .right::after {
+            left: -16px;
+        }
+        .left::after {
+            right: -16px;
+        }
+        .content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Sobre Mim - Linha do Tempo</h2>
+
+<div class="timeline">
+  <div class="container left">
+    <div class="content">
+      <h2>2024</h2>
+      <p>Trabalhando como [sua posição atual] na [nome da empresa]</p>
+      <ul>
+        <li>Realização 1</li>
+        <li>Realização 2</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h2>2022</h2>
+      <p>Graduado em [seu curso] pela [nome da universidade]</p>
+      <ul>
+        <li>Projeto 1</li>
+        <li>Projeto 2</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2>2020</h2>
+      <p>Estágio na [nome da empresa] como [posição do estágio]</p>
+      <ul>
+        <li>Responsabilidade 1</li>
+        <li>Responsabilidade 2</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h2>2018</h2>
+      <p>Início da Graduação em [seu curso]</p>
+      <ul>
+        <li>Atividade 1</li>
+        <li>Atividade 2</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2>2016</h2>
+      <p>Conclusão do Ensino Médio na [nome da escola]</p>
+      <ul>
+        <li>Conquista 1</li>
+        <li>Conquista 2</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
