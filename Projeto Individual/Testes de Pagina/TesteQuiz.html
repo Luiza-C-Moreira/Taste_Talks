@@ -18,10 +18,11 @@
             <h1 class="logo" href="#">Taste Talks</h1>
             <nav>
                 <ul>
-                    <li><a href="Home.html">Início</a></li>
+                    <li><a href="Game_Home.html">Games - Itália</a></li>
+                    <li><a href="../Testes de Pagina/TesteQuiz.html" class="now">Quiz</a></li>
+                    <li><a href="Game-1.html">Cruzadinha</a></li>
                     <li>|</li>
-                    <li><a href="Cadastro.html">Cadastro</a></li>
-                    <li><a href="Login.html" class="now">Login</a></li>
+                    <li><a href="Home.html">Sair</a></li>
                 </ul>
             </nav>
         </div> <!-- / head -->
@@ -29,9 +30,18 @@
 
     <article>
         <div class="container-quiz">
-            <h4 class="start-quiz-phrase"> <p>Clique em "Começar o quiz" para inciar o jogo quando estiver pronto! </p> <br> As perguntas serão exibidas na parte superior do quadro <br><br> Você terá 4 alternativas para escolher apenas uma opção correta. <br><br> A partida só termina quando todas as questões forem respondidas, <br> então tire um tempo para responder o questionário.<br><br> Boa Sorte Player!</h4>
+            <h4 class="start-quiz-phrase">
+                <p>Clique em "Começar o quiz" para inciar o jogo quando estiver pronto! </p> <br> As perguntas serão
+                exibidas na parte superior do quadro <br><br> Você terá 4 alternativas para escolher apenas uma opção
+                correta. <br><br> A partida só termina quando todas as questões forem respondidas, <br> então tire um
+                tempo para responder o questionário.<br><br> Boa Sorte Player!
+            </h4>
             <div class="questions-container-quiz hide">
-                <span class="question"> P? </span>
+                <div class="tm">
+                    <img src="https://media1.giphy.com/media/51UxkLrSZNpj5a2BH6/giphy.gif?cid=6c09b9524ox9ecjgo0haepwdssx3ow74qlzti4dmyn8yo7or&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g" alt="">
+                    <div class="timer hide" id="timer">00:00</div>
+                </div>
+                <span class="question"> Pergunta? </span>
                 <div class="answers-container-quiz">
                     <button class="answer button"> R1 </button>
                     <button class="answer button"> R2 </button>
@@ -75,10 +85,11 @@
 </html>
 
 <style>
-    html, body {
-    height: 91.9%;
-    margin: 0;
-}
+    html,
+    body {
+        height: 91.9%;
+        margin: 0;
+    }
 
     body {
         color: #8f8f8f;
@@ -103,13 +114,13 @@
         font-family: "Montserrat", sans-serif;
     }
 
-    p{
+    p {
         color: #EE9B00;
     }
 
     article {
-    margin-top: 1%;
-    flex: 1;
+        margin-top: 1px;
+        flex: 1;
     }
 
     /* ------ HEADER ----- */
@@ -203,7 +214,7 @@
 
     .container-quiz {
         /* estilização do container-quiz principal onde todas as questões e respostas estão inclusas*/
-        background-color: #001219;
+        background-color: #000;
         width: 100%;
         max-width: 1020px;
 
@@ -218,7 +229,7 @@
         align-items: center;
     }
 
-    .start-quiz-phrase{
+    .start-quiz-phrase {
         font-size: 20px;
         text-align: center;
         color: #d1d1d1
@@ -267,16 +278,72 @@
         border: 0;
         border-radius: 6px;
         height: 60px;
-        width: 400px;
+        width: 485px;
         padding: 0 38px;
 
         transition: filter(0.2s);
         /*Tempo para transição do hover*/
     }
 
+    .start-quiz {
+        background-color: #ca6702;
+        color: aliceblue;
+        font-size: 16px;
+        font-weight: bold;
+        border: 0;
+        border-radius: 6px;
+        height: 60px;
+        width: 400px;
+        padding: 0 38px;
+        margin-top: 2%;
+
+        transition: filter(0.2s);
+        /*Tempo para transição do hover*/
+    }
+
+    .final-quiz{
+        background-color: #ca6702;
+        color: aliceblue;
+        font-size: 16px;
+        font-weight: bold;
+        border: 0;
+        border-radius: 6px;
+        height: 60px;
+        width: 400px;
+        margin-top: -2%;
+    }
+
+    .final-quiz:hover{
+        background-color: #a55300;
+        height: 57px;
+        width: 395px;
+        transition: 0.2s;
+    }
+
+
     .button:not(:disabled):hover {
         /*Efeito do botão deixando o brilho mais escuro*/
         filter: brightness(0.8);
+    }
+
+    /*Cronometro*/
+    img{
+        width: 35px;
+    }
+
+    .tm {
+        justify-content: center;
+        display: flex;
+        align-items: start;
+        flex-direction: initial;
+    }
+
+    .timer {
+        justify-content: center;
+        align-items: flex-end;
+        display: flex;
+        width: 100%;
+        font-size: 25px;
     }
 
     /*Finalizando o jogo*/
@@ -315,8 +382,8 @@
         line-height: 24px;
         color: #E9D8A6;
         position: relative;
-    bottom: 0;
-    width: 100%;
+        bottom: 0;
+        width: 100%;
     }
 
     .site-footer hr {
@@ -449,9 +516,12 @@
     const $questionText = document.querySelector(".question") //criando a variável que muda as perguntas e suas respostas.
     const $answersContainer = document.querySelector(".answers-container-quiz") //criando a variável que muda as perguntas e suas respostas.
     const $answers = document.querySelectorAll(".answer") //criando a variável que muda as perguntas e suas respostas.
+    const $timer = document.getElementById("timer") //criando a variável que muda as perguntas e suas respostas.
 
     let currentQuestionIndex = 0; // indicando a pergunta atual
-    let totalCorrect = 0;
+    let totalCorrect = 0; //contando as questões respondidas corretamente
+    let startTime, intervalId; //iniciando a contagem, variavel que realiza o intervalo e armazena o valor do tempo.
+
 
     $startGameButton.addEventListener("click", startGame) //quando o butão for clicado o game vai iniciar
     $nextQuestionButton.addEventListener("click", displayNextQuestion) //quando o butão for clicado o game vai iniciar
@@ -461,7 +531,26 @@
         $startGameButton.classList.add("hide") //o botão de inicio desaparecerá
         $startGamePhrase.classList.add("hide") //o botão de inicio desaparecerá
         $questionsContainer.classList.remove("hide") //as questões se iniciarão.
+        $timer.classList.remove("hide") // o texto começa a ser criado
+        startTimer()
         displayNextQuestion()
+    }
+
+    function startTimer() { //é iniciado quando o jogo começar
+        startTime = Date.now();
+        intervalId = setInterval(updateTimer, 1000);
+    }
+
+    function updateTimer() { // atualiza o timer por segundo
+        const elapsedTime = Date.now() - startTime;
+        $timer.textContent = formatTime(elapsedTime);
+    }
+
+    function formatTime(milliseconds) { // formata o tempo em minutos e segundos
+        const totalSeconds = Math.floor(milliseconds / 1000);
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+        return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     }
 
     function displayNextQuestion() {
@@ -521,8 +610,10 @@
     }
 
     function finishGame() {
+        clearInterval(intervalId);
         const totalQuestions = questions.length //
         const performance = Math.floor(totalCorrect * 100 / totalQuestions) //definindo a performance do usuario e definindo sua pontuação para realizar a validação
+        const totalTime = Date.now() - startTime;
 
         let message = ""
 
@@ -547,85 +638,92 @@
         <p class="final-message">
       Você acertou ${totalCorrect} de ${totalQuestions} questões!
       <span>Resultado: ${message}</span>
+      <span>Tempo total: ${formatTime(totalTime)}</span>
     </p>
     <button 
       onclick=window.location.reload() 
-      class="button"
-    >
-      Refazer teste
+      class="final-quiz"> Refazer teste 
+    </button>
+    <button 
+      onclick="window.location.href='Game_Home.html'" 
+      class="final-quiz"> Visualizar as métricas 
+    </button>
+    <button 
+      onclick="window.location.href='Game_Home.html'" 
+      class="final-quiz"> Voltar para a home 
     </button>
   `
     }
 
 
-// Banco de questões: 
+    // Banco de questões: 
     const questions = [
         {
-            question: "qual o primeiro número do teclado?",
+            question: "Qual o prato mais famoso da Itália?",
             answers: [
-                { text: "O número 1", correct: true },
-                { text: "O número 2", correct: false },
-                { text: "O número 3", correct: false },
-                { text: "O número 4", correct: false }
+                { text: "Pizza", correct: true },
+                { text: "Risoto", correct: false },
+                { text: "Foccacia", correct: false },
+                { text: "Gelatto", correct: false }
             ]
         },
         {
-            question: "A?",
+            question: "Qual o nome do prato italiano de arroz cozido lentamente em caldo até ficar cremoso?",
             answers: [
-                { text: "O número 1", correct: true },
-                { text: "O número 2", correct: false },
-                { text: "O número 3", correct: false },
-                { text: "O número 4", correct: false }
+                { text: "Pizza", correct: false },
+                { text: "Risoto", correct: true },
+                { text: "Foccacia", correct: false },
+                { text: "Gelatto", correct: false }
             ]
         },
         {
-            question: "B?",
+            question: "Qual o nome da sobremesa italiana feita com camadas de biscoitos embebidos em café, cacau, mascarpone ou licor?",
             answers: [
-                { text: "O número 1", correct: true },
-                { text: "O número 2", correct: false },
-                { text: "O número 3", correct: false },
-                { text: "O número 4", correct: false }
+                { text: "Canolli", correct: false },
+                { text: "Gelato", correct: false },
+                { text: "Margherita", correct: false },
+                { text: "Tiramisú", correct: true }
             ]
         },
         {
-            question: "C?",
+            question: "Qual é o principal ingrediente do molho pesto, tradicional da Ligúria?",
             answers: [
-                { text: "O número 1", correct: true },
-                { text: "O número 2", correct: false },
-                { text: "O número 3", correct: false },
-                { text: "O número 4", correct: false }
+                { text: "Tomate", correct: false },
+                { text: "Cogumelos", correct: false },
+                { text: "Manjericão", correct: true },
+                { text: "Azeitonas", correct: false }
             ]
         }, {
-            question: "qual o primeiro número do teclado?",
+            question: "Qual tipo de queijo é tradicionalmente usado para fazer a autêntica pizza Margherita?",
             answers: [
-                { text: "O número 1", correct: true },
-                { text: "O número 2", correct: false },
-                { text: "O número 3", correct: false },
-                { text: "O número 4", correct: false }
+                { text: "O Queijo Mozzarella", correct: true },
+                { text: "O Queijo Provolone", correct: false },
+                { text: "O Queijo Cheddar", correct: false },
+                { text: "O Queijo Gouda", correct: false }
             ]
         }, {
-            question: "qual o primeiro número do teclado?",
+            question: "Qual é o nome do famoso presunto italiano, geralmente servido fatiado fino como aperitivo?",
             answers: [
-                { text: "O número 1", correct: true },
-                { text: "O número 2", correct: false },
-                { text: "O número 3", correct: false },
-                { text: "O número 4", correct: false }
+                { text: "Salame", correct: false },
+                { text: "Pancetta", correct: false },
+                { text: "Prosciutto", correct: true },
+                { text: "Mortadela", correct: false }
             ]
         }, {
-            question: "qual o primeiro número do teclado?",
+            question: "Qual é o principal ingrediente do prato italiano 'Carbonara'?",
             answers: [
-                { text: "O número 1", correct: true },
-                { text: "O número 2", correct: false },
-                { text: "O número 3", correct: false },
-                { text: "O número 4", correct: false }
+                { text: "Creme de leite", correct: false },
+                { text: "Espinafre", correct: false },
+                { text: "Molho de tomate", correct: false },
+                { text: "Ovos", correct: true }
             ]
         }, {
-            question: "qual o primeiro número do teclado?",
+            question: "Qual prato italiano é feito de berinjela frita, molho de tomate, queijo e manjericão?",
             answers: [
-                { text: "O número 1", correct: true },
-                { text: "O número 2", correct: false },
-                { text: "O número 3", correct: false },
-                { text: "O número 4", correct: false }
+                { text: "Caprese", correct: false },
+                { text: "Fettuccine Alfredo", correct: false },
+                { text: "Parmigiana di Melanzane", correct: true },
+                { text: "Polenta", correct: false }
             ]
         }
     ]
