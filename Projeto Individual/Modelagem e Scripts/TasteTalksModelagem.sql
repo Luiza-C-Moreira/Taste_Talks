@@ -40,7 +40,23 @@ constraint fkRestAval foreign key (fkRestaurante) references Restaurante(idResta
 constraint fkPostAval foreign key (fkPostagem) references Postagens(idPostagens)
 );
 
+Create table Quiz (
+fk_usuario int primary key,
+tempo_partida time,
+tentativa int,
+qtd_Acertos int,
+qtd_erros int,
+constraint fkUserQuiz foreign key (fk_usuario) references Usuario(id)
+);
+
+Create table Cruzadinha(
+fk_usuario int primary key,
+tempo_partida time,
+qtd_erros int,
+constraint fkUserCruz foreign key (fk_usuario) references Usuario(id)
+);
 
 SELECT * FROM usuario;
+
 
 
