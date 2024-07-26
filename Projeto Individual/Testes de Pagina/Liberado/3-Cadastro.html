@@ -20,10 +20,10 @@
 
       <nav>
         <ul>
-          <li><a href="Home.html">Início</a></li>
+          <li><a href="1-Home.html">Início</a></li>
           <li>|</li>
-          <li><a href="Cadastro.html"class="now">Cadastro</a></li>
-          <li><a href="Login.html">Login</a></li>
+          <li><a href="3-Cadastro.html"class="now">Cadastro</a></li>
+          <li><a href="4-Login.html">Login</a></li>
         </ul>
       </nav>
 
@@ -71,7 +71,7 @@
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
         <div id="div_aguardar" class="loading-div">
-          <img src="https://i.pinimg.com/originals/c4/cb/9a/c4cb9abc7c69713e7e816e6a624ce7f8.gif" id="loading-gif" />
+          <img src="assets/aguarde-orange.gif" id="loading-gif" />
         </div>
 
         <div id="div_erros_login"></div>
@@ -99,11 +99,12 @@
           </div>
       </div>
   </footer>
+</body>
 
+</html>
 
-  <style>
-
-    body {
+<style>
+      body {
       color: #8f8f8f;
       background: #26272b;
       font-family: "Cardo", serif;
@@ -220,6 +221,23 @@
 
     /* LOGIN */
 
+    .alerta_erro{
+      display: grid;
+      align-items: center;
+      text-align: center;
+    }
+
+    .card_erro{
+      background-color: #013e56e5;
+      width: 100%;
+      padding: 1px;
+      color: #fff;
+      font-family: 'montserrat';
+      font-weight: 800;
+      margin: 10px;
+      border-radius: 10px;
+    }
+
 .login {
   height: var(--tamanho-login);
   background-image: url('https://foodbizbrasil.com/wp-content/uploads/2023/02/Culinaria-natural-revolucao-com-Chef-Dani-Bandeira.jpg');
@@ -232,7 +250,7 @@
 .login .content .container {
   justify-content: center;
   align-items: center;
-  margin-left: 175px;
+  margin-left: 200px;
   margin-top: 1%;
 }
 
@@ -457,138 +475,3 @@ input::placeholder {
 
 </style>
 
-<script>
-    function cadastrar() {
-      aguardar();
-  
-      //Recupere o valor da nova input pelo nome do id
-      // Agora vá para o método fetch logo abaixo
-      var nomeVar = nome_input.value;
-      var nomeUser = nomeUser_input.value;
-      var emailVar = email_input.value;
-      var senhaVar = senha_input.value;
-      var confirmacaoSenhaVar = confirmacao_senha_input.value;
-      var cpfVar = cpf_input.value;
-      var empresaVar = listaEmpresas.value
-      if (
-        nomeVar == "" ||
-        nomeUser == "" ||
-        emailVar == "" ||
-        senhaVar == "" ||
-        confirmacaoSenhaVar == "" ||
-        cpfVar == "" ||
-        empresaVar == ""
-      ) {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML =
-          "(Mensagem de erro para todos os campos em branco)";
-  
-        finalizarAguardar();
-        return false;
-  
-      } else if (nomeVar.length < 0) {
-  
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML =
-          "(Mensagem de erro para o campo nome! <br> deve haver mais de um caractere.)";
-  
-        finalizarAguardar();
-        return false;
-  
-      } else if (nomeUser.length < 0) {
-  
-  cardErro.style.display = "block";
-  mensagem_erro.innerHTML =
-    "(Mensagem de erro para o campo nome! <br> deve haver mais de um caractere.)";
-
-  finalizarAguardar();
-  return false;
-
-} else if (emailVar.indexOf("@") < 0 && emailVar.indexOf(".") < 0) {
-  
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML =
-          "(Mensagem de erro para o campo email! <br> insira '@' e '.com')";
-  
-        finalizarAguardar();
-        return false;
-  
-      } else if (senhaVar.length <= 5) {
-  
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML =
-          "(Mensagem de erro para o campo senha! <br> deve haver mais de 6 caracteres.)";
-  
-        finalizarAguardar();
-        return false;
-  
-      } else if (confirmacaoSenhaVar != senhaVar) {
-  
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML =
-          "(Mensagem de erro para o campo senha! <br> A senha não coincide.)";
-  
-        finalizarAguardar();
-        return false;
-  
-      } else if (cpfVar < 10) {
-  
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML =
-          "(Mensagem de erro para o campo CPF! <br> deve haver mais de 11 caracteres.)";
-  
-        finalizarAguardar();
-        return false;
-  
-      } else {
-        setInterval(sumirMensagem, 5000);
-      }
-  
-      // Enviando o valor da nova input
-      fetch("/usuarios/cadastrar", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          // crie um atributo que recebe o valor recuperado aqui
-          // Agora vá para o arquivo routes/usuario.js
-          nomeServer: nomeVar,
-          UserServer: nomeUser,
-          emailServer: emailVar,
-          senhaServer: senhaVar,
-          empresaServer: empresaVar,
-          cpfServer: cpfVar
-        }),
-      })
-        .then(function (resposta) {
-          console.log("resposta: ", resposta);
-  
-          if (resposta.ok) {
-            cardErro.style.display = "block";
-  
-            mensagem_erro.innerHTML =
-              "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-  
-            setTimeout(() => {
-              window.location = "login.html";
-            }, "2000");
-  
-            limparFormulario();
-            finalizarAguardar();
-          } else {
-            throw "Houve um erro ao tentar realizar o cadastro!";
-          }
-        })
-        .catch(function (resposta) {
-          console.log(`#ERRO: ${resposta}`);
-          finalizarAguardar();
-        });
-  
-      return false;
-    }
-  
-    function sumirMensagem() {
-      cardErro.style.display = "none";
-    }
-  </script>

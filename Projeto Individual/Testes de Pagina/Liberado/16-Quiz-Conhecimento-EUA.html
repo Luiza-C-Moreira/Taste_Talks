@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../IMG/2.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - itália</title>
+</head>
+
+<body>
+    <!--Link do video que me ajudou na criação do quiz: https://www.youtube.com/watch?v=IV34pOplBsY&t=180s -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat|Cardo' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <header class="home_header">
+        <div class="head">
+            <h1 class="logo" href="#">Taste Talks</h1>
+            <nav>
+                <ul>
+                    <li><a href="8-Game_Home.html">Games - Itália</a></li>
+                    <li><a href="9-Quiz-Conhecimento-Italia.html" class="now">Quiz</a></li>
+                    <li><a href="9-Cruzadinha-Italia.html">Cruzadinha</a></li>
+                    <li>|</li>
+                    <li><a href="Home.html">Sair</a></li>
+                </ul>
+            </nav>
+        </div> <!-- / head -->
+    </header>
+
+    <article>
+        <div class="container-quiz">
+            <h4 class="start-quiz-phrase">
+                <p>Clique em "Começar o quiz" para inciar o jogo quando estiver pronto! </p> <br> As perguntas serão
+                exibidas na parte superior do quadro <br><br> Você terá 4 alternativas para escolher apenas uma opção
+                correta. <br><br> A partida só termina quando todas as questões forem respondidas, <br> então tire um
+                tempo para responder o questionário.<br><br> Boa Sorte Player!
+            </h4>
+            <div class="questions-container-quiz hide">
+                <div class="tm">
+                    <img src="https://media1.giphy.com/media/51UxkLrSZNpj5a2BH6/giphy.gif?cid=6c09b9524ox9ecjgo0haepwdssx3ow74qlzti4dmyn8yo7or&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g" alt="">
+                    <div class="timer hide" id="timer">00:00</div>
+                </div>
+                <span class="question"> Pergunta? </span>
+                <div class="answers-container-quiz">
+                    <button class="answer button"> R1 </button>
+                    <button class="answer button"> R2 </button>
+                    <button class="answer button"> R3 </button>
+                    <button class="answer button"> R4 </button>
+                </div>
+            </div>
+
+            <div class="controls-container-quiz">
+                <button class="start-quiz button"> Começar o quiz! </button>
+                <button class="next-question button hide"> Proxima pergunta! </button>
+            </div>
+
+        </div>
+    </article>
+
+
+    <!-- Site footer -->
+    <footer class="site-footer">
+        <div class="footer-container-quiz">
+            <div class="footer-row">
+                <div class="footer-col">
+                    <p class="copyright-text">Copyright &copy; 2024 Todos os direitos reservados
+                        <a href="#">Luiza C. Moreira</a> SPTECH.
+                    </p>
+                </div>
+
+                <div class="footer-col3">
+                    <ul class="social-icons">
+                        <li><a class="github" href="#"><i class="fa fa-github"></i></a></li>
+                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
+
+<style>
+    html,
+    body {
+        height: 91.9%;
+        margin: 0;
+    }
+
+    body {
+        color: #8f8f8f;
+        font-family: "Cardo", serif;
+        font-weight: 300;
+        -webkit-font-smoothing: antialiased;
+        margin-top: 100px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    h1 {
+        font-size: 30px;
+        line-height: 1.8;
+        text-transform: uppercase;
+        font-family: "Montserrat", sans-serif;
+    }
+
+    p {
+        color: #EE9B00;
+    }
+
+    article {
+        margin-top: 1px;
+        flex: 1;
+    }
+
+    /* ------ HEADER ----- */
+    .home_header {
+        position: fixed;
+        z-index: 999;
+        width: 100%;
+        padding-top: 2%;
+        transition: all 0.3s;
+        top: 0px;
+        padding-bottom: 6px;
+        background-color: rgba(255, 255, 255, 0.93);
+        border-bottom: 1px solid gainsboro;
+        opacity: 1;
+        top: 0px;
+    }
+
+    .home_header a {
+        text-decoration: none;
+        text-align: right;
+
+    }
+
+    .home_header a:hover {
+        font-weight: bold;
+        font-size: 12px;
+        color: #BB3E03;
+    }
+
+    .logo {
+        width: 300px;
+        font-size: 40px;
+        font-weight: bolder;
+        color: #CA6702;
+        text-transform: uppercase;
+        float: left;
+        display: block;
+        margin-top: -2%;
+        margin-bottom: 2px;
+        text-decoration: none;
+    }
+
+    .now {
+        font-weight: bold;
+        color: #ffe3d3;
+        background-color: #EE9B00;
+        padding: 8px;
+        border-radius: 10px;
+    }
+
+    nav {
+        float: right;
+        width: 71%;
+    }
+
+    nav ul {
+        text-align: right;
+        float: right;
+    }
+
+    nav ul li {
+        display: inline-block;
+        margin-left: 35px;
+    }
+
+    nav ul a {
+        color: #888888;
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+
+    .head {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .content {
+        margin-top: 0;
+        padding: 7%;
+        margin-bottom: 10px;
+    }
+
+    .button {
+        /*dizendo ao botão que quando passar o mouse a ponta do cursor deve mudar*/
+        cursor: pointer;
+    }
+
+
+    /*Game Quiz*/
+
+    .container-quiz {
+        /* estilização do container-quiz principal onde todas as questões e respostas estão inclusas*/
+        background-color: #000;
+        width: 100%;
+        max-width: 1020px;
+
+        border: 2px solid #fff;
+        border-radius: 6px;
+        padding: 16px;
+        box-shadow: 0 0 2px 2px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .start-quiz-phrase {
+        font-size: 20px;
+        text-align: center;
+        color: #d1d1d1
+    }
+
+    .questions-container-quiz {
+        /*Estilização do container-quiz mantendo as informações centralizadas*/
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .question {
+        /*Estilização da pergunta*/
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        color: #ee9b00c0;
+    }
+
+    .answers-container-quiz {
+        /* mantendo o container-quiz das perguntas em 2 colunas de valores e configurações iguais*/
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    .answer:disabled {
+        cursor: not-allowed;
+    }
+
+    .next-question {
+        /*espaçamento entre as perguntas*/
+        margin-top: 32px;
+    }
+
+    .button {
+        /*estilização dos botões*/
+        background-color: #ca6702;
+        color: aliceblue;
+        font-size: 16px;
+        font-weight: bold;
+        border: 0;
+        border-radius: 6px;
+        height: 60px;
+        width: 485px;
+        padding: 0 38px;
+
+        transition: filter(0.2s);
+        /*Tempo para transição do hover*/
+    }
+
+    .start-quiz {
+        background-color: #ca6702;
+        color: aliceblue;
+        font-size: 16px;
+        font-weight: bold;
+        border: 0;
+        border-radius: 6px;
+        height: 60px;
+        width: 400px;
+        padding: 0 38px;
+        margin-top: 2%;
+
+        transition: filter(0.2s);
+        /*Tempo para transição do hover*/
+    }
+
+    .final-quiz{
+        background-color: #ca6702;
+        color: aliceblue;
+        font-size: 16px;
+        font-weight: bold;
+        border: 0;
+        border-radius: 6px;
+        height: 60px;
+        width: 400px;
+        margin-top: -2%;
+    }
+
+    .final-quiz:hover{
+        background-color: #a55300;
+        height: 57px;
+        width: 395px;
+        transition: 0.2s;
+    }
+
+
+    .button:not(:disabled):hover {
+        /*Efeito do botão deixando o brilho mais escuro*/
+        filter: brightness(0.8);
+    }
+
+    /*Cronometro*/
+    img{
+        width: 35px;
+    }
+
+    .tm {
+        justify-content: center;
+        display: flex;
+        align-items: start;
+        flex-direction: initial;
+    }
+
+    .timer {
+        justify-content: center;
+        align-items: flex-end;
+        display: flex;
+        width: 100%;
+        font-size: 25px;
+    }
+
+    /*Finalizando o jogo*/
+    .final-message {
+        font-size: 20px;
+        text-align: center;
+        color: #fff
+    }
+
+    .final-message span {
+        display: block;
+        margin-top: 8px;
+    }
+
+    /*Controle*/
+
+    .hide {
+        /*Faz com que tudo alem do botão de iniciar o game desapareça*/
+        display: none;
+    }
+
+    .correct {
+        background-color: #588157;
+    }
+
+    .incorrect {
+        background-color: #730023;
+    }
+
+
+    /*FOOTER*/
+    .site-footer {
+        background-color: #26272b;
+        padding: 40px 30px 20px;
+        font-size: 15px;
+        line-height: 24px;
+        color: #E9D8A6;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .site-footer hr {
+        border-top-color: #E9D8A6;
+        opacity: 0.5;
+    }
+
+    .site-footer h6 {
+        color: #EE9B00;
+        font-size: 16px;
+        text-transform: uppercase;
+        margin-top: 5px;
+        letter-spacing: 2px;
+    }
+
+    .site-footer a {
+        color: #E9D8A6;
+        text-decoration: none;
+    }
+
+    .site-footer a:hover {
+        color: #CA6702;
+    }
+
+    .footer-links {
+        padding-left: 0;
+        list-style: none;
+    }
+
+    .footer-links li {
+        margin-bottom: 10px;
+    }
+
+    .footer-links a {
+        color: #ee9b00be;
+        text-decoration: none;
+    }
+
+    .footer-links a:hover {
+        color: #CA6702;
+    }
+
+    .text-justify {
+        text-align: justify;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    .footer-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .footer-col {
+        width: 60%;
+        margin-bottom: 20px;
+    }
+
+    .footer-col2 {
+        width: 30%;
+        margin-bottom: 20px;
+    }
+
+    .footer-col3 {
+        flex: 1;
+        width: 60%;
+        margin-bottom: 20px;
+    }
+
+    .footer-col a {
+        color: #94D2BD;
+    }
+
+    .footer-col a:hover {
+        color: #509e85;
+    }
+
+    .copyright-text {
+        color: #94D2BD;
+    }
+
+    .social-icons {
+        list-style: none;
+        padding-left: 0;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .social-icons li {
+        margin-left: 10px;
+    }
+
+    .social-icons a {
+        background-color: #eceeef;
+        color: #818a91;
+        font-size: 16px;
+        display: inline-block;
+        text-align: center;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 10px;
+        transition: all 0.2s linear;
+    }
+
+    .social-icons a:hover {
+        color: #fff;
+        background-color: #9db0bd;
+    }
+
+    .social-icons a.github:hover {
+        background-color: #6003ad;
+    }
+
+    .social-icons a.linkedin:hover {
+        background-color: #0b85be;
+    }
+</style>
+
+<script>
+    const $startGameButton = document.querySelector(".start-quiz") //criando a variável do botão start game
+    const $startGamePhrase = document.querySelector(".start-quiz-phrase") //criando a variável do botão start game
+    const $nextQuestionButton = document.querySelector(".next-question")
+    const $questionsContainer = document.querySelector(".questions-container-quiz") // criando a variável que irá fazer os valores iniciais aparecerem/desaparecerem
+    const $questionText = document.querySelector(".question") //criando a variável que muda as perguntas e suas respostas.
+    const $answersContainer = document.querySelector(".answers-container-quiz") //criando a variável que muda as perguntas e suas respostas.
+    const $answers = document.querySelectorAll(".answer") //criando a variável que muda as perguntas e suas respostas.
+    const $timer = document.getElementById("timer") //criando a variável que muda as perguntas e suas respostas.
+
+    let currentQuestionIndex = 0; // indicando a pergunta atual
+    let totalCorrect = 0; //contando as questões respondidas corretamente
+    let startTime, intervalId; //iniciando a contagem, variavel que realiza o intervalo e armazena o valor do tempo.
+
+
+    $startGameButton.addEventListener("click", startGame) //quando o butão for clicado o game vai iniciar
+    $nextQuestionButton.addEventListener("click", displayNextQuestion) //quando o butão for clicado o game vai iniciar
+
+
+    function startGame() {
+        $startGameButton.classList.add("hide") //o botão de inicio desaparecerá
+        $startGamePhrase.classList.add("hide") //o botão de inicio desaparecerá
+        $questionsContainer.classList.remove("hide") //as questões se iniciarão.
+        $timer.classList.remove("hide") // o texto começa a ser criado
+        startTimer()
+        displayNextQuestion()
+    }
+
+    function startTimer() { //é iniciado quando o jogo começar
+        startTime = Date.now();
+        intervalId = setInterval(updateTimer, 1000);
+    }
+
+    function updateTimer() { // atualiza o timer por segundo
+        const elapsedTime = Date.now() - startTime;
+        $timer.textContent = formatTime(elapsedTime);
+    }
+
+    function formatTime(milliseconds) { // formata o tempo em minutos e segundos
+        const totalSeconds = Math.floor(milliseconds / 1000);
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+        return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }
+
+    function displayNextQuestion() {
+        resetState()
+
+        if (questions.length === currentQuestionIndex) {
+            return finishGame()
+        }
+
+        $questionText.textContent = questions[currentQuestionIndex].question // indica qual a pergunta de acordo com o banco de perguntas abaixo.
+        questions[currentQuestionIndex].answers.forEach(answer => {
+            const newAsnwer = document.createElement("button")
+            newAsnwer.classList.add("button", "answer")
+            newAsnwer.textContent = answer.text
+            if (answer.correct) {
+                newAsnwer.dataset.correct = answer.correct
+            }
+            $answersContainer.appendChild(newAsnwer)
+
+            newAsnwer.addEventListener("click", selectAnswer)
+        })
+    }
+
+    function resetState() {
+        while ($answersContainer.firstChild) {
+            $answersContainer.removeChild($answersContainer.firstChild) //enquanto a class Answer-Containter obtiver informações dentro dela a classe a removerá para poder transformar em uma nova pergunda 
+        }
+
+        document.body.removeAttribute("class")
+        $nextQuestionButton.classList.add("hide")
+    }
+
+    function selectAnswer(event) {
+        const answerClicked = event.target
+
+        if (answerClicked.dataset.correct) {
+            document.body.classList.add("correct")
+            totalCorrect++
+        } else {
+            document.body.classList.add("incorrect")
+        }
+
+        document.querySelectorAll(".answer").forEach(button => {
+            button.disabled = true
+
+            if (button.dataset.correct) {
+                button.classList.add("correct")
+            } else {
+                button.classList.add("incorrect")
+            }
+
+        })
+
+        $nextQuestionButton.classList.remove("hide")
+        currentQuestionIndex++
+
+    }
+
+    function finishGame() {
+        clearInterval(intervalId);
+        const totalQuestions = questions.length //
+        const performance = Math.floor(totalCorrect * 100 / totalQuestions) //definindo a performance do usuario e definindo sua pontuação para realizar a validação
+        const totalTime = Date.now() - startTime;
+
+        let message = ""
+
+        //Switch está sendo utilizado como um validador que identifica qual a pontuação de usuário e define uma mensagem pré-definida.
+        switch (true) {
+            case (performance >= 90):
+                message = "Excelente! :)"
+                break
+            case (performance >= 70):
+                message = "Muito bom! :)"
+                break
+            case (performance >= 50):
+                message = "ok :/"
+                break
+            default:
+                message = "melhore mona :("
+                break
+        }
+
+        //Mensagem final para o usuário onde mostra a pontuação total do usuário
+        $questionsContainer.innerHTML = ` 
+        <p class="final-message">
+      Você acertou ${totalCorrect} de ${totalQuestions} questões!
+      <span>Resultado: ${message}</span>
+      <span>Tempo total: ${formatTime(totalTime)}</span>
+    </p>
+    <button 
+      onclick=window.location.reload() 
+      class="final-quiz"> Refazer teste 
+    </button>
+    <button 
+      onclick="window.location.href='7-metrica.html'" 
+      class="final-quiz"> Visualizar as métricas 
+    </button>
+    <button 
+      onclick="window.location.href='8-Game_Home.html'" 
+      class="final-quiz"> Voltar para a home 
+    </button>
+  `
+    }
+
+
+    // Banco de questões: 
+    const questions = [
+        {
+            question: "Qual o prato mais famoso da Itália?",
+            answers: [
+                { text: "Pizza", correct: true },
+                { text: "Risoto", correct: false },
+                { text: "Foccacia", correct: false },
+                { text: "Gelatto", correct: false }
+            ]
+        },
+        {
+            question: "Qual o nome do prato italiano de arroz cozido lentamente em caldo até ficar cremoso?",
+            answers: [
+                { text: "Pizza", correct: false },
+                { text: "Risoto", correct: true },
+                { text: "Foccacia", correct: false },
+                { text: "Gelatto", correct: false }
+            ]
+        },
+        {
+            question: "Qual o nome da sobremesa italiana feita com camadas de biscoitos embebidos em café, cacau, mascarpone ou licor?",
+            answers: [
+                { text: "Canolli", correct: false },
+                { text: "Gelato", correct: false },
+                { text: "Margherita", correct: false },
+                { text: "Tiramisú", correct: true }
+            ]
+        },
+        {
+            question: "Qual é o principal ingrediente do molho pesto, tradicional da Ligúria?",
+            answers: [
+                { text: "Tomate", correct: false },
+                { text: "Cogumelos", correct: false },
+                { text: "Manjericão", correct: true },
+                { text: "Azeitonas", correct: false }
+            ]
+        }, {
+            question: "Qual tipo de queijo é tradicionalmente usado para fazer a autêntica pizza Margherita?",
+            answers: [
+                { text: "O Queijo Mozzarella", correct: true },
+                { text: "O Queijo Provolone", correct: false },
+                { text: "O Queijo Cheddar", correct: false },
+                { text: "O Queijo Gouda", correct: false }
+            ]
+        }, {
+            question: "Qual é o nome do famoso presunto italiano, geralmente servido fatiado fino como aperitivo?",
+            answers: [
+                { text: "Salame", correct: false },
+                { text: "Pancetta", correct: false },
+                { text: "Prosciutto", correct: true },
+                { text: "Mortadela", correct: false }
+            ]
+        }, {
+            question: "Qual é o principal ingrediente do prato italiano 'Carbonara'?",
+            answers: [
+                { text: "Creme de leite", correct: false },
+                { text: "Espinafre", correct: false },
+                { text: "Molho de tomate", correct: false },
+                { text: "Ovos", correct: true }
+            ]
+        }, {
+            question: "Qual prato italiano é feito de berinjela frita, molho de tomate, queijo e manjericão?",
+            answers: [
+                { text: "Caprese", correct: false },
+                { text: "Fettuccine Alfredo", correct: false },
+                { text: "Parmigiana di Melanzane", correct: true },
+                { text: "Polenta", correct: false }
+            ]
+        }
+    ]
+
+
+</script>

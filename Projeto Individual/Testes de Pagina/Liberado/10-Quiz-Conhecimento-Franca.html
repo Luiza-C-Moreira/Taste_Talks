@@ -4,8 +4,9 @@
 <head>
     <link rel="shortcut icon" href="../IMG/2.png" type="image/x-icon">
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
+    <title>Quiz - itália</title>
 </head>
 
 <body>
@@ -19,9 +20,9 @@
             <h1 class="logo" href="#">Taste Talks</h1>
             <nav>
                 <ul>
-                    <li><a href="Game_Home.html">Games - Itália</a></li>
-                    <li><a href="../Testes de Pagina/TesteQuiz.html" class="now">Quiz</a></li>
-                    <li><a href="Game-1.html">Cruzadinha</a></li>
+                    <li><a href="8-Game_Home.html">Games - Itália</a></li>
+                    <li><a href="9-Quiz-Conhecimento-Italia.html" class="now">Quiz</a></li>
+                    <li><a href="9-Cruzadinha-Italia.html">Cruzadinha</a></li>
                     <li>|</li>
                     <li><a href="Home.html">Sair</a></li>
                 </ul>
@@ -43,7 +44,6 @@
                     <div class="timer hide" id="timer">00:00</div>
                 </div>
                 <span class="question"> Pergunta? </span>
-                <div class="quest_image" id="question-image"> </div>
                 <div class="answers-container-quiz">
                     <button class="answer button"> R1 </button>
                     <button class="answer button"> R2 </button>
@@ -231,11 +231,6 @@
         align-items: center;
     }
 
-    .container-quiz.start-game {
-    margin-top: 30%;
-    margin-bottom: 5%;
-}
-
     .start-quiz-phrase {
         font-size: 20px;
         text-align: center;
@@ -257,10 +252,6 @@
         font-weight: bold;
         text-align: center;
         color: #ee9b00c0;
-    }
-
-    .quest_image {
-        width: 50%;
     }
 
     .answers-container-quiz {
@@ -528,24 +519,21 @@
     const $answersContainer = document.querySelector(".answers-container-quiz") //criando a variável que muda as perguntas e suas respostas.
     const $answers = document.querySelectorAll(".answer") //criando a variável que muda as perguntas e suas respostas.
     const $timer = document.getElementById("timer") //criando a variável que muda as perguntas e suas respostas.
-    const $questionImage = document.getElementById("question-image"); // variavel que adiciona as imagens e as modifica.
-    const $containerQuiz = document.querySelector(".container-quiz"); // criando uma variavel para ajustar o tamanho da tela.
 
     let currentQuestionIndex = 0; // indicando a pergunta atual
     let totalCorrect = 0; //contando as questões respondidas corretamente
     let startTime, intervalId; //iniciando a contagem, variavel que realiza o intervalo e armazena o valor do tempo.
 
 
-    $startGameButton.addEventListener("click", startGame) //quando o butão for clicado o jogo vai iniciar
-    $nextQuestionButton.addEventListener("click", displayNextQuestion) //quando o butão for clicado o jogo vai para a próxima questão
+    $startGameButton.addEventListener("click", startGame) //quando o butão for clicado o game vai iniciar
+    $nextQuestionButton.addEventListener("click", displayNextQuestion) //quando o butão for clicado o game vai iniciar
 
 
     function startGame() {
         $startGameButton.classList.add("hide") //o botão de inicio desaparecerá
-        $startGamePhrase.classList.add("hide") //a frase do inicio desaparecerá
+        $startGamePhrase.classList.add("hide") //o botão de inicio desaparecerá
         $questionsContainer.classList.remove("hide") //as questões se iniciarão.
-        $timer.classList.remove("hide") // o relogio aparece e inicia a contagem.
-        $containerQuiz.classList.add("start-game");  // Adiciona a nova classe
+        $timer.classList.remove("hide") // o texto começa a ser criado
         startTimer()
         displayNextQuestion()
     }
@@ -567,74 +555,60 @@
         return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     }
 
-    function resetState() {
-        //enquanto a class Answer-Containter obtiver informações dentro dela a classe a removerá para poder transformar em uma nova pergunta e imagem; 
-
-        while ($answersContainer.firstChild) {
-            $answersContainer.removeChild($answersContainer.firstChild);
-        }
-
-        if ($questionImage.firstChild) {
-            $questionImage.removeChild($questionImage.firstChild);
-        }
-        document.body.removeAttribute("class");
-        $nextQuestionButton.classList.add("hide");
-    }
-
     function displayNextQuestion() {
-    resetState(); // Limpa o estado atual, removendo respostas antigas e imagens
+        resetState()
 
-    // Verifica se há mais perguntas para mostrar
-    if (questions.length === currentQuestionIndex) {
-        return finishGame();
-    }
-
-    const currentQuestion = questions[currentQuestionIndex];
-    $questionText.textContent = currentQuestion.question;
-
-    // Adiciona a imagem se ela existir
-    if (currentQuestion.image) {
-            const imageElement = document.createElement("img");
-            imageElement.src = currentQuestion.image;
-            imageElement.alt = "Imagem da questão";
-            imageElement.style.width = "100%";
-            $questionImage.appendChild(imageElement);
+        if (questions.length === currentQuestionIndex) {
+            return finishGame()
         }
 
-        currentQuestion.answers.forEach(answer => {
-            const newAnswer = document.createElement("button");
-            newAnswer.classList.add("button", "answer");
-            newAnswer.textContent = answer.text;
+        $questionText.textContent = questions[currentQuestionIndex].question // indica qual a pergunta de acordo com o banco de perguntas abaixo.
+        questions[currentQuestionIndex].answers.forEach(answer => {
+            const newAsnwer = document.createElement("button")
+            newAsnwer.classList.add("button", "answer")
+            newAsnwer.textContent = answer.text
             if (answer.correct) {
-                newAnswer.dataset.correct = answer.correct;
+                newAsnwer.dataset.correct = answer.correct
             }
-            $answersContainer.appendChild(newAnswer);
-            newAnswer.addEventListener("click", selectAnswer);
-        });
+            $answersContainer.appendChild(newAsnwer)
+
+            newAsnwer.addEventListener("click", selectAnswer)
+        })
+    }
+
+    function resetState() {
+        while ($answersContainer.firstChild) {
+            $answersContainer.removeChild($answersContainer.firstChild) //enquanto a class Answer-Containter obtiver informações dentro dela a classe a removerá para poder transformar em uma nova pergunda 
+        }
+
+        document.body.removeAttribute("class")
+        $nextQuestionButton.classList.add("hide")
     }
 
     function selectAnswer(event) {
-        const answerClicked = event.target;
+        const answerClicked = event.target
 
         if (answerClicked.dataset.correct) {
-            document.body.classList.add("correct");
-            totalCorrect++;
+            document.body.classList.add("correct")
+            totalCorrect++
         } else {
-            document.body.classList.add("incorrect");
+            document.body.classList.add("incorrect")
         }
 
         document.querySelectorAll(".answer").forEach(button => {
-            button.disabled = true;
+            button.disabled = true
 
             if (button.dataset.correct) {
-                button.classList.add("correct");
+                button.classList.add("correct")
             } else {
-                button.classList.add("incorrect");
+                button.classList.add("incorrect")
             }
-        });
 
-        $nextQuestionButton.classList.remove("hide");
-        currentQuestionIndex++;
+        })
+
+        $nextQuestionButton.classList.remove("hide")
+        currentQuestionIndex++
+
     }
 
     function finishGame() {
@@ -673,23 +647,21 @@
       class="final-quiz"> Refazer teste 
     </button>
     <button 
-      onclick="window.location.href='Game_Home.html'" 
+      onclick="window.location.href='7-metrica.html'" 
       class="final-quiz"> Visualizar as métricas 
     </button>
     <button 
-      onclick="window.location.href='Game_Home.html'" 
+      onclick="window.location.href='8-Game_Home.html'" 
       class="final-quiz"> Voltar para a home 
     </button>
-  `;
-  $containerQuiz.classList.remove("start-game");  // Remove a nova classe
+  `
     }
 
 
     // Banco de questões: 
     const questions = [
         {
-            question: "Qual o prato mais famoso da intália?",
-            image: "https://th.bing.com/th/id/OIP.mlT2elFJQMqaVmcbjjDJBgHaEo?rs=1&pid=ImgDetMain",
+            question: "Qual o prato mais famoso da Itália?",
             answers: [
                 { text: "Pizza", correct: true },
                 { text: "Risoto", correct: false },
@@ -699,7 +671,6 @@
         },
         {
             question: "Qual o nome do prato italiano de arroz cozido lentamente em caldo até ficar cremoso?",
-            image: "https://www.buenasdicas.com/wp-content/uploads/2018/07/prato-italiano-risoto-gastronomia-1024x576.jpg",
             answers: [
                 { text: "Pizza", correct: false },
                 { text: "Risoto", correct: true },
@@ -709,7 +680,6 @@
         },
         {
             question: "Qual o nome da sobremesa italiana feita com camadas de biscoitos embebidos em café, cacau, mascarpone ou licor?",
-            image: "https://www.guiadasemana.com.br/contentFiles/image/2021/09/FEA/67711_shutterstock-1653686953.jpg",
             answers: [
                 { text: "Canolli", correct: false },
                 { text: "Gelato", correct: false },
@@ -719,7 +689,6 @@
         },
         {
             question: "Qual é o principal ingrediente do molho pesto, tradicional da Ligúria?",
-            image: "https://s2.glbimg.com/VndHsHAtmDzMA49MQNzqilz_R_U=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_1f540e0b94d8437dbbc39d567a1dee68/internal_photos/bs/2023/b/j/cXMxZvQqW86Jw0l8hQzw/linguine-pesto-capa.jpg",
             answers: [
                 { text: "Tomate", correct: false },
                 { text: "Cogumelos", correct: false },
@@ -728,7 +697,6 @@
             ]
         }, {
             question: "Qual tipo de queijo é tradicionalmente usado para fazer a autêntica pizza Margherita?",
-            image: "https://www.receiteria.com.br/wp-content/uploads/pizza-margherita-1.png",
             answers: [
                 { text: "O Queijo Mozzarella", correct: true },
                 { text: "O Queijo Provolone", correct: false },
@@ -737,7 +705,6 @@
             ]
         }, {
             question: "Qual é o nome do famoso presunto italiano, geralmente servido fatiado fino como aperitivo?",
-            image: "https://cdn.britannica.com/26/236426-050-EAF1038B/Slices-of-Italian-prosciutto-crudo-or-jamon.jpg",
             answers: [
                 { text: "Salame", correct: false },
                 { text: "Pancetta", correct: false },
@@ -746,7 +713,6 @@
             ]
         }, {
             question: "Qual é o principal ingrediente do prato italiano 'Carbonara'?",
-            image: "https://th.bing.com/th/id/R.ceb9af50fe7fae8b407ad68f9c3ef23a?rik=KvSlaY6rtPl2qQ&riu=http%3a%2f%2fwww.bebertcuisine.org%2fwp-content%2fuploads%2f2020%2f10%2f3d85374ea2261fe79fc3b317de35f5f2.jpe&ehk=gHtO7L6%2bLQfB8IvIwy3GCbuWu6uMQMm1SGh17bXs5xY%3d&risl=&pid=ImgRaw&r=0",
             answers: [
                 { text: "Creme de leite", correct: false },
                 { text: "Espinafre", correct: false },
@@ -755,7 +721,6 @@
             ]
         }, {
             question: "Qual prato italiano é feito de berinjela frita, molho de tomate, queijo e manjericão?",
-            image: "https://blog.giallozafferano.it/lebistro/wp-content/uploads/2019/07/parmigiana-di-melanzane-768x512.jpg",
             answers: [
                 { text: "Caprese", correct: false },
                 { text: "Fettuccine Alfredo", correct: false },
