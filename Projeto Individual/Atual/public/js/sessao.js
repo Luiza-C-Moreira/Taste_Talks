@@ -14,6 +14,14 @@ function validarSessao() {
     }
 }
 
+function iniciarSessao(){
+    var apelido = sessionStorage.apelido;
+    var id_apelido = document.getElementById("id_apelido");
+
+    id_apelido.innerHTML = apelido;
+
+}
+
 function limparSessao() {
     sessionStorage.clear();
     window.location = "../login.html";

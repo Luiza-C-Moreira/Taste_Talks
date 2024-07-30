@@ -511,8 +511,8 @@ input::placeholder {
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
     var cpfVar = cpf_input.value;
+    var paisVar = pais_select.value;
 
-    alert (apelido)
 
     if (
       nomeVar == "" ||
@@ -520,7 +520,8 @@ input::placeholder {
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == "" ||
-      cpfVar == "" 
+      cpfVar == "" ||
+      paisVar == ""
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
@@ -597,13 +598,15 @@ return false;
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
-        UserServer: apelido,
+        userServer: apelido,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        cpfServer: cpfVar
+        cpfServer: cpfVar,
+        paisServer: paisVar
       }),
     })
       .then(function (resposta) {
+        console.log(apelido)
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
@@ -619,7 +622,7 @@ return false;
           limparFormulario();
           finalizarAguardar();
         } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
+          throw "Houve um erro ao tentar realizar o cadastro cn3!";
         }
       })
       .catch(function (resposta) {
