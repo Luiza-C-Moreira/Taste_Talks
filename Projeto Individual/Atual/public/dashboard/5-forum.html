@@ -134,6 +134,20 @@
             padding-bottom: 2px;
         }
 
+        nav ul li .nick{
+            display: contents;
+        }
+
+        .fotoPerfil{
+            width: 5%; 
+            border: 100%; 
+            margin-bottom: -10px; 
+            display: flexbox; 
+            margin-left: 10px; 
+            margin-right: -18px;
+        }
+
+
         nav ul a {
             color: #888888;
             text-transform: uppercase;
@@ -498,7 +512,7 @@
     </style>
 </head>
 
-<body onload="iniciarSessao(), exibirPosts()">
+<body onload="iniciarSessao(), exibirPosts(), definirImagemPerfil();">
     <header class="home_header">
 
         <div class="head">
@@ -510,10 +524,9 @@
                     <li><a href="7-metrica.html">Métricas</a></li>
                     <li><a href="8-Game_Home.html">Games</a></li>
                     <li>|</li>
-                    <img style="width: 5%; border: 100%; margin-bottom: -10px; display: 
-              flexbox; margin-left: 10px; margin-right: -18px;"
-                        src="https://cdn-icons-png.flaticon.com/512/432/432339.png" alt="Imagem de perfil usuário">
-                    <li>Olá, <div id="id_apelido"></div>!</li>
+                    
+                    <img class="fotoPerfil" id="foto_perfil" src="" alt="imagem de perfil">
+                    <li>Olá,<div class="nick" id="id_apelido">!</div></li>
                     <li><a href="../index.html" class="exit">Sair</a></li>
                 </ul>
             </nav>
@@ -569,121 +582,130 @@
 
 
 <script>
-    function postar() {
-        var usuario = sessionStorage.ID_USUARIO;
-        var nomeRestaurante = restaurantName.value;
-        var avaliacao = Number(rating.value);
-        var descricao = description.value;
-        var imagem = image.value;
 
-        alert("entrei função")
+function definirImagemPerfil() {
+    var pais = sessionStorage.PAIS_USUARIO;
+    var imgSrc;
 
-        if (
-            usuario == "" ||
-            nomeRestaurante == "" ||
-            avaliacao == "" ||
-            descricao == "" ||
-            imagem == ""
-        ) {
-            alert("Defina todos os valores.")
-        } else {
-
-            fetch("/forum/cadastrarForum", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    // crie um atributo que recebe o valor recuperado aqui
-                    // Agora vá para o arquivo routes/usuario.js
-                    usuarioServer: usuario,
-                    nomeRestauranteServer: nomeRestaurante,
-                    avaliacaoServer: avaliacao,
-                    descricaoServer: descricao,
-                    imagemServer: imagem
-                }),
-            })
-                .then(function (resposta) {
-                    console.log(apelido)
-                    console.log("resposta: ", resposta);
-
-                    if (resposta.ok) {
-                        exibirPosts()
-                    } else {
-                        throw "Houve um erro ao tentar realizar o post!";
-                    }
-                })
-                .catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
-
-                });
-
-        }
-
+    switch (pais) {
+        case 'IT':
+            imgSrc = "../assets/italia.png";
+            break;
+        case 'FR':
+            imgSrc = "../assets/franca.png";
+            break;
+        case 'JP':
+            imgSrc = "../assets/japao.png";
+            break;
+        case 'MX':
+            imgSrc = "../assets/mexico.png";
+            break;
+        case 'EG':
+            imgSrc = "../assets/egito.png";
+            break;
+        case 'BR':
+            imgSrc = "../assets/brasil.png";
+            break;
+        case 'SA':
+            imgSrc = "../assets/arabia.png";
+            break;
+        case 'US':
+            imgSrc = "../assets/eua.png";
+            break;
+        default:
+            imgSrc = "https://cdn-icons-png.flaticon.com/128/149/149071.png";
+            break;
     }
 
-    function exibirPosts() {
-        var usuario = sessionStorage.ID_USUARIO;
+    document.getElementById('foto_perfil').src = imgSrc;
+}
 
-        fetch("/forum/exibir", {
+function postar() {
+    var usuario = sessionStorage.ID_USUARIO;
+    var nomeRestaurante = restaurantName.value;
+    var avaliacao = Number(rating.value);
+    var descricao = description.value;
+    var imagem = image.value;
+
+    if (usuario == "" || nomeRestaurante == "" || avaliacao == "" || descricao == "" || imagem == "") {
+        alert("Defina todos os valores.");
+    } else {
+        fetch("/forum/cadastrarForum", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             },
             body: JSON.stringify({
                 usuarioServer: usuario,
+                nomeRestauranteServer: nomeRestaurante,
+                avaliacaoServer: avaliacao,
+                descricaoServer: descricao,
+                imagemServer: imagem
+            }),
+        })
+        .then(function (resposta) {
+            console.log("resposta: ", resposta);
 
-            })
-        }).then(function (resposta) {
             if (resposta.ok) {
-                if (resposta.status == 204) {
-                    alert('nenhuma resposta')
-
-                }
-
-                // resposta com todos os resultados
-                resposta.json().then(function (resposta) {
-                    console.log("Dados recebidos: ", JSON.stringify(resposta));
-
-                    //lista com todos os resultados
-                    for (let i = 0; i < resposta.length; i++) {
-                        var post = resposta[i];
-                        const postHTML = `
-         <div class="post" id="post-${post.fkUsuario}">
- <div class="profile">
-     <img src="https://www.rsefundingawards.org.uk/wp-content/themes/rse/img/profile-placeholder.png" alt="Profile Picture">
-     <span class="username">${post.nome}</span>
- </div>
- <div class="post-content">
-     <div class="restaurant-name">${post.nomeRestaurante}</div>
-     <div class="rating">${'★'.repeat(post.avaliacoes)}${'☆'.repeat(5 - rating)}</div>
-     <div class="description">${post.descricao}</div>
-     <img src="${post.imagem}" alt="${post.nomeRestaurante}">
- </div>
- <div class="buttons">
-     <button class="like" onclick="handleLike(this)">Concordo</button>
-     <span class="like-count">0</span>
-     <button class="dislike" onclick="handleDislike(this)">Discordo</button>
-     <span class="dislike-count">0</span>
-     <button class="comment" onclick="handleComment(this)">Comentários</button>
-     <span class="comment-count">0</span>
-     <button class="delete-button" onclick="deletePost(${post.idPostagem})">Deletar Post</button>
- </div>
-</div>
-`;
-
-                        postContainer.innerHTML = postHTML + postContainer.innerHTML;
-                    } 
-                });
+                exibirPosts();
             } else {
-                throw "Houve um erro na API!";
+                throw "Houve um erro ao tentar realizar o post!";
             }
         })
-            .catch(function (resposta) {
-                console.error(resposta);
-            });
+        .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
     }
+}
 
+function exibirPosts() {
+    var usuario = sessionStorage.ID_USUARIO;
+
+    fetch("/forum/exibir", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            usuarioServer: usuario,
+        })
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            if (resposta.status == 204) {
+                alert('Nenhuma resposta');
+            }
+
+            resposta.json().then(function (resposta) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                for (let i = 0; i < resposta.length; i++) {
+                    var post = resposta[i];
+                    const postHTML = `
+                    <div class="post" id="post-${post.fkUsuario}">
+                        <div class="profile">
+                            <img id="foto_perfil" src="https://cdn-icons-png.flaticon.com/128/149/149071.png" alt="Profile Picture">
+                            <span class="username">${post.nome}</span>
+                        </div>
+                        <div class="post-content">
+                            <div class="restaurant-name">${post.nomeRestaurante}</div>
+                            <div class="rating">${'★'.repeat(post.avaliacoes)}${'☆'.repeat(5 - post.avaliacoes)}</div>
+                            <div class="description">${post.descricao}</div>
+                            <img src="${post.imagem}" alt="${post.nomeRestaurante}">
+                        </div>
+                    </div>
+                    `;
+
+                    postContainer.innerHTML = postHTML + postContainer.innerHTML;
+                } 
+            });
+        } else {
+            throw "Houve um erro na API!";
+        }
+    })
+    .catch(function (resposta) {
+        console.error(resposta);
+    });
+}
 
 
 /*

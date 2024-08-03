@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz - itália</title>
+    <title>Quiz - França</title>
 </head>
 
 <body>
@@ -21,8 +21,7 @@
             <nav>
                 <ul>
                     <li><a href="8-Game_Home.html">Games - França</a></li>
-                    <li><a href="9-Quiz-Conhecimento-Italia.html" class="now">Quiz</a></li>
-                    <li><a href="9-Cruzadinha-Italia.html">Cruzadinha</a></li>
+                    <li><a href="10-Quiz-Conhecimento-Franca.html" class="now">Quiz</a></li>
                     <li>|</li>
                     <li><a href="../index.html" class="exit">Sair</a></li>
                 </ul>
@@ -58,7 +57,7 @@
             </div>
 
         </div>
-    </article>
+    </article>   
 
 
     <!-- Site footer -->
@@ -528,6 +527,128 @@
     $startGameButton.addEventListener("click", startGame) //quando o butão for clicado o game vai iniciar
     $nextQuestionButton.addEventListener("click", displayNextQuestion) //quando o butão for clicado o game vai iniciar
 
+// Banco de questões: 
+const questions = [
+    {
+        "question": "Qual é o famoso doce francês feito com claras de ovo e farinha de amêndoa, geralmente colorido e recheado?",
+        "answers": [
+            { "text": "Macaron", "correct": true },
+            { "text": "Croissant", "correct": false },
+            { "text": "Éclair", "correct": false },
+            { "text": "Madeleine", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é o pãozinho em formato de meia-lua, famoso por sua massa folhada e origem francesa?",
+        "answers": [
+            { "text": "Macaron", "correct": false },
+            { "text": "Croissant", "correct": true },
+            { "text": "Éclair", "correct": false },
+            { "text": "Madeleine", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é o nome do prato francês feito com batatas, queijo Reblochon, bacon e cebolas?",
+        "answers": [
+            { "text": "Cassoulet", "correct": false },
+            { "text": "Tartiflette", "correct": true },
+            { "text": "Ratatouille", "correct": false },
+            { "text": "Poulet-Frites", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é o doce alongado de massa choux, recheado com creme e coberto com glacê?",
+        "answers": [
+            { "text": "Macaron", "correct": false },
+            { "text": "Éclair", "correct": true },
+            { "text": "Profiterole", "correct": false },
+            { "text": "Clafoutis", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é o pequeno bolo de chocolate com recheio líquido no centro, geralmente servido quente com sorvete?",
+        "answers": [
+            { "text": "Petit-Gâteau", "correct": true },
+            { "text": "Madeleine", "correct": false },
+            { "text": "Profiterole", "correct": false },
+            { "text": "Clafoutis", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é a sobremesa francesa feita de cerejas cobertas com uma massa de flan, tradicionalmente servida morna?",
+        "answers": [
+            { "text": "Cassoulet", "correct": false },
+            { "text": "Clafoutis", "correct": true },
+            { "text": "Ratatouille", "correct": false },
+            { "text": "Poulet-Frites", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é o prato francês de feijão branco cozido lentamente com carne de pato, salsicha e porco?",
+        "answers": [
+            { "text": "Cassoulet", "correct": true },
+            { "text": "Tartiflette", "correct": false },
+            { "text": "Ratatouille", "correct": false },
+            { "text": "Poulet-Frites", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é o prato francês de frango assado servido com batatas fritas?",
+        "answers": [
+            { "text": "Cassoulet", "correct": false },
+            { "text": "Tartiflette", "correct": false },
+            { "text": "Poulet-Frites", "correct": true },
+            { "text": "Ratatouille", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é o doce francês feito de massa choux, recheado com creme e coberto com calda de chocolate?",
+        "answers": [
+            { "text": "Macaron", "correct": false },
+            { "text": "Éclair", "correct": false },
+            { "text": "Profiterole", "correct": true },
+            { "text": "Clafoutis", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é o prato francês de legumes como berinjela, abobrinha e tomate, cozidos lentamente com ervas?",
+        "answers": [
+            { "text": "Cassoulet", "correct": false },
+            { "text": "Tartiflette", "correct": false },
+            { "text": "Ratatouille", "correct": true },
+            { "text": "Poulet-Frites", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é o molusco comestível, frequentemente preparado com manteiga de alho e ervas na França?",
+        "answers": [
+            { "text": "Macaron", "correct": false },
+            { "text": "Éclair", "correct": false },
+            { "text": "Escargot", "correct": true },
+            { "text": "Clafoutis", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é a massa fina e flexível, tradicional na França, que pode ser recheada com ingredientes doces ou salgados?",
+        "answers": [
+            { "text": "Crêpe", "correct": true },
+            { "text": "Croissant", "correct": false },
+            { "text": "Éclair", "correct": false },
+            { "text": "Madeleine", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é o pequeno bolo francês em forma de concha, frequentemente aromatizado com limão ou amêndoa?",
+        "answers": [
+            { "text": "Petit-Gâteau", "correct": false },
+            { "text": "Madeleine", "correct": true },
+            { "text": "Profiterole", "correct": false },
+            { "text": "Clafoutis", "correct": false }
+        ]
+    }
+]
+
+
 
     function startGame() {
         $startGameButton.classList.add("hide") //o botão de inicio desaparecerá
@@ -545,15 +666,18 @@
 
     function updateTimer() { // atualiza o timer por segundo
         const elapsedTime = Date.now() - startTime;
-        $timer.textContent = formatTime(elapsedTime);
+        $timer.textContent = formattedTime(elapsedTime);
     }
 
-    function formatTime(milliseconds) { // formata o tempo em minutos e segundos
+    function formattedTime(milliseconds) { // formata o tempo em minutos e segundos
         const totalSeconds = Math.floor(milliseconds / 1000);
         const minutes = Math.floor(totalSeconds / 60);
         const seconds = totalSeconds % 60;
         return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        var tempoFormatado = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        console.log("esse é o tempo formatado", tempoFormatado)
     }
+
 
     function displayNextQuestion() {
         resetState()
@@ -615,7 +739,9 @@
         clearInterval(intervalId);
         const totalQuestions = questions.length //
         const performance = Math.floor(totalCorrect * 100 / totalQuestions) //definindo a performance do usuario e definindo sua pontuação para realizar a validação
-        const totalTime = Date.now() - startTime;
+        const finishTime = Date.now();
+        var totalTime = finishTime - startTime;
+        var tempoTotal = totalTime = formattedTime(totalTime)
 
         let message = ""
 
@@ -634,13 +760,110 @@
                 message = "melhore mona :("
                 break
         }
+        console.log("entrei")
+    console.log(totalCorrect)
+        console.log(totalQuestions)
+        console.log(message)
+        console.log(tempoTotal)
+        
 
-        //Mensagem final para o usuário onde mostra a pontuação total do usuário
-        $questionsContainer.innerHTML = ` 
+        var idQuiz = 2;
+    var usuario = sessionStorage.ID_USUARIO;
+    fetch("/quiz/cadastrarQuiz", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+
+
+
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    fk_usuarioServer: usuario,
+                    tempoServer: tempoTotal,
+                    game_idServer: idQuiz,
+                    questoesCorretasServer: totalCorrect,
+                    qtdQuestoesServer: totalQuestions,
+                    
+                }),
+
+            })
+                .then(function (resposta) {
+
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                        
+                    } else {
+                        throw "Houve um erro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+
+                });
+
+        fetch("/quiz/exibir", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                usuarioServer: usuario,
+
+            })
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    alert('nenhuma resposta')
+
+                }
+
+                // resposta com todos os resultados
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+        //fatch com for dando select * no model pra pegar todas as pessoas que fizeram o quiz id-1 (como organizar a lista de números do valor mais alto ao menor com o valor do json, e dentro do for lista.push (variavel de pontuação) )
+        
+        var lista_nome = [];
+        var lista_posicao = [];
+        var lista_id = [];
+
+
+                    //lista com todos os resultados
+                    for (let i = 0; i < resposta.length; i++) {
+                        var post = resposta[i];
+                        lista_nome.push(post.nome)
+                        lista_posicao.push(post.qtd_Acertos)
+                        lista_id.push(post.fk_usuario)
+                    } 
+                    console.log(lista_nome);
+                    console.log(lista_posicao);
+                    console.log(lista_id);
+
+        // Combina as listas em uma lista de objetos
+        var ranking = lista_posicao.map((pontos, index) => {
+                    return {
+                        id: lista_id[index],
+                        pontos: pontos
+                    };
+                });
+
+                // Ordena a lista de objetos com base na pontuação (decrescente)
+                ranking.sort((a, b) => b.pontos - a.pontos);
+
+                // Encontra a posição do usuário com base na variável totalCorrect
+                var posicao = ranking.findIndex(player => player.pontos === totalCorrect);
+
+                console.log(`O usuário está na posição: ${posicao + 1}`);
+
+                
+                    $questionsContainer.innerHTML =  `
         <p class="final-message">
       Você acertou ${totalCorrect} de ${totalQuestions} questões!
-      <span>Resultado: ${message}</span>
-      <span>Tempo total: ${formatTime(totalTime)}</span>
+      <span>O usuário está na posição: ${posicao + 1} dentro do ranking </span>
+      <span>Tempo total: ${tempoTotal}</span>
     </p>
     <button 
       onclick=window.location.reload() 
@@ -655,80 +878,18 @@
       class="final-quiz"> Voltar para a home 
     </button>
   `
+
+                });
+            } else {
+                throw "Houve um erro na API!";
+            }
+        })
+            .catch(function (resposta) {
+                console.error(resposta);
+            }); 
     }
 
 
-    // Banco de questões: 
-    const questions = [
-        {
-            question: "Qual o prato mais famoso da Itália?",
-            answers: [
-                { text: "Pizza", correct: true },
-                { text: "Risoto", correct: false },
-                { text: "Foccacia", correct: false },
-                { text: "Gelatto", correct: false }
-            ]
-        },
-        {
-            question: "Qual o nome do prato italiano de arroz cozido lentamente em caldo até ficar cremoso?",
-            answers: [
-                { text: "Pizza", correct: false },
-                { text: "Risoto", correct: true },
-                { text: "Foccacia", correct: false },
-                { text: "Gelatto", correct: false }
-            ]
-        },
-        {
-            question: "Qual o nome da sobremesa italiana feita com camadas de biscoitos embebidos em café, cacau, mascarpone ou licor?",
-            answers: [
-                { text: "Canolli", correct: false },
-                { text: "Gelato", correct: false },
-                { text: "Margherita", correct: false },
-                { text: "Tiramisú", correct: true }
-            ]
-        },
-        {
-            question: "Qual é o principal ingrediente do molho pesto, tradicional da Ligúria?",
-            answers: [
-                { text: "Tomate", correct: false },
-                { text: "Cogumelos", correct: false },
-                { text: "Manjericão", correct: true },
-                { text: "Azeitonas", correct: false }
-            ]
-        }, {
-            question: "Qual tipo de queijo é tradicionalmente usado para fazer a autêntica pizza Margherita?",
-            answers: [
-                { text: "O Queijo Mozzarella", correct: true },
-                { text: "O Queijo Provolone", correct: false },
-                { text: "O Queijo Cheddar", correct: false },
-                { text: "O Queijo Gouda", correct: false }
-            ]
-        }, {
-            question: "Qual é o nome do famoso presunto italiano, geralmente servido fatiado fino como aperitivo?",
-            answers: [
-                { text: "Salame", correct: false },
-                { text: "Pancetta", correct: false },
-                { text: "Prosciutto", correct: true },
-                { text: "Mortadela", correct: false }
-            ]
-        }, {
-            question: "Qual é o principal ingrediente do prato italiano 'Carbonara'?",
-            answers: [
-                { text: "Creme de leite", correct: false },
-                { text: "Espinafre", correct: false },
-                { text: "Molho de tomate", correct: false },
-                { text: "Ovos", correct: true }
-            ]
-        }, {
-            question: "Qual prato italiano é feito de berinjela frita, molho de tomate, queijo e manjericão?",
-            answers: [
-                { text: "Caprese", correct: false },
-                { text: "Fettuccine Alfredo", correct: false },
-                { text: "Parmigiana di Melanzane", correct: true },
-                { text: "Polenta", correct: false }
-            ]
-        }
-    ]
-
+        //Mensagem final para o usuário onde mostra a pontuação total do usuário
 
 </script>

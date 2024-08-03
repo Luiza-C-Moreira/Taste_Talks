@@ -8,8 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Taste Talks | Métricas </title>
 
-    <!--<link rel="stylesheet" href="./../css/dashboards.css">
-    <link rel="stylesheet" href="./../css/estilo.css" />-->
+    <script src="../js/sessao.js"></script>
     <link rel="icon" href="./assets/icon/2.png">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -23,7 +22,7 @@
     <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body onload="iniciarSessao(), pegandoDados(), definirImagemPerfil()">
 
     <header class="home_header">
 
@@ -32,10 +31,13 @@
 
             <nav>
                 <ul>
-                    <li><a href="7-metrica.html" class="now">Métricas</a></li>
-                    <li>|</li>
                     <li><a href="5-forum.html">Fórum</a></li>
+                    <li><a href="7-metrica.html" class="now">Métricas</a></li>
                     <li><a href="8-Game_Home.html">Games</a></li>
+                    <li>|</li>
+                    
+                    <img class="fotoPerfil" id="foto_perfil" src="" alt="imagem de perfil">
+                    <li>Olá,<div class="nick" id="id_apelido">!</div></li>
                     <li><a href="../index.html" class="exit">Sair</a></li>
                 </ul>
             </nav>
@@ -46,45 +48,16 @@
 
     <div class="content">
         <div class="grafico">
-            <h2>Restaurantes melhor avaliados ao longo da semana</h2> <br>
+            <h2>Ranking de avaliações dos restaurantes citados pelos usuários no Fórum</h2> <br>
             <canvas id="avaliacaoRestaurantes"></canvas>
         </div>
 
         <div class="grafico">
-            <h2>Culinárias mais comentadas ao longo da semana</h2>
-            <br>
-            <canvas id="avaliacaoPratos"></canvas>
-        </div>
-
-        <div class="grafico">
-            <h2>País com a culinária favorita dos usuários</h2> <br>
+            <h2>Porcentagem dos paises de culinária favorita entre os usuários</h2> <br>
             <canvas id="CulinariaFav"></canvas>
         </div>
 
-
-        <div class="grafico">
-            <h2> Questões de maior dificuldade para os jogadores </h2>
-            <select class="dificuldade" id="Select_Dificuldade">
-                <option value="Q1">Quiz Italia </option>
-                <option value="Q2">Quiz Italia com imagens </option>
-                <option value="Q3">Quiz França </option>
-                <option value="Q4">Quiz França com imagens </option>
-                <option value="Q5">Quiz Japão </option>
-                <option value="Q6">Quiz Japão com imagens </option>
-                <option value="Q7">Quiz México </option>
-                <option value="Q8">Quiz México com imagens </option>
-                <option value="Q9">Quiz Egito </option>
-                <option value="Q10">Quiz Egito com imagens </option>
-                <option value="Q11">Quiz Brasil </option>
-                <option value="Q11">Quiz Brasil com imagens </option>
-                <option value="Q11">Quiz Árabia</option>
-                <option value="Q11">Quiz Árabia com imagens </option>
-                <option value="Q11">Quiz Estados Unidos</option>
-                <option value="Q11">Quiz Estados Unidos com imagens </option>
-            </select>
-            <canvas id="MaiorDificuldadeGeral"></canvas>
-        </div>
-
+    <!--
         <div class="grafico">
             <h2> Nota por Quiz </h2> <br>
             <canvas id="AcertosQuiz"></canvas>
@@ -94,77 +67,30 @@
             <h2> Nota por Cruzadinha </h2> <br>
             <canvas id="ErrosCruzadinha"></canvas>
         </div>
+-->
 
-
-        <div class="grafico">
-            <aside>
-                <section class="ranking">
-                    <div class="posicao">
-                        <div class="head">
-                           <h2>Top 5 players no Ranking</h2>
-                        </div>
-                        <div class="player" style="background-color: #ee9b0087;">
-                            <img src="https://cdn-icons-png.flaticon.com/512/432/432339.png" alt="">
-                            <a style="text-decoration: none; color: #402610;">
-                                <h4>@Você</h4>
-                            </a>
-                            <div class="dados">
-                                <p style="color: #f0eff5;"> 10°Posição </p>
-                            </div>
-                            
-                        </div>
-                        <div class="player">
-                            <img src="https://cdn.icon-icons.com/icons2/236/PNG/256/Dish_Pasta_Spaghetti_26373.png" alt="">
-                            <a style="text-decoration: none; color: #fff;">
-                                <h4>Usuário 1</h4>
-                            </a>
-                            <div class="dados">
-                                <p style="color: #f0eff5;"> 1°Posição </p>
-                            </div>
-                        </div>
-
-                        <div class="player">
-                            <img src="https://cdn-icons-png.flaticon.com/512/4727/4727405.png" alt="">
-                            <a style="text-decoration: none; color: #fff;">
-                                <h4>Usuário 2</h4>
-                            </a>
-                            <div class="dados">
-                                <p style="color: #f0eff5;"> 2°Posição </p>
-                            </div>
-                        </div>
-
-                        <div class="player">
-                            <img src="https://cdn-icons-png.freepik.com/512/12592/12592142.png" alt="">
-                            <a style="text-decoration: none; color: #fff;">
-                                <h4>Usuário 3</h4>
-                            </a>
-                            <div class="dados">
-                                <p style="color: #f0eff5;"> 3°Posição </p>
-                            </div>
-                        </div>
-
-                        <div class="player">
-                            <img src="https://cdn-icons-png.flaticon.com/512/5188/5188538.png" alt="">
-                            <a style="text-decoration: none; color: #fff;">
-                                <h4>Usuário 4</h4>
-                            </a>
-                            <div class="dados">
-                                <p style="color: #f0eff5;"> 4°Posição </p>
-                            </div>
-                        </div>
-
-                        <div class="player">
-                            <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" alt="">
-                            <a style="text-decoration: none; color: #fff;">
-                                <h4>Usuário 5</h4>
-                            </a>
-                            <div class="dados">
-                                <p style="color: #f0eff5;"> 5°Posição </p>
-                            </div>
-                        </div>
+<center>
+    <div class="grafico">
+        <aside>
+            <section class="ranking">
+                <div class="posicao">
+                    <div class="head">
+                        <h2> Players no Ranking Global</h2>
                     </div>
-            </aside>
-        </div>
+                    <div class="player" id="posicaoUser">
+
+                    </div>
+
+                    <div class="player" id="posicaoJogadores">
+
+                    </div>
+
+                </div>
+            </section>
+        </aside>
+    </div>
+</center>
+        
 
 
     </div>
@@ -304,6 +230,19 @@
             margin-left: 35px;
         }
 
+        nav ul li .nick{
+            display: contents;
+        }
+
+        .fotoPerfil{
+            width: 5%; 
+            border: 100%; 
+            margin-bottom: -10px; 
+            display: flexbox; 
+            margin-left: 10px; 
+            margin-right: -18px;
+        }
+
         nav ul a {
             color: #888888;
             text-transform: uppercase;
@@ -338,8 +277,8 @@
         }
 
         .content .grafico {
-            background-color: #d8b898; 
-            padding: 40px; 
+            background-color: #d8b898;
+            padding: 40px;
             border-radius: 30px;
         }
 
@@ -351,25 +290,25 @@
         }
 
         .content canvas {
-            position: relative; 
-            height: 40vh; 
+            position: relative;
+            height: 40vh;
             width: 100%;
         }
 
         /* ---- Section Emergência ---- */
         aside {
-            display: grid;
-            grid-template-columns: 25rem auto;
+            grid-template-columns: 22rem auto;
             width: 100%;
             font-size: small;
-            padding-top: 5.5%;
             font-family: "Montserrat", sans-serif;
             font-weight: 100;
+            align-items: center;
 
         }
 
         aside section.ranking .posicao {
             background-color: #bb3d03aa;
+            align-items: center;
         }
 
         aside section.ranking .posicao img {
@@ -378,19 +317,18 @@
 
         aside section.ranking .posicao .head {
             padding: 15px;
+            align-items: center;
             background-color: #BB3E03;
             border-bottom: 1px solid #F2C197;
         }
 
-        aside section.ranking .posicao .head h2{
+        aside section.ranking .posicao .head h2 {
             color: #fff;
-        }        
+        }
 
         aside section.ranking .posicao .player {
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            padding: 3px;
+            display: block;
+            padding: 4px;
             border-bottom: 2px solid #F2C197;
             transition: all 300ms ease;
         }
@@ -401,13 +339,14 @@
         }
 
         aside section.ranking .posicao .player .dados p {
-            padding-top: 20%;
+            margin-bottom: 2px;
             text-align: center;
             align-items: center;
         }
 
         aside section.ranking .posicao .player:hover {
-            background-color: #bb3d03b8;
+            background-color: #bb3d034d;
+            width: 99%;
         }
 
         /*FOOTER*/
@@ -542,223 +481,449 @@
     </style>
 
     <script>
-        const AvalR = [
-            'Fasano',
-            'Mocoto',
-            'Mamute Restaurante'
-        ];
+         var usuario = sessionStorage.ID_USUARIO;
 
-        const nomeLugar = {
-            labels: AvalR,
-            datasets: [{
-                label: 'Bom Lugar',
-                backgroundColor: '#BB3E03',
-                borderColor: '#860000',
-                data: [315, 240, 101],
-            }, {
-                label: 'Não voltaria',
-                backgroundColor: '#CA6702',
-                borderColor: '#F2C197',
-                data: [100, 62, 162],
-            }]
-        };
+        //variaveis da culinária favorita - parte cadastro
+        var ItaliaCF = 0;
+        var FrancaCF = 0;
+        var JapaoCF = 0;
+        var MexicoCF = 0;
+        var EgitoCF = 0;
+        var BrasilCF = 0;
+        var ArabiaCF = 0;
+        var EuaCF = 0;
 
-        const config1 = {
-            type: 'bar',
-            data: nomeLugar,
-            options: {}
-        };
+        function definirImagemPerfil() {
+    var pais = sessionStorage.PAIS_USUARIO;
+    var imgSrc;
 
+    switch (pais) {
+        case 'IT':
+            imgSrc = "../assets/italia.png";
+            break;
+        case 'FR':
+            imgSrc = "../assets/franca.png";
+            break;
+        case 'JP':
+            imgSrc = "../assets/japao.png";
+            break;
+        case 'MX':
+            imgSrc = "../assets/mexico.png";
+            break;
+        case 'EG':
+            imgSrc = "../assets/egito.png";
+            break;
+        case 'BR':
+            imgSrc = "../assets/brasil.png";
+            break;
+        case 'SA':
+            imgSrc = "../assets/arabia.png";
+            break;
+        case 'US':
+            imgSrc = "../assets/eua.png";
+            break;
+        default:
+            imgSrc = "https://cdn-icons-png.flaticon.com/128/149/149071.png";
+            break;
+    }
 
-        const avaliacaoRestaurantes = new Chart(
-            document.getElementById('avaliacaoRestaurantes'),
-            config1
-        );
+    document.getElementById('foto_perfil').src = imgSrc;
+}
 
-        const AvalPrato = [
-            'Pizza',
-            'Tacos',
-            'Quesadilha'
-        ];
+        function pegandoDados() {
+            var usuario = sessionStorage.ID_USUARIO;
 
-        const Prato = {
-            labels: AvalPrato,
-            datasets: [{
-                label: 'Pratos',
-                backgroundColor: '#CA6702',
-                borderColor: '#CA6702',
-                data: [315, 240, 101],
-            }]
-        };
+            // fetch Ranking global
+            fetch("/quiz/exibirTotal", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    usuarioServer: usuario,
+                })
+            }).then(function (resposta) {
+                if (resposta.ok) {
+                    if (resposta.status == 204) {
+                        alert('Nenhuma resposta');
+                        return; // Sair da função se não houver resposta
+                    }
 
-        const config2 = {
-            type: 'line',
-            data: Prato,
-            options: {}
-        };
+                    return resposta.json(); // Convertendo a resposta para JSON
+                } else {
+                    throw "Houve um erro na API!";
+                }
+            }).then(function (resposta) {
+                if (!resposta) return; // Se a resposta for undefined, sair da função
 
+                var lista_rankTotal = [];
 
-        const avaliacaoPratos = new Chart(
-            document.getElementById('avaliacaoPratos'),
-            config2
-        );
+                // Adiciona os IDs dos usuários na lista
+                for (var i = 0; i < resposta.length; i++) {
+                    var ranking = resposta[i];
+                    var id_ranking = ranking.id;
+                    lista_rankTotal.push(id_ranking);
+                }
 
-        const CulinariaFavorita = [
-            'Itália',
-            'França',
-            'Japão',
-            'México',
-            'Egito',
-            'Brasil',
-            'Arábia',
-            'EUA',
-        ];
+                // Ordena a lista em ordem decrescente (caso não esteja ordenada)
+                lista_rankTotal.sort(function (a, b) {
+                    return b - a;
+                });
 
-        const pais = {
-            labels: CulinariaFavorita,
-            datasets: [{
-                label: '',
-                backgroundColor: '#CA6702',
-                borderColor: '#f0ad4e',
-                data: [10, 30, 50, 80, 10, 80, 60, 40],
-            }]
-        };
+                // Encontra a posição do usuário na lista
+                var posicaoUsuario = lista_rankTotal.indexOf(parseInt(usuario));
 
-        const config3 = {
-            type: 'doughnut',
-            data: pais,
-            options: {}
-        };
+                // Exibe a posição do usuário
+                console.log(`A posição do usuário ${usuario} na lista é: ${posicaoUsuario}`);
 
+                var divPosicaoUser = document.getElementById('posicaoUser');
+                var divPosicaoPlayer = document.getElementById('posicaoJogadores');
 
-        const CulinariaFav = new Chart(
-            document.getElementById('CulinariaFav'),
-            config3
-        );
+                // Limpar as divs antes de adicionar novos elementos
+                divPosicaoUser.innerHTML = '';
+                divPosicaoPlayer.innerHTML = '';
 
-        const DificuldadeGeral = [
-            'Q1',
-            'Q2',
-            'Q3',
-            'Q4',
-            'Q5',
-            'Q6',
-            'Q7',
-            'Q8',
-            'Q9',
-            'Q10',
-            'Q11',
-            'Q12',
-            'Q13',
-            'Q14',
-            'Q15',
-        ];
+                for (var i = 0; i < resposta.length; i++) {
+                    var ranking = resposta[i];
+                    var id_ranking = ranking.id;
+                    var apelido_rank = ranking.apelido;
+                    var acertos_rank = ranking.max_acertos;
+                    var total_rank = ranking.total_acertos;
 
-        const questoes = {
-            labels: DificuldadeGeral,
-            datasets: [{
-                label: 'Questão',
-                backgroundColor: '#f0ad4e',
-                borderColor: '#CA6702',
-                data: [10, 20, 40, 30, 60, 60, 50, 40, 30, 45, 25, 30, 20, 10, 35],
-            }]
-        };
+                    if (id_ranking === parseInt(usuario)) {
+                        divPosicaoUser.innerHTML = `<div class="player" style=" width: 100%;">
+                <img src="https://cdn-icons-png.flaticon.com/128/149/149071.png" alt="">
+                <a style="text-decoration: none; color: #402610;">
+                    <h4>Você: @${ranking.apelido}</h4>
+                </a>
+                <div class="dados">
+                    <p style="color: #f0eff5;"> Se encontra na: ${posicaoUsuario}° Posição; </p>
+                </div>
+                <div class="dados">
+                    <p style="color: #f0eff5;"> Possuindo um total de: ${ranking.total_acertos} pontos! </p>
+                </div>
+            </div>`;
+                    }
 
-        const config4 = {
-            type: 'polarArea',
-            data: questoes,
-            options: {}
-        };
-
-
-        const MaiorDificuldadeGeral = new Chart(
-            document.getElementById('MaiorDificuldadeGeral'),
-            config4
-        );
-
-        const AcertoQuiz = [
-            'Itália 1',
-            'Itália 2',
-            'França 1',
-            'França 2',
-            'Japão 1',
-            'Japão 2',
-            'México 1',
-            'México 2',
-            'Egito 1',
-            'Egito 2',
-            'Brasil 1',
-            'Brasil 2',
-            'Arábia 1',
-            'Arábia 2',
-            'EUA 1',
-            'EUA 2',
-        ];
-
-        const questoesGeral = {
-            labels: AcertoQuiz,
-            datasets: [{
-                label: 'Erros',
-                backgroundColor: '#730023',
-                borderColor: '#9B2226',
-                data: [5, 0, 5, 3, 4, 5, 7, 6, 5, 0, 5, 3, 4, 5, 7, 6],
-            }, {
-                label: 'Acertos',
-                backgroundColor: '#588157',
-                borderColor: '#314d31',
-                data: [10, 15, 10, 12, 11, 10, 8, 9, 10, 15, 10, 12, 11, 10, 8, 9],
-            }]
-        };
-
-        const config5 = {
-            type: 'radar',
-            data: questoesGeral,
-            options: {}
-        };
+                    divPosicaoPlayer.innerHTML += `<div class="player" >
+            <img src="https://cdn-icons-png.flaticon.com/128/149/149071.png" alt="">
+            <a style="text-decoration: none; color: #fff;">
+                <h4>@${apelido_rank}</h4>
+            </a>
+            <div class="dados">
+                <p style="color: #f0eff5;"> Se encontra em: ${i + 1}° Posição; </p>
+            </div>
+            <div class="dados">
+                    <p style="color: #f0eff5;"> Com um total de ${ranking.total_acertos} pontos! </p>
+                </div>
+        </div>`;
+                }
+            }).catch(function (resposta) {
+                console.error(`#ERRO: ${resposta}`);
+            });
 
 
-        const AcertosQuiz = new Chart(
-            document.getElementById('AcertosQuiz'),
-            config5
-        );
-
-        const ErroCruzadinha = [
-            'Itália',
-            'França',
-            'Japão',
-            'México',
-            'Egito',
-            'Brasil',
-            'Arábia',
-            'EUA',
-        ];
-
-        const questao = {
-            labels: ErroCruzadinha,
-            datasets: [{
-                label: 'Erros',
-                backgroundColor: '#730023',
-                borderColor: '#9B2226',
-                data: [5, 0, 5, 3, 4, 5, 7, 6, 5, 0, 5, 3, 4, 5, 7, 6],
-            }, {
-                label: 'Acertos',
-                backgroundColor: '#588157',
-                borderColor: '#314d31',
-                data: [10, 15, 10, 12, 11, 10, 8, 9, 10, 15, 10, 12, 11, 10, 8, 9],
-            }]
-        };
-
-        const config6 = {
-            type: 'radar',
-            data: questao,
-            options: {}
-        };
 
 
-        const ErrosCruzadinha = new Chart(
-            document.getElementById('ErrosCruzadinha'),
-            config6
-        );
+
+            // Integração do cadastro - escolha do país de culinária favorita dos usuários
+            fetch("/usuarios/exibir", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    usuarioServer: usuario,
+
+                })
+            }).then(function (resposta) {
+                if (resposta.ok) {
+                    if (resposta.status == 204) {
+                        alert('nenhuma resposta')
+
+                    }
+
+                    // resposta com todos os resultados
+                    resposta.json().then(function (resposta) {
+                        console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                        //lista com todos os resultados
+                        for (var i = 0; i < resposta.length; i++) {
+                            var usuario = resposta[i];
+                            var CulinariaFavorita = usuario.pais;
+
+                            if (CulinariaFavorita == 'IT') {
+                                ItaliaCF++
+                            } else if (CulinariaFavorita == 'FR') {
+                                FrancaCF++
+                            } else if (CulinariaFavorita == 'JP') {
+                                JapaoCF++
+                            } else if (CulinariaFavorita == 'MX') {
+                                MexicoCF++
+                            } else if (CulinariaFavorita == 'EG') {
+                                EgitoCF++
+                            } else if (CulinariaFavorita == 'BR') {
+                                BrasilCF++
+                            } else if (CulinariaFavorita == 'SA') {
+                                ArabiaCF++
+                            } else if (CulinariaFavorita == 'US') {
+                                EuaCF++
+                            }
+                        }
+                        console.log(ItaliaCF)
+                        exibirGraficos()
+
+                    });
+                } else {
+                    throw "Houve um erro na API!";
+                }
+            })
+                .catch(function (resposta) {
+                    console.error(resposta);
+                });
+
+
+
+
+
+
+            // Integração do forum - mostrando os restaurantes que estão sendo publicados
+            fetch("/forum/restaurante", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    usuarioServer: usuario,
+                })
+            }).then(function (resposta) {
+                if (resposta.ok) {
+                    if (resposta.status == 204) {
+                        alert('nenhuma resposta');
+                        return;
+                    }
+                    resposta.json().then(function (resposta) {
+                        console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                        var nomesRestaurantes = [];
+                        var qtdPosts = [];
+
+                        for (var i = 0; i < resposta.length; i++) {
+                            var restaurante = resposta[i];
+                            nomesRestaurantes.push(restaurante.nomeRestaurante);
+                            qtdPosts.push(restaurante.qtdPosts);
+                        }
+
+                        console.log(nomesRestaurantes);
+                        console.log(qtdPosts);
+
+                        // Chama a função para exibir o gráfico
+                        exibirGrafico(nomesRestaurantes, qtdPosts);
+                    });
+                } else {
+                    throw new Error("Houve um erro na API!");
+                }
+            }).catch(function (erro) {
+                console.error(erro);
+            });
+
+
+/*
+            // Informação para conhecimento pessoal - mostrando em quais games as pessoas obtiveram mais dificuldade em conhecer a cultura;
+            fetch("/quiz/pessoalQuiz", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    usuarioServer: usuario,
+                })
+            }).then(function (resposta) {
+                if (resposta.ok) {
+                    if (resposta.status == 204) {
+                        alert('nenhuma resposta');
+                        return;
+                    }
+                    resposta.json().then(function (resposta) {
+                        console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+
+                        const gameIds = data.map(d => d.game_id);
+                        const acertos = data.map(d => d.total_acertos);
+                        const erros = data.map(d => d.total_erros);
+
+                        graficoPessoal(gameIds, acertos, erros);
+                    });
+                } else {
+                    throw new Error("Houve um erro na API!");
+                }
+            }).catch(function (erro) {
+                console.error(erro);
+            });
+*/
+
+        }
+
+
+        //grafico do forum
+        function exibirGrafico(nomesRestaurantes, qtdPosts) {
+            if (window.avaliacaoRestaurantesChart) {
+                window.avaliacaoRestaurantesChart.destroy();
+            }
+
+            const nomeLugar = {
+                labels: nomesRestaurantes,
+                datasets: [{
+                    label: 'Número de Postagens',
+                    backgroundColor: '#BB3E03',
+                    borderColor: '#860000',
+                    data: qtdPosts,
+                }]
+            };
+
+            const config1 = {
+                type: 'line',
+                data: nomeLugar,
+                options: {}
+            };
+
+            window.avaliacaoRestaurantesChart = new Chart(
+                document.getElementById('avaliacaoRestaurantes'),
+                config1
+            );
+        }
+
+        /*
+        function graficoPessoal(gameIds, acertos, erros){
+            
+            // Definindo os labels do gráfico
+    const AcertoQuiz = gameIds.map(id => `Questão ${id}`);
+    
+    
+    // Configurando os dados do gráfico
+    const questoesGeral = {
+        labels: AcertoQuiz,
+        datasets: [{
+            label: 'Erros',
+            backgroundColor: '#730023',
+            borderColor: '#9B2226',
+            data: erros,
+        }, {
+            label: 'Acertos',
+            backgroundColor: '#588157',
+            borderColor: '#314d31',
+            data: acertos,
+        }]
+    };
+
+    // Configurando o gráfico
+    const config5 = {
+        type: 'radar',
+        data: questoesGeral,
+        options: {
+            scales: {
+                r: {
+                    angleLines: {
+                        display: false
+                    },
+                    suggestedMin: 0
+                }
+            }
+        }
+    };
+
+    
+    // Criando o gráfico
+    const AcertosQuiz = new Chart(
+        document.getElementById('AcertosQuiz'),
+        config5
+    );
+
+    }
+    */
+
+        
+
+        // configurações do chart.js
+        function exibirGraficos() {
+
+            //gráfico do cadastro
+            const CulinariaFavorita = [
+                'Itália',
+                'França',
+                'Japão',
+                'México',
+                'Egito',
+                'Brasil',
+                'Arábia',
+                'EUA',
+            ];
+
+            const pais = {
+                labels: CulinariaFavorita,
+                datasets: [{
+                    label: '',
+                    backgroundColor: '#CA6702',
+                    borderColor: '#f0ad4e',
+                    data: [ItaliaCF, FrancaCF, JapaoCF, MexicoCF, EgitoCF, BrasilCF, ArabiaCF, EuaCF],
+                }]
+            };
+
+            const config3 = {
+                type: 'bar',
+                data: pais,
+                options: {}
+            };
+
+
+            const CulinariaFav = new Chart(
+                document.getElementById('CulinariaFav'),
+                config3
+            );
+
+/*
+
+            //qtd de erros na cruzadinha
+            const ErroCruzadinha = [
+                'Itália',
+                'França',
+                'Japão',
+                'México',
+                'Egito',
+                'Brasil',
+                'Arábia',
+                'EUA',
+            ];
+
+            const questao = {
+                labels: ErroCruzadinha,
+                datasets: [{
+                    label: 'Erros',
+                    backgroundColor: '#730023',
+                    borderColor: '#9B2226',
+                    data: [5, 0, 5, 3, 4, 5, 7, 6, 5, 0, 5, 3, 4, 5, 7, 6],
+                }, {
+                    label: 'Acertos',
+                    backgroundColor: '#588157',
+                    borderColor: '#314d31',
+                    data: [10, 15, 10, 12, 11, 10, 8, 9, 10, 15, 10, 12, 11, 10, 8, 9],
+                }]
+            };
+
+            const config6 = {
+                type: 'radar',
+                data: questao,
+                options: {}
+            };
+
+
+            const ErrosCruzadinha = new Chart(
+                document.getElementById('ErrosCruzadinha'),
+                config6
+            );
+
+            */
+        }
 
     </script>
 

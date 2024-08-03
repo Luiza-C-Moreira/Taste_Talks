@@ -22,7 +22,6 @@
                 <ul>
                     <li><a href="8-Game_Home.html">Games - Itália</a></li>
                     <li><a href="9-Quiz-Conhecimento-Italia.html" class="now">Quiz</a></li>
-                    <li><a href="9-Cruzadinha-Italia.html">Cruzadinha</a></li>
                     <li>|</li>
                     <li><a href="../index.html" class="exit">Sair</a></li>
                 </ul>
@@ -58,7 +57,7 @@
             </div>
 
         </div>
-    </article>
+    </article>   
 
 
     <!-- Site footer -->
@@ -528,138 +527,8 @@
     $startGameButton.addEventListener("click", startGame) //quando o butão for clicado o game vai iniciar
     $nextQuestionButton.addEventListener("click", displayNextQuestion) //quando o butão for clicado o game vai iniciar
 
-
-    function startGame() {
-        $startGameButton.classList.add("hide") //o botão de inicio desaparecerá
-        $startGamePhrase.classList.add("hide") //o botão de inicio desaparecerá
-        $questionsContainer.classList.remove("hide") //as questões se iniciarão.
-        $timer.classList.remove("hide") // o texto começa a ser criado
-        startTimer()
-        displayNextQuestion()
-    }
-
-    function startTimer() { //é iniciado quando o jogo começar
-        startTime = Date.now();
-        intervalId = setInterval(updateTimer, 1000);
-    }
-
-    function updateTimer() { // atualiza o timer por segundo
-        const elapsedTime = Date.now() - startTime;
-        $timer.textContent = formatTime(elapsedTime);
-    }
-
-    function formatTime(milliseconds) { // formata o tempo em minutos e segundos
-        const totalSeconds = Math.floor(milliseconds / 1000);
-        const minutes = Math.floor(totalSeconds / 60);
-        const seconds = totalSeconds % 60;
-        return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-    }
-
-    function displayNextQuestion() {
-        resetState()
-
-        if (questions.length === currentQuestionIndex) {
-            return finishGame()
-        }
-
-        $questionText.textContent = questions[currentQuestionIndex].question // indica qual a pergunta de acordo com o banco de perguntas abaixo.
-        questions[currentQuestionIndex].answers.forEach(answer => {
-            const newAsnwer = document.createElement("button")
-            newAsnwer.classList.add("button", "answer")
-            newAsnwer.textContent = answer.text
-            if (answer.correct) {
-                newAsnwer.dataset.correct = answer.correct
-            }
-            $answersContainer.appendChild(newAsnwer)
-
-            newAsnwer.addEventListener("click", selectAnswer)
-        })
-    }
-
-    function resetState() {
-        while ($answersContainer.firstChild) {
-            $answersContainer.removeChild($answersContainer.firstChild) //enquanto a class Answer-Containter obtiver informações dentro dela a classe a removerá para poder transformar em uma nova pergunda 
-        }
-
-        document.body.removeAttribute("class")
-        $nextQuestionButton.classList.add("hide")
-    }
-
-    function selectAnswer(event) {
-        const answerClicked = event.target
-
-        if (answerClicked.dataset.correct) {
-            document.body.classList.add("correct")
-            totalCorrect++
-        } else {
-            document.body.classList.add("incorrect")
-        }
-
-        document.querySelectorAll(".answer").forEach(button => {
-            button.disabled = true
-
-            if (button.dataset.correct) {
-                button.classList.add("correct")
-            } else {
-                button.classList.add("incorrect")
-            }
-
-        })
-
-        $nextQuestionButton.classList.remove("hide")
-        currentQuestionIndex++
-
-    }
-
-    function finishGame() {
-        clearInterval(intervalId);
-        const totalQuestions = questions.length //
-        const performance = Math.floor(totalCorrect * 100 / totalQuestions) //definindo a performance do usuario e definindo sua pontuação para realizar a validação
-        const totalTime = Date.now() - startTime;
-
-        let message = ""
-
-        //Switch está sendo utilizado como um validador que identifica qual a pontuação de usuário e define uma mensagem pré-definida.
-        switch (true) {
-            case (performance >= 90):
-                message = "Excelente! :)"
-                break
-            case (performance >= 70):
-                message = "Muito bom! :)"
-                break
-            case (performance >= 50):
-                message = "ok :/"
-                break
-            default:
-                message = "melhore mona :("
-                break
-        }
-
-        //Mensagem final para o usuário onde mostra a pontuação total do usuário
-        $questionsContainer.innerHTML = ` 
-        <p class="final-message">
-      Você acertou ${totalCorrect} de ${totalQuestions} questões!
-      <span>Resultado: ${message}</span>
-      <span>Tempo total: ${formatTime(totalTime)}</span>
-    </p>
-    <button 
-      onclick=window.location.reload() 
-      class="final-quiz"> Refazer teste 
-    </button>
-    <button 
-      onclick="window.location.href='7-metrica.html'" 
-      class="final-quiz"> Visualizar as métricas 
-    </button>
-    <button 
-      onclick="window.location.href='8-Game_Home.html'" 
-      class="final-quiz"> Voltar para a home 
-    </button>
-  `
-    }
-
-
-    // Banco de questões: 
-    const questions = [
+// Banco de questões: 
+const questions = [
         {
             question: "Qual o prato mais famoso da Itália?",
             answers: [
@@ -730,5 +599,247 @@
         }
     ]
 
+
+    function startGame() {
+        $startGameButton.classList.add("hide") //o botão de inicio desaparecerá
+        $startGamePhrase.classList.add("hide") //o botão de inicio desaparecerá
+        $questionsContainer.classList.remove("hide") //as questões se iniciarão.
+        $timer.classList.remove("hide") // o texto começa a ser criado
+        startTimer()
+        displayNextQuestion()
+    }
+
+    function startTimer() { //é iniciado quando o jogo começar
+        startTime = Date.now();
+        intervalId = setInterval(updateTimer, 1000);
+    }
+
+    function updateTimer() { // atualiza o timer por segundo
+        const elapsedTime = Date.now() - startTime;
+        $timer.textContent = formattedTime(elapsedTime);
+    }
+
+    function formattedTime(milliseconds) { // formata o tempo em minutos e segundos
+        const totalSeconds = Math.floor(milliseconds / 1000);
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+        return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        var tempoFormatado = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        console.log("esse é o tempo formatado", tempoFormatado)
+    }
+
+
+    function displayNextQuestion() {
+        resetState()
+
+        if (questions.length === currentQuestionIndex) {
+            return finishGame()
+        }
+
+        $questionText.textContent = questions[currentQuestionIndex].question // indica qual a pergunta de acordo com o banco de perguntas abaixo.
+        questions[currentQuestionIndex].answers.forEach(answer => {
+            const newAsnwer = document.createElement("button")
+            newAsnwer.classList.add("button", "answer")
+            newAsnwer.textContent = answer.text
+            if (answer.correct) {
+                newAsnwer.dataset.correct = answer.correct
+            }
+            $answersContainer.appendChild(newAsnwer)
+
+            newAsnwer.addEventListener("click", selectAnswer)
+        })
+    }
+
+    function resetState() {
+        while ($answersContainer.firstChild) {
+            $answersContainer.removeChild($answersContainer.firstChild) //enquanto a class Answer-Containter obtiver informações dentro dela a classe a removerá para poder transformar em uma nova pergunda 
+        }
+
+        document.body.removeAttribute("class")
+        $nextQuestionButton.classList.add("hide")
+    }
+
+    function selectAnswer(event) {
+        const answerClicked = event.target
+
+        if (answerClicked.dataset.correct) {
+            document.body.classList.add("correct")
+            totalCorrect++
+        } else {
+            document.body.classList.add("incorrect")
+        }
+
+        document.querySelectorAll(".answer").forEach(button => {
+            button.disabled = true
+
+            if (button.dataset.correct) {
+                button.classList.add("correct")
+            } else {
+                button.classList.add("incorrect")
+            }
+
+        })
+
+        $nextQuestionButton.classList.remove("hide")
+        currentQuestionIndex++
+
+    }
+
+    function finishGame() {
+        clearInterval(intervalId);
+        const totalQuestions = questions.length //
+        const performance = Math.floor(totalCorrect * 100 / totalQuestions) //definindo a performance do usuario e definindo sua pontuação para realizar a validação
+        const finishTime = Date.now();
+        var totalTime = finishTime - startTime;
+        var tempoTotal = totalTime = formattedTime(totalTime)
+
+        let message = ""
+
+        //Switch está sendo utilizado como um validador que identifica qual a pontuação de usuário e define uma mensagem pré-definida.
+        switch (true) {
+            case (performance >= 90):
+                message = "Excelente! :)"
+                break
+            case (performance >= 70):
+                message = "Muito bom! :)"
+                break
+            case (performance >= 50):
+                message = "ok :/"
+                break
+            default:
+                message = "melhore mona :("
+                break
+        }
+        console.log("entrei")
+    console.log(totalCorrect)
+        console.log(totalQuestions)
+        console.log(message)
+        console.log(tempoTotal)
+        
+
+        var idQuiz = 1;
+    var usuario = sessionStorage.ID_USUARIO;
+    fetch("/quiz/cadastrarQuiz", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+
+
+
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    fk_usuarioServer: usuario,
+                    tempoServer: tempoTotal,
+                    game_idServer: idQuiz,
+                    questoesCorretasServer: totalCorrect,
+                    qtdQuestoesServer: totalQuestions,
+                    
+                }),
+
+            })
+                .then(function (resposta) {
+
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                        
+                    } else {
+                        throw "Houve um erro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+
+                });
+
+        fetch("/quiz/exibir", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                usuarioServer: usuario,
+
+            })
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    alert('nenhuma resposta')
+
+                }
+
+                // resposta com todos os resultados
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+        //fatch com for dando select * no model pra pegar todas as pessoas que fizeram o quiz id-1 (como organizar a lista de números do valor mais alto ao menor com o valor do json, e dentro do for lista.push (variavel de pontuação) )
+        
+        var lista_nome = [];
+        var lista_posicao = [];
+        var lista_id = [];
+
+
+                    //lista com todos os resultados
+                    for (let i = 0; i < resposta.length; i++) {
+                        var post = resposta[i];
+                        lista_nome.push(post.nome)
+                        lista_posicao.push(post.qtd_Acertos)
+                        lista_id.push(post.fk_usuario)
+                    } 
+                    console.log(lista_nome);
+                    console.log(lista_posicao);
+                    console.log(lista_id);
+
+        // Combina as listas em uma lista de objetos
+        var ranking = lista_posicao.map((pontos, index) => {
+                    return {
+                        id: lista_id[index],
+                        pontos: pontos
+                    };
+                });
+
+                // Ordena a lista de objetos com base na pontuação (decrescente)
+                ranking.sort((a, b) => b.pontos - a.pontos);
+
+                // Encontra a posição do usuário com base na variável totalCorrect
+                var posicao = ranking.findIndex(player => player.pontos === totalCorrect);
+
+                console.log(`O usuário está na posição: ${posicao + 1}`);
+
+                
+                    $questionsContainer.innerHTML =  `
+        <p class="final-message">
+      Você acertou ${totalCorrect} de ${totalQuestions} questões!
+      <span>O usuário está na posição: ${posicao + 1} dentro do ranking </span>
+      <span>Tempo total: ${tempoTotal}</span>
+    </p>
+    <button 
+      onclick=window.location.reload() 
+      class="final-quiz"> Refazer teste 
+    </button>
+    <button 
+      onclick="window.location.href='7-metrica.html'" 
+      class="final-quiz"> Visualizar as métricas 
+    </button>
+    <button 
+      onclick="window.location.href='8-Game_Home.html'" 
+      class="final-quiz"> Voltar para a home 
+    </button>
+  `
+
+                });
+            } else {
+                throw "Houve um erro na API!";
+            }
+        })
+            .catch(function (resposta) {
+                console.error(resposta);
+            }); 
+    }
+
+
+        //Mensagem final para o usuário onde mostra a pontuação total do usuário
 
 </script>

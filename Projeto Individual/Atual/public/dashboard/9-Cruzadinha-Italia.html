@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Game-Home - Itália </title>
+    <title> Cruzadinha - Itália </title>
 
 </head>
 
@@ -24,7 +24,6 @@
         <ul>
             <li><a href="8-Game_Home.html">Games - Itália</a></li>
             <li><a href="9-Cruzadinha-Italia.html" class="now">Cruzadinha</a></li>
-            <li><a href="8-Game_Home.html">Quiz</a></li> 
             <li>|</li>
             <li><a href="../index.html" class="exit">Sair</a></li>
           </ul>
@@ -73,6 +72,7 @@
 </div>
 <br>
 <center>
+    
     <button class="button" style="display: none" id="bt_destroyGame" onclick="cancelGrid()">Encerrar o Jogo</button>
     </center>
 </article>
@@ -770,9 +770,12 @@ var heightTable = 20;
 
 
 var cont_correctAnswer = 0;
+var cont_wrongAnswer = 0;
 
 function start() {
     cont_correctAnswer = 0;
+    cont_wrongAnswer = 0;
+
     bt_start.style.display = 'none';
     bt_destroyGame.style.display = 'block';
     div_questions.style.display = 'block';
@@ -864,7 +867,7 @@ function gameSequence() {
 function pontuation() {
     div_information.style.display = 'block';
 
-    div_information.innerHTML = '<h1 style="text-align: center;">Parabéns!!</h1><br><br><p style="text-align: center;">Você finalizou o jogo! </p><br><br> <a href="8-Game_Home.html"><button class="button">Voltar</button></a>';
+    div_information.innerHTML = `<h1 style="text-align: center;">Parabéns!!</h1><br><br><p style="text-align: center;">Você finalizou o jogo!  <br> Possuiu um total de ${cont_wrongAnswer} respostas incorretas. </p><br><br> <a href="8-Game_Home.html"><button class="button">Voltar</button></a>`;
 }
 
 function renderGrid() {
@@ -922,6 +925,7 @@ function verify() {
         } else {
             div_verifiedAnswer.classList.add('wrong_Answer');
             div_verifiedAnswer.innerHTML = 'Resposta Incorreta, tente novamente';
+            cont_wrongAnswer++;
         }
         setTimeout(function () {
             div_verifiedAnswer.style.display = 'block';

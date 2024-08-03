@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Game-Home - Itália </title>
+    <title> Cruzadinha Japão </title>
 
 </head>
 
@@ -23,8 +23,7 @@
       <nav>
         <ul>
             <li><a href="8-Game_Home.html">Games - Japão</a></li>
-            <li><a href="9-Cruzadinha-Italia.html" class="now">Cruzadinha</a></li>
-            <li><a href="8-Game_Home.html">Quiz</a></li> 
+            <li><a href="11-Cruzadinha-Japao.html" class="now">Cruzadinha</a></li>
             <li>|</li>
             <li><a href="../index.html" class="exit">Sair</a></li>
           </ul>
@@ -525,36 +524,33 @@
 
 
 <script>
-      var special_words = ['Pizza', 'Risoto', 'Tiramisú', 'Margherita', 'Polenta', 'Focaccia', 'Bruschetta', 'limoncello', 'Espaguete', 'Lasanha', 'Cannoli', 'Caprese', 'Gelato', 'Mussarela', 'Arancini', 'Bellini'];
+      var special_words = ['Okonomiyaki', 'Onigiri', 'Matcha', 'Yakitori', 'Takoyaki', 'Tempura', 'Sashimi', 'Sushi', 'Lámen', 'Chawanmushi', 'Udon', 'Tonkatsu', 'Gyoza', 'Teppanyaki'];
 
 var questions_list = [
-    'Qual o prato mais famoso da Itália?',
-    'Qual o nome do prato italiano de arroz cozido lentamente em caldo até ficar cremoso?',
-    'Qual o nome da sobremesa italiana feita com camadas de biscoitos embebidos em café, cacau, mascarpone ou licor?',
-    'Qual o nome do sabor da pizza mais tradicional da itália',
-    'Qual o nome do prato feito de farinha de milho, tradicionalmente servida cremosa ou firme e grelhada.',
-    'Qual o nome de um pão italiano achatado e temperado com azeite e ervas.',
-    'Qual o nome do aperitivo feito de pão grelhado esfregado com alho e coberto com tomate, azeite e manjericação',
-    'O nome Licor de limão, frequentemente servido geralmente após o jantar na itália',
-    'Qual o nome do tipo de macarrão cujo a massa é longa e fina',
-    'Qual o nome de uma massa que obtêm diversas camadas de carne, molho e queijo',
-    'Qual o nome da massa cilíndrica recheada tradicionalmente com creme de ricota ou doce de leite',
-    'Qual o nome do prato cujo ingredientes principais são a salada de tomate, mussarela e manjericão',
-    'Qual o nome do tipo tradicional do sorvete italiano?',
-    'Qual o nome do queijo mais comum utilizado em pizzas?',
-    'Qual o nome das bolas de arroz fritas, recheadas com carne ou queijo',
-    'Qual é a bebida feita com vinho branco e licor de pêssego?'
+    'Qual o nome da panqueca japonesa recheada com vários ingredientes?',
+    'Qual o nome da bola de arroz japonesa frequentemente recheada com peixe ou umeboshi?',
+    'Qual o nome do espetinho de frango grelhado, popular no Japão?',
+    'Qual o nome do bolinho de polvo, típico da culinária de Osaka?',
+    'Qual o nome do prato japonês de vegetais e frutos do mar fritos?',
+    'Qual o nome do prato com Fatias finas de peixe cru, servidas com molho de soja?',
+    'Qual o nome do Prato japonês de peixe cru sobre arroz temperado?',
+    'Qual o nome da Sopa de macarrão japonês, muitas vezes servida com carne de porco?',
+    'Qual o nome do Pudim de ovo japonês, muitas vezes servido como entrada?',
+    'Qual o nome do Macarrão grosso e macio, tradicional no Japão?',
+    'Qual o nome da Costeleta de porco empanada e frita, servida com molho?',
+    'Qual o nome do Bolinho japonês recheado, muitas vezes de carne de porco e legumes?',
+    'Qual o nome do Método de cozinhar carne e vegetais em uma chapa quente'
 ];
 
-var filledCell = [9, 10, 11, 12, 13, 14, 15, 33, 34, 35, 36, 37, 38, 39, 40, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 143, 144, 145, 146, 147, 148, 149, 157, 158, 159, 160, 162, 163, 164, 165, 224, 225, 226, 227, 228, 229, 230, 231, 232, 246, 247, 248, 249, 250, 290, 291, 292, 293, 294, 295, 296, 323, 324, 325, 326, 327, 329, 456, 457, 458, 459, 460, 461, 462, 463, 61, 87, 139, 191, 217, 243, 91, 169, 195, 221, 273, 106, 132, 184, 210, 236, 161, 187, 213, 239, 265, 206, 258, 284, 310, 336, 362, 276, 302, 328, 354, 380, 406, 432];
+var filledCell = [24,25,26,27,28,29,30,31,32,33,34,49,52,54,72,75,76,77,78,79,80,81,82,95,98,100,106,107,108,109,110,113,118,121,123,124,125,126,127,128,129,136,141,144,146,152,159,164,169,175,180,182,192,197,198,201,202,203,204,205,219,220,221,222,223,226,228,243,244,249,251,266,272,274,289,295,297,310,311,312,313,314,315,316,317,318,319,320,335,340,341,358,363,386];
 
-var firstIndex = [246, 106, 33, 224, 290, 91, 9, 108, 157, 323, 143, 206, 161, 456];
+var firstIndex = [24,26,29,31,75,106,113,123,180,197,201,219,310,317];
 
 var word = {
 
     word1: {
         letter: special_words[0].split(''),
-        position: [246, 247, 248, 249, 250],
+        position: [24,25,26,27,28,29,30,31,32,33,34],
         write: function () {
 
             for (i in word.word1.letter) {
@@ -563,12 +559,12 @@ var word = {
                 findCell.innerHTML = word.word1.letter[i];
                 console.log(word.word1.letter[i]);
             }
-            cell_246.innerHTML = '<span style="color: red; font-size:10px">1</span>P';
+            cell_24.innerHTML = '<span style="color: red; font-size:10px">1</span>O';
         }
     },
     word2: {
         letter: special_words[1].split(''),
-        position: [106, 132, 158, 184, 210, 236],
+        position: [26, 49,72,95,118,141,164],
         write: function () {
             for (i in word.word2.letter) {
                 var findCell = document.querySelector(`#cell_${word.word2.position[i]}`);
@@ -576,13 +572,13 @@ var word = {
                 findCell.innerHTML = word.word2.letter[i];
                 console.log(word.word2.letter[i]);
             }
-            cell_106.innerHTML = '<span style="color: red; font-size:10px">2</span>R';
+            cell_26.innerHTML = '<span style="color: red; font-size:10px">2</span>O';
 
         }
     },
     word3: {
         letter: special_words[2].split(''),
-        position: [33, 34, 35, 36, 37, 38, 39, 40],
+        position: [29,52,75,98,121,144],
         write: function () {
             for (i in word.word3.letter) {
                 var findCell = document.querySelector(`#cell_${word.word3.position[i]}`);
@@ -590,12 +586,12 @@ var word = {
                 findCell.innerHTML = word.word3.letter[i];
                 console.log(word.word3.letter[i]);
             }
-            cell_33.innerHTML = '<span style="color: red; font-size:10px">3</span>T';
+            cell_29.innerHTML = '<span style="color: red; font-size:10px">3</span>M';
         }
     },
     word4: {
         letter: special_words[3].split(''),
-        position: [224, 250, 276, 302, 328, 354, 380, 406, 432, 458],
+        position: [31,54,77,100,123,146,169,192],
         write: function () {
             for (i in word.word4.letter) {
                 var findCell = document.querySelector(`#cell_${word.word4.position[i]}`);
@@ -603,12 +599,12 @@ var word = {
                 findCell.innerHTML = word.word4.letter[i];
                 console.log(word.word4.letter[i]);
             }
-            cell_224.innerHTML = '<span style="color: red; font-size:10px">4_14</span>M';
+            cell_31.innerHTML = '<span style="color: red; font-size:10px">4_14</span>Y';
         }
     },
     word5: {
         letter: special_words[4].split(''),
-        position: [290, 291, 292, 293, 294, 295, 296],
+        position: [75,76,77,78,79,80,81,82],
         write: function () {
             for (i in word.word5.letter) {
                 var findCell = document.querySelector(`#cell_${word.word5.position[i]}`);
@@ -616,12 +612,12 @@ var word = {
                 findCell.innerHTML = word.word5.letter[i];
                 console.log(word.word5.letter[i]);
             }
-            cell_290.innerHTML = '<span style="color: red; font-size:10px">5</span>P';
+            cell_75.innerHTML = '<span style="color: red; font-size:10px">5</span>T';
         }
     },
     word6: {
         letter: special_words[5].split(''),
-        position: [91, 117, 143, 169, 195, 221, 247, 273],
+        position: [123,124,125,126,127,128,129],
         write: function () {
             for (i in word.word6.letter) {
                 var findCell = document.querySelector(`#cell_${word.word6.position[i]}`);
@@ -629,12 +625,12 @@ var word = {
                 findCell.innerHTML = word.word6.letter[i];
                 console.log(word.word6.letter[i]);
             }
-            cell_91.innerHTML = '<span style="color: red; font-size:10px">6</span>F';
+            cell_123.innerHTML = '<span style="color: red; font-size:10px">6</span>T';
         }
     },
     word7: {
         letter: special_words[6].split(''),
-        position: [9, 35, 61, 87, 113, 139, 165, 191, 217, 243],
+        position: [106,129,152,175,198,221,244],
         write: function () {
             for (i in word.word7.letter) {
                 var findCell = document.querySelector(`#cell_${word.word7.position[i]}`);
@@ -642,12 +638,12 @@ var word = {
                 findCell.innerHTML = word.word7.letter[i];
                 console.log(word.word7.letter[i]);
             }
-            cell_9.innerHTML = '<span style="color: red; font-size:10px">7_9</span>B';
+            cell_106.innerHTML = '<span style="color: red; font-size:10px">7_8</span>S';
         }
     },
     word8: {
         letter: special_words[7].split(''),
-        position: [108, 109, 110, 111, 112, 113, 114, 115, 116, 117],
+        position: [106,107,108,109,110],
         write: function () {
             for (i in word.word8.letter) {
                 var findCell = document.querySelector(`#cell_${word.word8.position[i]}`);
@@ -655,13 +651,13 @@ var word = {
                 findCell.innerHTML = word.word8.letter[i];
                 console.log(word.word8.letter[i]);
             }
-            cell_108.innerHTML = '<span style="color: red; font-size:10px">8</span>L';
+            cell_106.innerHTML = '<span style="color: red; font-size:10px">7_8</span>S';
 
         }
     },
     word9: {
         letter: special_words[8].split(''),
-        position: [157, 158, 159, 160, 161, 162, 163, 164, 165],
+        position: [219,220,221,222,223],
         write: function () {
             for (i in word.word9.letter) {
                 var findCell = document.querySelector(`#cell_${word.word9.position[i]}`);
@@ -669,12 +665,12 @@ var word = {
                 findCell.innerHTML = word.word9.letter[i];
                 console.log(word.word9.letter[i]);
             }
-            cell_157.innerHTML = '<span style="color: red; font-size:10px">9</span>E';
+            cell_219.innerHTML = '<span style="color: red; font-size:10px">9</span>L';
         }
     },
     word10: {
         letter: special_words[9].split(''),
-        position: [323, 324, 325, 326, 327, 328, 329],
+        position: [310,311,312,313,314,315,316,317,318,319,320],
         write: function () {
             for (i in word.word10.letter) {
                 var findCell = document.querySelector(`#cell_${word.word10.position[i]}`);
@@ -682,12 +678,12 @@ var word = {
                 findCell.innerHTML = word.word10.letter[i];
                 console.log(word.word10.letter[i]);
             }
-            cell_323.innerHTML = '<span style="color: red; font-size:10px">10</span>L';
+            cell_310.innerHTML = '<span style="color: red; font-size:10px">10</span>C';
         }
     },
     word11: {
         letter: special_words[10].split(''),
-        position: [143, 144, 145, 146, 147, 148, 149],
+        position: [317,340,363,386],
         write: function () {
             for (i in word.word11.letter) {
                 var findCell = document.querySelector(`#cell_${word.word11.position[i]}`);
@@ -695,12 +691,12 @@ var word = {
                 findCell.innerHTML = word.word11.letter[i];
                 console.log(word.word11.letter[i]);
             }
-            cell_143.innerHTML = '<span style="color: red; font-size:10px">11</span>C';
+            cell_317.innerHTML = '<span style="color: red; font-size:10px">11</span>U';
         }
     },
     word12: {
         letter: special_words[11].split(''),
-        position: [206, 232, 258, 284, 310, 336, 362],
+        position: [180,203,,226,249,272,295,318,341],
         write: function () {
             for (i in word.word12.letter) {
                 var findCell = document.querySelector(`#cell_${word.word12.position[i]}`);
@@ -708,12 +704,12 @@ var word = {
                 findCell.innerHTML = word.word12.letter[i];
                 console.log(word.word12.letter[i]);
             }
-            cell_206.innerHTML = '<span style="color: red; font-size:10px">12</span>C';
+            cell_180.innerHTML = '<span style="color: red; font-size:10px">12</span>T';
         }
     },
     word13: {
         letter: special_words[12].split(''),
-        position: [161, 187, 213, 239, 265, 291],
+        position: [201,202,203,204,205],
         write: function () {
             for (i in word.word13.letter) {
                 var findCell = document.querySelector(`#cell_${word.word13.position[i]}`);
@@ -721,12 +717,12 @@ var word = {
                 findCell.innerHTML = word.word13.letter[i];
                 console.log(word.word13.letter[i]);
             }
-            cell_161.innerHTML = '<span style="color: red; font-size:10px">13</span>G';
+            cell_201.innerHTML = '<span style="color: red; font-size:10px">13</span>G';
         }
     },
     word14: {
         letter: special_words[13].split(''),
-        position: [224, 225, 226, 227, 228, 229, 230, 231, 232],
+        position: [113,136,159,182,205,228,251,274,297,320],
         write: function () {
             for (i in word.word14.letter) {
                 var findCell = document.querySelector(`#cell_${word.word14.position[i]}`);
@@ -734,39 +730,13 @@ var word = {
                 findCell.innerHTML = word.word14.letter[i];
                 console.log(word.word14.letter[i]);
             }
-            cell_224.innerHTML = '<span style="color: red; font-size:10px">4_14</span>M';
-        }
-    },
-    word15: {
-        letter: special_words[14].split(''),
-        position: [456, 457, 458, 459, 460, 461, 462, 463],
-        write: function () {
-            for (i in word.word15.letter) {
-                var findCell = document.querySelector(`#cell_${word.word15.position[i]}`);
-
-                findCell.innerHTML = word.word15.letter[i];
-                console.log(word.word15.letter[i]);
-            }
-            cell_456.innerHTML = '<span style="color: red; font-size:10px">15</span>A';
-        }
-    },
-    word16: {
-        letter: special_words[15].split(''),
-        position: [9, 10, 11, 12, 13, 14, 15],
-        write: function () {
-            for (i in word.word16.letter) {
-                var findCell = document.querySelector(`#cell_${word.word16.position[i]}`);
-
-                findCell.innerHTML = word.word16.letter[i];
-                console.log(word.word16.letter[i]);
-            }
-            cell_9.innerHTML = '<span style="color: red; font-size:10px">16</span>B';
+            cell_113.innerHTML = '<span style="color: red; font-size:10px">4_14</span>M';
         }
     }
 };
 
-var widthTable = 26;
-var heightTable = 20;
+var widthTable = 23;
+var heightTable = 18;
 
 
 var cont_correctAnswer = 0;
@@ -845,12 +815,6 @@ function gameSequence() {
     }
     else if (cont_correctAnswer == 14) {
         word.word14.write();
-    }
-    else if (cont_correctAnswer == 15) {
-        word.word15.write();
-    }
-    else if (cont_correctAnswer == 16) {
-        word.word16.write();
 
         setTimeout(function () {
             destroyGrid();

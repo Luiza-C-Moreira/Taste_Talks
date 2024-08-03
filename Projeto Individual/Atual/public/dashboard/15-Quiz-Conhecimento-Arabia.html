@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz - itália</title>
+    <title>Quiz - Arábia</title>
 </head>
 
 <body>
@@ -20,9 +20,8 @@
             <h1 class="logo" href="#">Taste Talks</h1>
             <nav>
                 <ul>
-                    <li><a href="8-Game_Home.html">Games - Itália</a></li>
-                    <li><a href="9-Quiz-Conhecimento-Italia.html" class="now">Quiz</a></li>
-                    <li><a href="9-Cruzadinha-Italia.html">Cruzadinha</a></li>
+                    <li><a href="8-Game_Home.html">Games - Arábia</a></li>
+                    <li><a href="15-Quiz-Conhecimento-Arabia.html" class="now">Quiz</a></li>
                     <li>|</li>
                     <li><a href="../index.html" class="exit">Sair</a></li>
                 </ul>
@@ -58,7 +57,7 @@
             </div>
 
         </div>
-    </article>
+    </article>   
 
 
     <!-- Site footer -->
@@ -528,6 +527,136 @@
     $startGameButton.addEventListener("click", startGame) //quando o butão for clicado o game vai iniciar
     $nextQuestionButton.addEventListener("click", displayNextQuestion) //quando o butão for clicado o game vai iniciar
 
+// Banco de questões: 
+const questions = [
+    {
+        "question": "Qual é o prato árabe feito de grão-de-bico, tahine, suco de limão e alho, geralmente servido como pasta ou dip?",
+        "answers": [
+            { "text": "Hummus", "correct": true },
+            { "text": "Baba Ganoush", "correct": false },
+            { "text": "Tabule", "correct": false },
+            { "text": "Kibbeh", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é o prato árabe de bolinhos fritos feitos de grão-de-bico moído, temperados com especiarias?",
+        "answers": [
+            { "text": "Falafel", "correct": true },
+            { "text": "Kibbeh", "correct": false },
+            { "text": "Sfiha", "correct": false },
+            { "text": "Manakish", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é o prato árabe de pão coberto com zaatar (mistura de especiarias) e assado, geralmente consumido no café da manhã?",
+        "answers": [
+            { "text": "Manakish", "correct": true },
+            { "text": "Kibbeh", "correct": false },
+            { "text": "Fattoush", "correct": false },
+            { "text": "Shawarma", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é o prato árabe de carne moída temperada e assada em espetos, servido com pão pita e molho de tahine?",
+        "answers": [
+            { "text": "Kebab", "correct": true },
+            { "text": "Shawarma", "correct": false },
+            { "text": "Falafel", "correct": false },
+            { "text": "Kibbeh", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é a sobremesa árabe feita de camadas de massa filo, recheada com nozes e embebida em calda de mel?",
+        "answers": [
+            { "text": "Baklava", "correct": true },
+            { "text": "Halva", "correct": false },
+            { "text": "Maamoul", "correct": false },
+            { "text": "Kunafa", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é o prato árabe de salada feita com trigo bulgur, salsa, hortelã, tomate e cebola, temperada com suco de limão e azeite?",
+        "answers": [
+            { "text": "Tabule", "correct": true },
+            { "text": "Fattoush", "correct": false },
+            { "text": "Hummus", "correct": false },
+            { "text": "Falafel", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é o prato árabe de carne ou frango assado, fatiado e servido em pão pita com legumes e molho?",
+        "answers": [
+            { "text": "Shawarma", "correct": true },
+            { "text": "Kebab", "correct": false },
+            { "text": "Falafel", "correct": false },
+            { "text": "Kibbeh", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é o prato árabe de salada feita com pedaços de pão pita torrado, misturado com legumes frescos e molho de romã?",
+        "answers": [
+            { "text": "Fattoush", "correct": true },
+            { "text": "Tabule", "correct": false },
+            { "text": "Hummus", "correct": false },
+            { "text": "Falafel", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é o prato árabe de bolinhos fritos feitos de carne moída e trigo bulgur, geralmente recheados com cebola e pinhões?",
+        "answers": [
+            { "text": "Kibbeh", "correct": true },
+            { "text": "Falafel", "correct": false },
+            { "text": "Sfiha", "correct": false },
+            { "text": "Manakish", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é o prato árabe de pastel assado, geralmente recheado com carne, espinafre ou queijo?",
+        "answers": [
+            { "text": "Sfiha", "correct": true },
+            { "text": "Fatayer", "correct": false },
+            { "text": "Manakish", "correct": false },
+            { "text": "Kibbeh", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é a sobremesa árabe feita de pasta de gergelim (tahine) e açúcar, às vezes misturada com pistache ou outros ingredientes?",
+        "answers": [
+            { "text": "Halva", "correct": true },
+            { "text": "Baklava", "correct": false },
+            { "text": "Kunafa", "correct": false },
+            { "text": "Maamoul", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é o prato árabe de carne e arroz, cozidos juntos e invertidos em um prato para servir, muitas vezes decorado com nozes?",
+        "answers": [
+            { "text": "Maqluba", "correct": true },
+            { "text": "Kebab", "correct": false },
+            { "text": "Falafel", "correct": false },
+            { "text": "Shawarma", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é o prato árabe de carne picada misturada com cebola e especiarias, moldada em forma de torpedo e frita ou assada?",
+        "answers": [
+            { "text": "Kibbeh", "correct": true },
+            { "text": "Falafel", "correct": false },
+            { "text": "Sfiha", "correct": false },
+            { "text": "Manakish", "correct": false }
+        ]
+    },
+    {
+        "question": "Qual é o prato árabe de pão achatado coberto com queijo e ervas, geralmente consumido no café da manhã?",
+        "answers": [
+            { "text": "Manakish", "correct": true },
+            { "text": "Kibbeh", "correct": false },
+            { "text": "Fattoush", "correct": false },
+            { "text": "Shawarma", "correct": false }
+        ]
+    }
+]
+
 
     function startGame() {
         $startGameButton.classList.add("hide") //o botão de inicio desaparecerá
@@ -545,15 +674,18 @@
 
     function updateTimer() { // atualiza o timer por segundo
         const elapsedTime = Date.now() - startTime;
-        $timer.textContent = formatTime(elapsedTime);
+        $timer.textContent = formattedTime(elapsedTime);
     }
 
-    function formatTime(milliseconds) { // formata o tempo em minutos e segundos
+    function formattedTime(milliseconds) { // formata o tempo em minutos e segundos
         const totalSeconds = Math.floor(milliseconds / 1000);
         const minutes = Math.floor(totalSeconds / 60);
         const seconds = totalSeconds % 60;
         return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        var tempoFormatado = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        console.log("esse é o tempo formatado", tempoFormatado)
     }
+
 
     function displayNextQuestion() {
         resetState()
@@ -615,7 +747,9 @@
         clearInterval(intervalId);
         const totalQuestions = questions.length //
         const performance = Math.floor(totalCorrect * 100 / totalQuestions) //definindo a performance do usuario e definindo sua pontuação para realizar a validação
-        const totalTime = Date.now() - startTime;
+        const finishTime = Date.now();
+        var totalTime = finishTime - startTime;
+        var tempoTotal = totalTime = formattedTime(totalTime)
 
         let message = ""
 
@@ -634,13 +768,110 @@
                 message = "melhore mona :("
                 break
         }
+        console.log("entrei")
+    console.log(totalCorrect)
+        console.log(totalQuestions)
+        console.log(message)
+        console.log(tempoTotal)
+        
 
-        //Mensagem final para o usuário onde mostra a pontuação total do usuário
-        $questionsContainer.innerHTML = ` 
+        var idQuiz = 7;
+    var usuario = sessionStorage.ID_USUARIO;
+    fetch("/quiz/cadastrarQuiz", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+
+
+
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    fk_usuarioServer: usuario,
+                    tempoServer: tempoTotal,
+                    game_idServer: idQuiz,
+                    questoesCorretasServer: totalCorrect,
+                    qtdQuestoesServer: totalQuestions,
+                    
+                }),
+
+            })
+                .then(function (resposta) {
+
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                        
+                    } else {
+                        throw "Houve um erro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+
+                });
+
+        fetch("/quiz/exibir", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                usuarioServer: usuario,
+
+            })
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    alert('nenhuma resposta')
+
+                }
+
+                // resposta com todos os resultados
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+        //fatch com for dando select * no model pra pegar todas as pessoas que fizeram o quiz id-1 (como organizar a lista de números do valor mais alto ao menor com o valor do json, e dentro do for lista.push (variavel de pontuação) )
+        
+        var lista_nome = [];
+        var lista_posicao = [];
+        var lista_id = [];
+
+
+                    //lista com todos os resultados
+                    for (let i = 0; i < resposta.length; i++) {
+                        var post = resposta[i];
+                        lista_nome.push(post.nome)
+                        lista_posicao.push(post.qtd_Acertos)
+                        lista_id.push(post.fk_usuario)
+                    } 
+                    console.log(lista_nome);
+                    console.log(lista_posicao);
+                    console.log(lista_id);
+
+        // Combina as listas em uma lista de objetos
+        var ranking = lista_posicao.map((pontos, index) => {
+                    return {
+                        id: lista_id[index],
+                        pontos: pontos
+                    };
+                });
+
+                // Ordena a lista de objetos com base na pontuação (decrescente)
+                ranking.sort((a, b) => b.pontos - a.pontos);
+
+                // Encontra a posição do usuário com base na variável totalCorrect
+                var posicao = ranking.findIndex(player => player.pontos === totalCorrect);
+
+                console.log(`O usuário está na posição: ${posicao + 1}`);
+
+                
+                    $questionsContainer.innerHTML =  `
         <p class="final-message">
       Você acertou ${totalCorrect} de ${totalQuestions} questões!
-      <span>Resultado: ${message}</span>
-      <span>Tempo total: ${formatTime(totalTime)}</span>
+      <span>O usuário está na posição: ${posicao + 1} dentro do ranking </span>
+      <span>Tempo total: ${tempoTotal}</span>
     </p>
     <button 
       onclick=window.location.reload() 
@@ -655,80 +886,18 @@
       class="final-quiz"> Voltar para a home 
     </button>
   `
+
+                });
+            } else {
+                throw "Houve um erro na API!";
+            }
+        })
+            .catch(function (resposta) {
+                console.error(resposta);
+            }); 
     }
 
 
-    // Banco de questões: 
-    const questions = [
-        {
-            question: "Qual o prato mais famoso da Itália?",
-            answers: [
-                { text: "Pizza", correct: true },
-                { text: "Risoto", correct: false },
-                { text: "Foccacia", correct: false },
-                { text: "Gelatto", correct: false }
-            ]
-        },
-        {
-            question: "Qual o nome do prato italiano de arroz cozido lentamente em caldo até ficar cremoso?",
-            answers: [
-                { text: "Pizza", correct: false },
-                { text: "Risoto", correct: true },
-                { text: "Foccacia", correct: false },
-                { text: "Gelatto", correct: false }
-            ]
-        },
-        {
-            question: "Qual o nome da sobremesa italiana feita com camadas de biscoitos embebidos em café, cacau, mascarpone ou licor?",
-            answers: [
-                { text: "Canolli", correct: false },
-                { text: "Gelato", correct: false },
-                { text: "Margherita", correct: false },
-                { text: "Tiramisú", correct: true }
-            ]
-        },
-        {
-            question: "Qual é o principal ingrediente do molho pesto, tradicional da Ligúria?",
-            answers: [
-                { text: "Tomate", correct: false },
-                { text: "Cogumelos", correct: false },
-                { text: "Manjericão", correct: true },
-                { text: "Azeitonas", correct: false }
-            ]
-        }, {
-            question: "Qual tipo de queijo é tradicionalmente usado para fazer a autêntica pizza Margherita?",
-            answers: [
-                { text: "O Queijo Mozzarella", correct: true },
-                { text: "O Queijo Provolone", correct: false },
-                { text: "O Queijo Cheddar", correct: false },
-                { text: "O Queijo Gouda", correct: false }
-            ]
-        }, {
-            question: "Qual é o nome do famoso presunto italiano, geralmente servido fatiado fino como aperitivo?",
-            answers: [
-                { text: "Salame", correct: false },
-                { text: "Pancetta", correct: false },
-                { text: "Prosciutto", correct: true },
-                { text: "Mortadela", correct: false }
-            ]
-        }, {
-            question: "Qual é o principal ingrediente do prato italiano 'Carbonara'?",
-            answers: [
-                { text: "Creme de leite", correct: false },
-                { text: "Espinafre", correct: false },
-                { text: "Molho de tomate", correct: false },
-                { text: "Ovos", correct: true }
-            ]
-        }, {
-            question: "Qual prato italiano é feito de berinjela frita, molho de tomate, queijo e manjericão?",
-            answers: [
-                { text: "Caprese", correct: false },
-                { text: "Fettuccine Alfredo", correct: false },
-                { text: "Parmigiana di Melanzane", correct: true },
-                { text: "Polenta", correct: false }
-            ]
-        }
-    ]
-
+        //Mensagem final para o usuário onde mostra a pontuação total do usuário
 
 </script>

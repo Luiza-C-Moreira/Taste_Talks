@@ -12,4 +12,10 @@ router.post("/cadastrarForum", function (req, res) {
 router.post("/exibir", function (req, res) {
     forumController.exibir(req, res);
 });
+
+//Recebendo os dados do html e direcionando para a função cadastrar de forumController.js
+router.post("/restaurante", function (req, res) {
+    forumController.restaurante(req, res);
+});
+
 module.exports = router;
